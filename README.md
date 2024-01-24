@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+My app would be a card game called gambit, User select three heroes and fight undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
 
-In the project directory, you can run:
+### Problem
 
-### `npm start`
+I grew up playing card games and wanted to make one from my own art. Something easy to pick up yet every time you play changes would occur in either hero composition and enemy composition to keep encounters fresh. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Profile
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+my App would mostly be used for gamers either playing through steam or in real time with physical cards. fans of pokemon and yugioh would have an attraction to the concept. 
 
-### `npm test`
+### Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-main menu functionality to start a run
+-react app to use state for enemy/player turns
+-api to call and render cards
+-css animation for user interaction and card draws. 
+-logic for attacking, defending.
+-potential for unique card effects(to be determined based on complexity)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-react
+-express
+-I'd like to use an animation library to streamline the process. looking into react anime.
 
-### `npm run eject`
+### APIs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The only external source of data would be my own collection of drawings.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Sitemap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+-main menu page(start button and hero library)
+-start run page which will let you select heroes before every run
+-transition to board game page
+-on board game page i will use states to render active turn.
+-board page will also need to contain all the logic available for combat. and a next round button.
+-a defeat page and victory page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Mockups
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Data
 
-### Code Splitting
+data would be used to render enemies and heroes, the api call objects would provide the card design and card attributes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Endpoints
 
-### Analyzing the Bundle Size
+since this api will only render cards only a get request would be necessary, perhaps adding a post to make a scoreboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Auth
 
-### Making a Progressive Web App
+Not for now.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Roadmap
 
-### Advanced Configuration
+1-build a basic page for two 3 vs 3 cards and focus on building game logic(backend)
+2-once basic game logic is set up react front end will be built for board page
+3-styling and animation for card hover, attacking/defending and active player
+4-drawing card animation with randomizing which cards are drawn
+5-build api calls to dynamically generate the 3vs3 cards and card drawn into hand
+6-once combat is functional, begin process of building the other pages with correcting routing. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Nice-to-haves
 
-### Deployment
+-i'd like to add more complex card effects
+-more heroes and drawings, these are hand made so they will be added as more are produced.
+-a more complex game design, adding potential for a rogue lite mechanic where every run (win or lose) players would be rewarded with new cards to make next runs easier. this would add a greater sense of progression. 
+-wayyyyyy down the line would be animating all monsters and heroes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
