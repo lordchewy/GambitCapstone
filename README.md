@@ -34,7 +34,7 @@ my App would mostly be used for gamers either playing through steam or in real t
 
 ### APIs
 
-The only external source of data would be my own collection of drawings.
+The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /heros for all and /heroes/:id for individuals
 
 ### Sitemap
 
