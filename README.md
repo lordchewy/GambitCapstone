@@ -30,10 +30,9 @@ my App would mostly be used for gamers either playing through steam or in real t
 -express
 -I'd like to use an animation library to streamline the process. looking into react anime.
 -connect node
--mysql database
--core
 -axios
 -react router dom
+-sass
 
 ### APIs
 
