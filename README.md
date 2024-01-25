@@ -6,21 +6,20 @@ My app would be a card game called gambit, User select three heroes and fight un
 
 ### Problem
 
-I grew up playing card games and wanted to make one from my own art. Something easy to pick up yet every time you play changes would occur in either hero composition and enemy composition to keep encounters fresh. 
+I grew up playing card games and wanted to make one from my own art. Something easy to pick up yet every time you play changes would occur in either hero composition and enemy composition to keep encounters fresh.
 
 ### User Profile
 
-my App would mostly be used for gamers either playing through steam or in real time with physical cards. fans of pokemon and yugioh would have an attraction to the concept. 
+my App would mostly be used for gamers either playing through steam or in real time with physical cards. fans of pokemon and yugioh would have an attraction to the concept.
 
 ### Features
 
 -main menu functionality to start a run
 -react app to use state for enemy/player turns
 -api to call and render cards
--css animation for user interaction and card draws. 
+-css animation for user interaction and card draws.
 -logic for attacking, defending.
 -potential for unique card effects(to be determined based on complexity)
-
 
 ## Implementation
 
@@ -29,14 +28,13 @@ my App would mostly be used for gamers either playing through steam or in real t
 -react
 -express
 -I'd like to use an animation library to streamline the process. looking into react anime.
--connect node
 -axios
--react router dom
+-react-router-dom
 -sass
 
 ### APIs
 
-The only external source of data would be my own collection of drawings. JSon dataset backend
+The only external source of data would be my own collection of drawings.
 
 ### Sitemap
 
@@ -47,8 +45,13 @@ The only external source of data would be my own collection of drawings. JSon da
 -board page will also need to contain all the logic available for combat. and a next round button.
 -a defeat page and victory page
 
-
 ### Mockups
+
+![routing between pages](./src/assets/wireFrame/page-routing-mockup.png)
+![main page](./src/assets/wireFrame/main.png)
+![game page](./src/assets/wireFrame/gamePage.png)
+![hero list page](./src/assets/wireFrame/heroPage.png)
+![next round](./src/assets/wireFrame/nextroundpage.png)
 
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
@@ -58,7 +61,7 @@ data would be used to render enemies and heroes, the api call objects would prov
 
 ### Endpoints
 
-since this api will only render cards,only a get request would be necessary, perhaps adding a post to make a scoreboard.
+since this api will only render cards only a get request would be necessary, perhaps adding a post to make a scoreboard.
 
 ### Auth
 
@@ -66,27 +69,18 @@ Not for now.
 
 ## Roadmap
 
-1-build a basic page for two 3 vs 3 cards and focus on building game logic rules:
-	i) round starts heroes+enemies placed on board
-	ii) start turn with 5 points to perform actions(ie attack 	cost 1 point)
-	iii) draw 5 cards at random with actions on them
-	iV) select card(for points), place on hero to use
-	v) game logic for attacking/healing. update all player stats 	ased on action.
-	vi)continue until points depleted
-	vii) end turn
-	viii) enemy turn repeat iii-vii (enemy logic will be changed 	o make every monster use one card until out of cards
-	iX)
+1-build a basic page for two 3 vs 3 cards and focus on building game logic(backend)
 2-once basic game logic is set up react front end will be built for board page
 3-styling and animation for card hover, attacking/defending and active player
 4-drawing card animation with randomizing which cards are drawn
 5-build api calls to dynamically generate the 3vs3 cards and card drawn into hand
-6-once combat is functional, begin process of building the other pages with correcting routing. 
+6-once combat is functional, begin process of building the other pages with correcting routing.
 
 ## Nice-to-haves
 
 -i'd like to add more complex card effects
 -more heroes and drawings, these are hand made so they will be added as more are produced.
--a more complex game design, adding potential for a rogue lite mechanic where every run (win or lose) players would be rewarded with new cards to make next runs easier. this would add a greater sense of progression. 
+-a more complex game design, adding potential for a rogue lite mechanic where every run (win or lose) players would be rewarded with new cards to make next runs easier. this would add a greater sense of progression.
 -wayyyyyy down the line would be animating all monsters and heroes.
 
 
