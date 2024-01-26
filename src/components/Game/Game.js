@@ -11,9 +11,9 @@ function Game(){
     return(
         <div className='game'>
             <div className='game-party'>
-                <div><img src={sorcerer} alt='game board' className="hero"/></div>
-                <div><img src={knight} alt='game board' className="hero"/></div>
-                <div><img src={viking} alt='game board' className="hero"/></div>
+                <img src={sorcerer} alt='game board' className="game-party__hero"/>
+                <img src={knight} alt='game board'className="game-party__hero"/>
+                <img src={viking} alt='game board'className="game-party__hero"/>
             </div>
 
             <img src={Board} alt='game board' className="game-board"/>
