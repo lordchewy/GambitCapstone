@@ -34,7 +34,11 @@ my App would mostly be used for gamers either playing through steam or in real t
 
 ### APIs
 
+<<<<<<< HEAD
 The only external source of data would be my own collection of drawings.
+=======
+The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /heros for all and /heroes/:id for individuals
+>>>>>>> 1d466bfc1b7f451df258b83176e78d67c056864c
 
 ### Sitemap
 
@@ -82,3 +86,8 @@ Not for now.
 -more heroes and drawings, these are hand made so they will be added as more are produced.
 -a more complex game design, adding potential for a rogue lite mechanic where every run (win or lose) players would be rewarded with new cards to make next runs easier. this would add a greater sense of progression.
 -wayyyyyy down the line would be animating all monsters and heroes.
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1d466bfc1b7f451df258b83176e78d67c056864c
