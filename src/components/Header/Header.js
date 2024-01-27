@@ -9,7 +9,7 @@ function Header(){
                 <div>enemy stats</div>
             </div>
             <div className='container'>
-                <div className='water'></div>
+                {/* <div className='water'></div> */}
             </div>
         </div>
     )

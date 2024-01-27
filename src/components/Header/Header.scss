@@ -5,13 +5,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     color:#0ecdc3;
+    flex-direction: column;
     &-bar{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
     }
 }
 .container{
+    width: 50%;
 }    
 .water {
     margin: auto;
