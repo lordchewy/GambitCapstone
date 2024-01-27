@@ -1,6 +1,6 @@
 import './Game.scss'
 
-import Board from '../../assets/Images/emptyboard.png'
+import Board from '../../assets/Images/background2.jpg'
 import knight from '../../assets/Images/knight.png'
 import viking from '../../assets/Images/viking.png'
 import sorcerer from '../../assets/Images/sorcerer.png'

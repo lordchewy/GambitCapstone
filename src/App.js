@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-import Board from './routes/Board/Board';
+import Board from './pages/Board/Board';
 
 function App() {
   return (

@@ -1,9 +1,13 @@
+
+import health from '../../assets/Images/health.png'
 import './ToolBar.scss'
 
 function ToolBar(){
     return(
         <div className='toolBar'>
-            <div>Player Turn</div>
+            <div className='player'>Player Turn
+                <div className='player-turns'><img src={health}  alt='turns' width='200px'/></div>
+            </div>
 
             <div>
             <section class="new">
@@ -56,7 +60,9 @@ function ToolBar(){
             </section> 
             </div>
 
-            <div>Enemy Turn</div>
+            <div className='enemy'>Enemy Turn
+            <div className='player-turns'><img src={health}  alt='turns' width='200px'/></div>
+            </div>
         </div>
     )
 }

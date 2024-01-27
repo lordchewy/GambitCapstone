@@ -1,10 +1,27 @@
 .toolBar{
     display: flex;
-    justify-content: space-evenly;
-    background-color: black;
-    height: 300px;
+    justify-content: space-between;
+    background-image:url('../../assets/Images/emptyboard.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 280px;
     color: #0ecdc3;
-    opacity: 0.7;
+    opacity: 1;
+    // width: 1535px;
+}
+.player{
+  box-sizing: border-box;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &-turns{
+    width: auto;
+  }
+}
+.enemy{
+  width: 20rem;
 }
 
 .container {
