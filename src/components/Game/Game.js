@@ -1,45 +1,57 @@
+import {useEffect, useState} from 'react';
+
 import './Game.scss'
 
-import Board from '../../assets/Images/background2.jpg'
-import knight from '../../assets/Images/knight.png'
-import viking from '../../assets/Images/viking.png'
-import sorcerer from '../../assets/Images/sorcerer.png'
+function Game({player, health,attack, hero, enemy, enemyHealth,enemyHero,power,turns}){
+    // const [playerHero, setPlayerHero] = useState(health, attack)
+    // const [enemyhero, setEnemyHero] = useState(enemyHealth)
+
+    const [p1, setP1] = useState({  player: player, health: health, attack: attack, hero:hero });
+    const [p2, setP2] = useState({ enemy: enemy, enemyHealth: enemyHealth, enemyHero: enemyHero  });
 
 
+    console.log('here is your hero atk: ', p1.attack)
+    console.log('here is your enemy hp: ', p2.enemyHealth)
+    
 
 
+    function attackFunc(){
+        if(turns < 5){
+            console.log(p1,p2)
+            const newHp = p2.enemyHealth - p1.attack;
+            setP2({ ...p2, enemyHealth: newHp });
+            power()
+        }else {
+            alert('you have no more power')
+        }
+    }
 
-function Game(){
-    const characters = [
-        {'id': 1, 'name': 'Alastor', health:100, 'attack': 15, 'url': knight},
-        {'id': 2, 'name': 'Krieg', 'health':120, 'attack': 8, 'url': viking}
-    ]
-    console.log(characters[0].url)
-    console.log(characters[0].name)
-    console.log(characters[0].health)
+    function healFunc(){
+        console.log(p1)
+        const newHp = p1.health + 10;
+        setP2({ ...p1, healthealth: newHp });
+        power()
+    }
+    
 
 
     return(
         <div className='game-container'>
             <div className='game'>
-                    <div className='game-board player'>
-                        <div><p>{characters[0].name}</p></div>
-                        <div><p>{characters[0].health}</p></div>
-                        <div><img src={characters[0].url}/></div>
+                    <div className='game-board__player'>
+                        <div><p>{p1.player}</p></div>
+                        <div><p>{p1.health}</p></div>
+                        <div><img src={p1.hero}/></div>
                     </div>
-
-
 
                     <div className='game-board'>
                         hello
                     </div>
 
-
-
-                    <div className='game-board enemy'>
-                    <div><p>{characters[1].name}</p></div>
-                        <div><p>{characters[1].health}</p></div>
-                        <div><img src={characters[1].url}/></div>
+                    <div className='game-board__enemy' onClick={attackFunc}>
+                    <div><p>{p2.enemy}</p></div>
+                        <div><p>{p2.enemyHealth}</p></div>
+                        <div><img src={p2.enemyHero}/></div>
                     </div>
             </div>
         </div>

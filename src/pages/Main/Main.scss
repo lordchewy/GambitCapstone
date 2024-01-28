@@ -1,0 +1,22 @@
+
+
+.main{
+    // background-color: black;
+    // background-image: url('../../assets/Images/tavern.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+li{
+    // position: relative;
+    // z-index: 2; 
+}
+ul{
+    text-decoration: none;
+}
