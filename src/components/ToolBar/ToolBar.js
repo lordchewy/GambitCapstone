@@ -23,50 +23,50 @@ function ToolBar({power, turns}){
             </div>
 
             <div>
-            <section class="new">
-            <div class="container">
-                        <div class="card">
-                        <h3 class="title">card</h3>
-                        <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                            <button class=" button"><span>VIEW </span></button>
+            <section className="new">
+            <div className="container">
+                    <div className="card">
+                        <h3 className="title">card</h3>
+                        <div className="bar">
+                            <div className="emptybar"></div>
+                            <div className="filledbar"></div>
+                            <button className=" button"><span>VIEW </span></button>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <h3 class="title">card</h3>
-                        <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                            <button class=" button"><span>VIEW </span></button>
+                    <div className="card">
+                        <h3 className="title">card</h3>
+                        <div className="bar">
+                            <div className="emptybar"></div>
+                            <div className="filledbar"></div>
+                            <button className=" button"><span>VIEW </span></button>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <h3 class="title">card</h3>
-                        <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                            <button class=" button"><span>VIEW </span></button>
+                    <div className="card">
+                        <h3 className="title">card</h3>
+                        <div className="bar">
+                            <div className="emptybar"></div>
+                            <div className="filledbar"></div>
+                            <button className=" button"><span>VIEW </span></button>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <h3 class="title">card</h3>
-                        <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                            <button class=" button"><span>VIEW </span></button>
+                    <div className="card">
+                        <h3 className="title">card</h3>
+                        <div className="bar">
+                            <div className="emptybar"></div>
+                            <div className="filledbar"></div>
+                            <button className=" button"><span>VIEW </span></button>
                         </div>
                     </div>
 
-                    <div class="card">
-                        <h3 class="title">card</h3>
-                        <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                            <button class=" button" onClick={power}><span>Attack </span></button>
+                    <div className="card">
+                        <h3 className="title">card</h3>
+                        <div className="bar">
+                            <div className="emptybar"></div>
+                            <div className="filledbar"></div>
+                            <button className=" button" onClick={power}><span>attack </span></button>
                         </div>
                     </div>
             </div>

@@ -12,44 +12,48 @@ import './Board.scss'
 import viking from '../../assets/Images/viking.png'
 
 function Board(){
-    const [count, setCount] = useState(0);
-    const { heroId } = useParams();
-    const [hero, setHero] = useState(null);
+    const characters = [
+        {'id': 2, 'name': 'Krieg', health:120, 'attack': 8, 'url': viking}
+    ]
 
-    const getHero = async (heroId) => {
+    const [count, setCount] = useState(0);
+    const { characterId } = useParams();
+    const [hero, setHero] = useState(null);
+    const [playerTurn, setPlayerTurn] = useState(true)
+    const [enemyTurn, setEnemyTurn] = useState(false)
+
+    // console.log('here is the character id on board: ', characterId)
+
+    const getHero = async (characterId) => {
         try {
-            const response = await axios.get(`http://localhost:8080/characters/${heroId}`);
+            const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
             setHero(response.data);
         } catch (err) {
             console.log(err);
         }
     };
-
     useEffect(() => {
-        getHero(heroId);
-    }, [heroId]);
+        getHero(characterId);
+    }, [characterId]);
+    
+
+    
 
     if (hero === null) {
         return <p>Loading...</p>;
     }
 
-    console.log(hero);
-
-
-
-    
-
-    const characters = [
-        {'id': 2, 'name': 'Krieg', health:120, 'attack': 8, 'url': viking}
-    ]
     function power() {
         if (count < 5) {
             console.log(count);
             setCount(count+1)
         } else {
-            console.log(count);
+            // console.log(count);
         }
     }
+
+
+
 
 
 
