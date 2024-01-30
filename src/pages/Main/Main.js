@@ -4,15 +4,18 @@ import { Link, useParams } from "react-router-dom";
 
 
 import Header from "../../components/Header/Header"
+import Select from "../../components/Select/Select";
+
 // import Select from "../../components/Select/Select";
 import './Main.scss'
 
 
 function Main() {
     const [characters, setCharacters] = useState(null);
+    // const [selectedHero, setSelectedHero] = useState(characters[0].id)
     const { characterId } = useParams();
 
-    // console.log(characterId)
+    console.log('here is the character id on main: ', characterId)
 
     const getCharacters = async () => {
         try {
@@ -34,10 +37,9 @@ function Main() {
         return <p>Loading...</p>;
     }
 
-    let selectedHero = characterId || characters[0].id
+    const selectedHero = characterId || characters[0].id
+    console.log(selectedHero)
 
-    
-        
     const filteredHeroes = characters.filter((character)=>{
         return selectedHero !== character.id;})
 
@@ -45,9 +47,7 @@ function Main() {
         <div className="main">
             <Header />
             <div className="heroes">
-                {/* <div className='heroes-selected'>
-                    <img src={selectedHero} alt={selectedHero.name} width='300px' height='400px'/>
-                </div> */}
+                <Select characterId={selectedHero}/>
                 <ul className="heroes-option">
                     {filteredHeroes.map(hero => (
                         <Link to={`/${hero.id}`}>
@@ -58,10 +58,10 @@ function Main() {
                     ))}
                 </ul>
             </div>
-            {/* <div className="ocean">
+            <div className="ocean">
                 <div className="wave"></div>
                 <div className="wave"></div>
-            </div> */}
+            </div>
         </div>
     );
 }
