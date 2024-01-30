@@ -2,22 +2,19 @@ import {Link} from 'react-router-dom'
 
 import './Header.scss'
 
-function Header(){
+function Header({}){
     return(
         <div className="header">
             <div className='header-bar'>
-                <div>
+                <div className='header-bar__option'>
                     <Link to='/'>Home</Link>
                 </div>
-                <div>Score</div>
-                <div>
-                    <Link to='/board'>Start game</Link>
+                <div className='header-bar__option'>Score</div>
+                <div className='header-bar__option'>
+                    <Link to='/board/:heroId' >start game</Link>
                 </div>
             </div>
-            <div className='container'>
 
-                {/* <div className='water'></div> */}
-            </div>
         </div>
     )
 }

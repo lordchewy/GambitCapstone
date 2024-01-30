@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 
 import ToolBar from "../../components/ToolBar/ToolBar";
 import Game from "../../components/Game/Game";
@@ -9,8 +12,33 @@ import knight from '../../assets/Images/knight.png'
 import viking from '../../assets/Images/viking.png'
 
 function Board(){
-    const [count, setCount] = useState(0)
+    const { heroId } = useParams();
+    const [count, setCount] = useState(0);
+    const [hero,setHero] = useState(null)
 
+    console.log(heroId)
+
+        const getHero = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/characters/');
+                setHero(response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        useEffect(()=>{
+            getHero(heroId);
+        }, []);
+
+        if (hero === null){
+            return <p>loading</p>
+        }
+
+        console.log(hero)
+
+
+
+    
 
     const characters = [
         {'id': 1, 'name': 'Alastor', health:100, 'attack': 15, 'url': knight},

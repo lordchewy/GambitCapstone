@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
+import { useParams } from "react-router-dom";
 
 import './Game.scss'
+import './../Header/Header'
 
 function Game({player, health,attack, hero, enemy, enemyHealth,enemyHero,power,turns}){
     // const [playerHero, setPlayerHero] = useState(health, attack)
@@ -10,8 +12,8 @@ function Game({player, health,attack, hero, enemy, enemyHealth,enemyHero,power,t
     const [p2, setP2] = useState({ enemy: enemy, enemyHealth: enemyHealth, enemyHero: enemyHero  });
 
 
-    console.log('here is your hero atk: ', p1.attack)
-    console.log('here is your enemy hp: ', p2.enemyHealth)
+    // console.log('here is your hero atk: ', p1.attack)
+    // console.log('here is your enemy hp: ', p2.enemyHealth)
     
 
 

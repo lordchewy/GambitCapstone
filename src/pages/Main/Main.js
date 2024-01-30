@@ -1,56 +1,67 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 import Header from "../../components/Header/Header"
-import Select from "../../components/Select/Select";
+// import Select from "../../components/Select/Select";
 import './Main.scss'
 
 
 function Main() {
     const [characters, setCharacters] = useState(null);
-    const [selectedHeroId, setSelectedHeroId] = useState(null);
     const { characterId } = useParams();
 
-    useEffect(() => {
-        const getCharacters = async () => {
-            try {
-                const response = await axios.get('http://localhost:8080/characters');
-                setCharacters(response.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
+    // console.log(characterId)
 
+    const getCharacters = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/characters');
+            setCharacters(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(()=> {
         getCharacters();
-    }, []);
+    }, [])
+
+        
+
 
     if (characters === null) {
         return <p>Loading...</p>;
     }
 
-    const changeHero = (heroId) => {
-        setSelectedHeroId(heroId);
-    };
+    let selectedHero = characterId || characters[0].id
 
-    const selectedHero = characters.find(hero => hero.id === selectedHeroId) || characters.find(hero => hero.id === characterId) || characters[0];
     
-    const filteredHeros = characters.filter((character)=>{
-        return selectedHeroId !== character.id;
-    })
+        
+    const filteredHeroes = characters.filter((character)=>{
+        return selectedHero !== character.id;})
 
     return (
-        <div>
+        <div className="main">
             <Header />
-            <img src={selectedHero.portrait} width='400px' alt={selectedHero.name} />
-            <ul className="main">
-                {filteredHeros.map(hero => (
-                    <li key={hero.id}>
-                        {hero.playable && <img src={hero.portrait} width='200px' alt={hero.name} onClick={() => changeHero(hero.id)} />}
-                    </li>
-                ))}
-            </ul>
+            <div className="heroes">
+                {/* <div className='heroes-selected'>
+                    <img src={selectedHero} alt={selectedHero.name} width='300px' height='400px'/>
+                </div> */}
+                <ul className="heroes-option">
+                    {filteredHeroes.map(hero => (
+                        <Link to={`/${hero.id}`}>
+                        <li key={hero.id} className="heroes-option__other">
+                            {hero.playable && <img src={hero.portrait} width='150px' height='200px' alt={hero.name} />}
+                        </li>
+                        </Link>
+                    ))}
+                </ul>
+            </div>
+            {/* <div className="ocean">
+                <div className="wave"></div>
+                <div className="wave"></div>
+            </div> */}
         </div>
     );
 }

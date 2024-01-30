@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.scss';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
@@ -9,12 +9,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
-      <Route path='/' element={<Main/>}>
-        <Route path='/:heroId' element={<Main/>}></Route>
-      </Route>
-      <Route path='/board' element={<Board/>}></Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/:heroid" element={<Main />} />
+          <Route path="/board/:heroId" element={<Board />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
