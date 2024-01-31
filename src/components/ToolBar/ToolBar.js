@@ -1,90 +1,123 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import health from '../../assets/Images/health.png'
+import Game from '../Game/Game';
+
+import healthbar from '../../assets/Images/health.png'
+import viking from '../../assets/Images/viking.png'
 import './ToolBar.scss'
 
-function ToolBar({ turns, cardPressed}){
-    console.log(turns)
+function ToolBar({ count, cardPressed,player, health,attack, portrait, enemy, enemyHealth,enemyHero}){
+    const characters = [
+        {'id': 2, 'name': 'Krieg', health:120, 'attack': 8, 'url': viking}
+    ]
+
+    const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait });
+    const [p2, setP2] = useState({ enemy: characters[0].name, enemyHealth: characters[0].health, enemyHero: viking})
+    // console.log(p1.portrait)
+
+    function attackFunc(){
+        if(count < 5){
+            console.log(p1,p2)
+            const newHp = Number(p2.enemyHealth) - Number(p1.attack);
+            setP2({ ...p2, enemyHealth: newHp });
+            
+        }else {
+            console.log('you have no more power')
+        }
+    }
+    useEffect(() => {
+    }, [attackFunc, p2]);
 
 
 
-    // Function to remove a token
-    // const removeToken = () => {
-    //     if (playerTokens.length > 0) {
-    //         setPlayerTokens(prevTokens => prevTokens.slice(1)); // Remove the first token
-    //     }
-    // };
-
-    // // Your loop to initialize tokens
-    // for (let i = 1; i <= 5 - turns; i++) {
-    //     playerTokens.push(<div key={i} className={`player token${i}`}></div>);
-    // }
+const playerTokens = []
+    // Your loop to initialize tokens
+    for (let i = 1; i <= 5 - count; i++) {
+        playerTokens.push(<div key={i} className={`player token${i}`}></div>);
+    }
 
 
     return(
+        <>
+        <Game
+            portrait={p1.portrait} health={p1.health} player={p1.player}
+            enemy= {p2.enemy} enemyHealth={p2.enemyHealth} enemyAttack={characters[0].attack} enemyHero={characters[0].url}
+            count={count}
+        />
         <div className='toolBar'>
             <div className='player'>
-                {/* <div className='player-turns'>turns
+                <div className='player-turns'>turns
                     {playerTokens.map((token, index) => (
                         <div key={index} className={`player token${index + 1}`}></div>
                     ))}
-                </div> */}
+                </div>
             <div className='player-turns'>
-                <img src={health} alt='turns' width='200px' />
+                <img src={healthbar} alt='turns' width='200px' />
             </div>
             </div>
 
             <div>
             <section className="new">
             <div className="container">
-                    <div className="card" id='1'>
-                        <h3 className="title">card</h3>
-                        <div className="bar">
-                            <div className="emptybar"></div>
-                            <div className="filledbar"></div>
-                            <button className=" button"><span>VIEW </span></button>
-                        </div>
-                    </div>
+                        {count <= 4 && (
+                            <div className="card" id='1'>
+                                <h3 className="title">card</h3>
+                                <div className="bar">
+                                    <div className="emptybar"></div>
+                                    <div className="filledbar"></div>
+                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='5'><span>attack </span></button>
+                                </div>
+                            </div>
+                        )}
 
-                    <div className="card" id='2'>
-                        <h3 className="title">card</h3>
-                        <div className="bar">
-                            <div className="emptybar"></div>
-                            <div className="filledbar"></div>
-                            <button className=" button"><span>VIEW </span></button>
-                        </div>
-                    </div>
+                        {count <= 3 && (
+                            <div className="card" id='2'>
+                                <h3 className="title">card</h3>
+                                <div className="bar">
+                                    <div className="emptybar"></div>
+                                    <div className="filledbar"></div>
+                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='2'><span>attack </span></button>
+                                </div>
+                            </div>
+                        )}
 
-                    <div className="card" id='3'>
-                        <h3 className="title">card</h3>
-                        <div className="bar">
-                            <div className="emptybar"></div>
-                            <div className="filledbar"></div>
-                            <button className=" button"><span>VIEW </span></button>
-                        </div>
-                    </div>
+                        {count <= 2 && (
+                            <div className="card" id='3'>
+                                <h3 className="title">card</h3>
+                                <div className="bar">
+                                    <div className="emptybar"></div>
+                                    <div className="filledbar"></div>
+                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='3'><span>attack </span></button>
+                                </div>
+                            </div>
+                        )}
 
-                    <div className="card" id='4'>
-                        <h3 className="title">card</h3>
-                        <div className="bar">
-                            <div className="emptybar"></div>
-                            <div className="filledbar"></div>
-                            <button className=" button"><span>VIEW </span></button>
-                        </div>
-                    </div>
+                        {count <= 1 && (
+                            <div className="card" id='4'>
+                                <h3 className="title">card</h3>
+                                <div className="bar">
+                                    <div className="emptybar"></div>
+                                    <div className="filledbar"></div>
+                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='4'><span>attack </span></button>
+                                </div>
+                            </div>
+                        )}
 
-                    <div className="card" id='5'>
-                        <h3 className="title">card</h3>
-                        <div className="bar">
-                            <div className="emptybar"></div>
-                            <div className="filledbar"></div>
-                            <button className=" button" onClick={cardPressed} id='5'><span>attack </span></button>
-                        </div>
-                    </div>
+                    {count <= 0 && (
+                            <div className="card" id='5'>
+                                <h3 className="title">card</h3>
+                                <div className="bar">
+                                    <div className="emptybar"></div>
+                                    <div className="filledbar"></div>
+                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='5'><span>attack </span></button>
+                                </div>
+                            </div>
+                        )}  
             </div>
             </section> 
             </div>
         </div>
+        </>
     )
 }
 export default ToolBar;
