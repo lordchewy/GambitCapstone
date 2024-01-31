@@ -23,6 +23,7 @@ function Board(){
     const [enemyTurn, setEnemyTurn] = useState(false)
 
     // console.log('here is the character id on board: ', characterId)
+    // console.log(playerTurn)
 
     const getHero = async (characterId) => {
         try {
@@ -35,29 +36,47 @@ function Board(){
     useEffect(() => {
         getHero(characterId);
     }, [characterId]);
-    
 
-    
 
     if (hero === null) {
         return <p>Loading...</p>;
     }
-
-    function power() {
-        if (count < 5) {
-            console.log(count);
-            setCount(count+1)
-        } else {
-            // console.log(count);
+    function cardPressed(event) {
+        if(count < 5){
+            // console.log(hero.name)
+            const cardId = event.target.id;
+            console.log(`${hero.name} used a card`);
+            setCount(count + 1)
+            console.log(`used a card`)
+        }else{
+            alert('out of turns, enemy turn now')
+            setEnemyTurn(true)
+            setPlayerTurn(false)
+            // console.log(playerTurn, enemyTurn)
         }
     }
-
-
-
-
-
-
+    if (enemyTurn){
+        console.log('enemy turn is now')
+        setTimeout(() => {
+            setEnemyTurn(false)
+            setPlayerTurn(true)
+            setCount(0)
+            console.log('End');
+            console.log(playerTurn)
+        }, 2000);
+        
+    }
     
+
+
+    // function power() {
+    //     if (count < 5) {
+    //         console.log(count);
+    //         setCount(count+1)
+    //     } else {
+    //         // console.log(count);
+    //     }
+    // }    
     return (
         <div className="board">
             <Header/>
@@ -65,9 +84,10 @@ function Board(){
             player={hero.name} health={hero.health} attack={hero.attack} hero={hero.portrait}
             enemy= {characters[0].name} enemyHealth={characters[0].health} enemyAttack={characters[0].attack} enemyHero={characters[0].url}
             turns={count}
-            power={power}
+            // power={power}
+            // ^this was also in toolbar
             />
-            <ToolBar power={power} turns={count}/>
+            <ToolBar  turns={count} cardPressed={cardPressed}/>
         </div>
     )
 }

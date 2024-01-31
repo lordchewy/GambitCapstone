@@ -22,7 +22,7 @@ function Game({player, health,attack, hero, enemy, enemyHealth,enemyHero,power,t
     //         console.log(p1,p2)
     //         const newHp = p2.enemyHealth - p1.attack;
     //         setP2({ ...p2, enemyHealth: newHp });
-    //         power()
+    //         turns += 1
     //     }else {
     //         console.log('you have no more power')
     //     }
@@ -50,9 +50,23 @@ function Game({player, health,attack, hero, enemy, enemyHealth,enemyHero,power,t
                         hello
                     </div>
 
-                    <div className='game-board__enemy'>
+                    <div className='game-board__enemy' id='enemy1'>
                         {/*  onClick={attackFunc} this goes above */}
-                    <div><p>{p2.enemy}</p></div>
+                        <div><p>{p2.enemy}</p></div>
+                        <div><p>{p2.enemyHealth}</p></div>
+                        <div><img src={p2.enemyHero}/></div>
+                    </div>
+
+                    <div className='game-board__enemy' id='enemy2'>
+                        {/*  onClick={attackFunc} this goes above */}
+                        <div><p>{p2.enemy}</p></div>
+                        <div><p>{p2.enemyHealth}</p></div>
+                        <div><img src={p2.enemyHero}/></div>
+                    </div>
+
+                    <div className='game-board__enemy' id='enemy3'>
+                        {/*  onClick={attackFunc} this goes above */}
+                        <div><p>{p2.enemy}</p></div>
                         <div><p>{p2.enemyHealth}</p></div>
                         <div><img src={p2.enemyHero}/></div>
                     </div>
