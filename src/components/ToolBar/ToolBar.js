@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+
 import Game from '../Game/Game';
 
 import healthbar from '../../assets/Images/health.png'
@@ -16,11 +17,11 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
 
     const [foe, setFoe] = useState([
-        { name: 'Krieg', health: 30, attack: 8, url: viking },
+        { name: 'Krieg', health: 60, attack: 8, url: viking },
         { name: 'banshee', health: 30, attack: 8, url: ghost },
-        { name: 'dragon', health: 30, attack: 8, url: dragon },
+        { name: 'dragon', health: 300, attack: 8, url: dragon },
     ]);
-    
+
     
     function attackFunc() {
         if (count < 5) {
@@ -59,25 +60,11 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
             portrait={p1.portrait}
             health={p1.health}
             player={p1.player}
-            attackFunc={attackFunc}
-
-            // foes={[
-            //     { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || '' },
-            //     { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || '' },
-            //     { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
-            // ]}
-
-
-            foe={foe[0] ? foe[0].name : ''}
-            foeHp={foe[0] ? foe[0].health : ''}
-            foeIcon={foe[0] ? foe[0].url : ''}
-            foe1={foe[1] ? foe[1].name : ''}
-            foe1Hp={foe[1] ? foe[1].health : ''}
-            foe1Icon={foe[1] ? foe[1].url : ''}
-            foe2={foe[2] ? foe[2].name : ''}
-            foe2Hp={foe[2] ? foe[2].health : ''}
-            foe2Icon={foe[2] ? foe[2].url : ''}
-            count={count}
+            foes={[
+                { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || '' },
+                { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || '' },
+                { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
+            ]}
         />
 
         <div className='toolBar'>
