@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Game from '../Game/Game';
 
@@ -7,8 +8,10 @@ import viking from '../../assets/Images/viking.png'
 import ghost from '../../assets/Images/ghost.png'
 import dragon from '../../assets/Images/dragon.png'
 import './ToolBar.scss'
+import { Navigate } from 'react-router-dom';
 
 function ToolBar({ count, cardPressed,player, health,attack, portrait}){
+    const navigate = useNavigate()
     const characters = [
         {'name': 'Krieg', health:120, 'attack': 8, 'url': viking},
         {'name': 'banshee', health:100, 'attack': 8, 'url': ghost},
@@ -26,7 +29,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
             const newHp = Number(p2.enemyHealth) - Number(p1.attack);
             setP2({ ...p2, enemyHealth: newHp });
             if(newHp <= 0){
-                setP2()
+            navigate('/')
             }
         }else {
             console.log('you have no more power')
