@@ -4,9 +4,14 @@ import { useParams } from "react-router-dom";
 import './Game.scss'
 import './../Header/Header'
 
-function Game({portrait,health, player, enemy, enemyHealth, enemyHero}){
+function Game({portrait,health, player, 
+    foe,foeHp, foeIcon,
+    foe1,foe1Hp, foe1Icon,
+    foe2,foe2Hp, foe2Icon,
+    }){
 
-
+        console.log(foe,foeHp, foeIcon)
+    
     return(
         <div className='game-container'>
             <div className='game'>
@@ -21,25 +26,25 @@ function Game({portrait,health, player, enemy, enemyHealth, enemyHero}){
                     </div>
 
                     <div className='game-board__enemy' id='enemy1'>
-                        {/*  onClick={attackFunc} this goes above */}
-                        <div><p>{enemy}</p></div>
-                        <div><p>{enemyHealth}</p></div>
-                        <div><img src={enemyHero}/></div>
+
+                        <div><p>{foe}</p></div>
+                        <div><p>{foeHp}</p></div>
+                        <div><img src={foeIcon}/></div>
                     </div>
 
-                    {/* <div className='game-board__enemy' id='enemy2'>
+                    <div className='game-board__enemy' id='enemy2'>
                       
-                        <div><p>{enemy}</p></div>
-                        <div><p>{enemyHealth}</p></div>
-                        <div><img src={enemyHero}/></div>
+                        <div><p>{foe1}</p></div>
+                        <div><p>{foe1Hp}</p></div>
+                        <div><img src={foe1Icon}/></div>
                     </div>
 
                     <div className='game-board__enemy' id='enemy3'>
                        
-                        <div><p>{enemy}</p></div>
-                        <div><p>{enemyHealth}</p></div>
-                        <div><img src={enemyHero}/></div>
-                    </div> */}
+                        <div><p>{foe2}</p></div>
+                        <div><p>{foe2Hp}</p></div>
+                        <div><img src={foe2Icon}/></div>
+                    </div>
             </div>
         </div>
     )
