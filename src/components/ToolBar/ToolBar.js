@@ -4,23 +4,30 @@ import Game from '../Game/Game';
 
 import healthbar from '../../assets/Images/health.png'
 import viking from '../../assets/Images/viking.png'
+import ghost from '../../assets/Images/ghost.png'
+import dragon from '../../assets/Images/dragon.png'
 import './ToolBar.scss'
 
-function ToolBar({ count, cardPressed,player, health,attack, portrait, enemy, enemyHealth,enemyHero}){
+function ToolBar({ count, cardPressed,player, health,attack, portrait}){
     const characters = [
-        {'id': 2, 'name': 'Krieg', health:120, 'attack': 8, 'url': viking}
+        {'name': 'Krieg', health:120, 'attack': 8, 'url': viking},
+        {'name': 'banshee', health:100, 'attack': 8, 'url': ghost},
+        {'name': 'dragon', health:300, 'attack': 8, 'url': dragon},
+
     ]
 
-    const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait });
-    const [p2, setP2] = useState({ enemy: characters[0].name, enemyHealth: characters[0].health, enemyHero: viking})
-    // console.log(p1.portrait)
+    const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
+    const [p2, setP2] = useState({enemy: characters[0].name, enemyHealth: characters[0].health, enemyHero: viking})
+
 
     function attackFunc(){
         if(count < 5){
             console.log(p1,p2)
             const newHp = Number(p2.enemyHealth) - Number(p1.attack);
             setP2({ ...p2, enemyHealth: newHp });
-            
+            if(newHp <= 0){
+                setP2()
+            }
         }else {
             console.log('you have no more power')
         }
@@ -41,7 +48,7 @@ const playerTokens = []
         <>
         <Game
             portrait={p1.portrait} health={p1.health} player={p1.player}
-            enemy= {p2.enemy} enemyHealth={p2.enemyHealth} enemyAttack={characters[0].attack} enemyHero={characters[0].url}
+            enemy= {p2.enemy} enemyHealth={p2.enemyHealth}  enemyHero={p2.enemyHero}
             count={count}
         />
         <div className='toolBar'>
