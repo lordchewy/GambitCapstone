@@ -8,7 +8,7 @@ import Game from '../Game/Game';
 import healthbar from '../../assets/Images/health.png'
 import viking from '../../assets/Images/viking.png'
 import ghost from '../../assets/Images/ghost.png'
-import dragon from '../../assets/Images/dragon.png'
+
 import './ToolBar.scss'
 
 function ToolBar({ count, cardPressed,player, health,attack, portrait}){
@@ -19,12 +19,11 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
     const [foe, setFoe] = useState([
         { name: 'Krieg', health: 60, attack: 8, url: viking },
         { name: 'banshee', health: 30, attack: 8, url: ghost },
-        { name: 'dragon', health: 300, attack: 8, url: dragon },
     ]);
 
     
     function attackFunc() {
-        if (count < 5) {
+        if (count <= 4) {
             console.log(p1, foe[0]);
             const newHp = Number(foe[0].health) - Number(p1.attack);
             
@@ -39,8 +38,8 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
     }
 
 
-    useEffect(() => {
-    }, [attackFunc, foe[0]]);
+    // useEffect(() => {
+    // }, [[attackFunc], foe[0]]);
 
     if (foe[0] === undefined){
         alert('you win!')
@@ -63,13 +62,13 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
             foes={[
                 { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || '' },
                 { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || '' },
-                { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
+                // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
             ]}
         />
 
         <div className='toolBar'>
             <div className='player'>
-                <div className='player-turns'>turnsS
+                <div className='player-turns'>turns
                     {playerTokens.map((token, index) => (
                         <div key={index} className={`player token${index + 1}`}></div>
                     ))}

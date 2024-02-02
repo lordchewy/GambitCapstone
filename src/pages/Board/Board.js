@@ -56,7 +56,7 @@ function Board(){
             setCount(0)
             console.log('End');
             console.log(playerTurn)
-        }, 2000);
+        }, 20);
         
     }
     return (

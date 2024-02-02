@@ -66,7 +66,8 @@ function Game({portrait,health, player,
                             <div><p>{foe.name}</p></div>
                             <div><p><Number n={foe.health}/></p></div>
                             {console.log(foe.health)}
-                            <div><RedBar width={'100%'}/><img src={foe.url}/></div>
+                            <div><img src={foe.url}/></div>
+                            {/* <RedBar width={'100%'}/> */}
                         </div>
                     ))}
 
