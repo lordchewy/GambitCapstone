@@ -11,7 +11,9 @@ import ghost from '../../assets/Images/ghost.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count, cardPressed,player, health,attack, portrait}){
+function ToolBar({ count,player, 
+    health,attack, portrait, enemyTurn,
+    setCount}){
     const navigate = useNavigate()
 
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
@@ -21,17 +23,17 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
         { name: 'banshee', health: 30, attack: 8, url: ghost, id: 2},
     ]);
 
-    
     function attackFunc() {
         if (count <= 4) {
-            console.log(p1, foe[0]);
+            // console.log(p1, foe[0]);
+            console.log(count)
             const newHp = Number(foe[0].health) - Number(p1.attack);    
             if (newHp <= 0) {
                 setFoe(prevFoe => prevFoe.slice(1));
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
-            const specificFoeId =0; // Replace this with the id of the specific foe you want to flash
+            const specificFoeId = 0; // Replace this with the id of the specific foe you want to flash
             const specificFoeElement = document.getElementById(0);
             
             if (specificFoeElement) {
@@ -43,15 +45,15 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
         } else {
             console.log('you have no more power');
         }
+        setCount(count + 1)
     }
     
-
-    // useEffect(() => {
-    // }, [[attackFunc], foe[0]]);
-
     if (foe[0] === undefined){
         alert('you win!')
         navigate('/')
+    }
+    if (enemyTurn){
+        p1.health -= 5
     }
 
     const playerTokens = []
@@ -67,11 +69,12 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
             portrait={p1.portrait}
             health={p1.health}
             player={p1.player}
-            foes={[
-                { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || '' },
-                { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || '' },
-                // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
-            ]}
+            foes={foe}
+            // {[
+            //     { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || null },
+            //     { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || null},
+            //     // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
+            // ]}
             attackFunc={attackFunc}
         />
 
@@ -96,7 +99,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='5'><span>attack </span></button>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='5'><span>attack </span></button>
                                 </div>
                             </div>
                         )}
@@ -107,7 +110,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='2'><span>attack </span></button>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='2'><span>attack </span></button>
                                 </div>
                             </div>
                         )}
@@ -118,7 +121,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='3'><span>attack </span></button>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='3'><span>attack </span></button>
                                 </div>
                             </div>
                         )}
@@ -129,7 +132,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='4'><span>attack </span></button>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='4'><span>attack </span></button>
                                 </div>
                             </div>
                         )}
@@ -140,7 +143,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { cardPressed(); attackFunc(); }} id='5'><span>attack </span></button>
+                                    <button className="button" onClick={() => { attackFunc(); }} id='5'><span>attack </span></button>
                                 </div>
                             </div>
                         )}  

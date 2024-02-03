@@ -214,20 +214,15 @@
     background-color:black;
     border: none;
     color: red;
+    text-shadow: 2px 4px 3px white;
     font-size: 15px;
     font-weight: 700;
     padding: 50px;
   }
 
+
 .flash-red {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../assets/Images/slash.png');
-    background-repeat: none;
-    transition: background-color 0.2s ease;
-    z-index: 4; 
+  filter: brightness(50%);
+  transition: filter 0.2s ease;
 }
 

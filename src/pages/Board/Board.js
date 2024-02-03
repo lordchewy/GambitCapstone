@@ -35,42 +35,24 @@ function Board(){
     if (hero === null) {
         return <p>Loading...</p>;
     }
-    function cardPressed() {
-        if(count < 4){
-            // console.log(hero.name)
-            // const cardId = event.target.id;
-            console.log(`${hero.name} used a card`);
-            setCount(count + 1)
-        }else{
-            alert('out of turns, enemy turn now')
+    if(count > 4){
+        alert('you are out of turns')
             setEnemyTurn(true)
             setPlayerTurn(false)
-            // console.log(playerTurn, enemyTurn)
-        }
-    }
-    if (enemyTurn){
-        console.log('enemy turn is now')
-        setTimeout(() => {
-            setEnemyTurn(false)
-            setPlayerTurn(true)
             setCount(0)
-            console.log('End');
-            console.log(playerTurn)
-        }, 20);
-        
+            setTimeout(() => {
+                setEnemyTurn(false);
+                setPlayerTurn(true);
+            }, 200);
     }
+
+
     return (
         <div className="board">
             <Header/>
-            {/* <Game 
-            player={hero.name} health={hero.health} attack={hero.attack} hero={hero.portrait}
-            enemy= {characters[0].name} enemyHealth={characters[0].health} enemyAttack={characters[0].attack} enemyHero={characters[0].url}
-            count={count}
-            // power={power}
-            // ^this was also in toolbar
-            /> */}
-            <ToolBar  
-            count={count} cardPressed={cardPressed}
+            <ToolBar
+            enemyTurn={enemyTurn}  
+            count={count}  setCount={setCount}
             player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait}
             />
         </div>

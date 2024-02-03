@@ -37,15 +37,21 @@ function Game({portrait,health, player,
                     
                     </div>
                     
-                    {foes.map((foe, index) => (
-                        <div className='game-board__enemy' key={index} id={index}>  
-                            <div><p>{foe.name}</p></div>
-                            <div><p><Number n={foe.health}/></p></div>
-                            {console.log(foe.health)}
-                            <div><img src={foe.url}/></div>
-                            {/* <RedBar width={'100%'}/> */}
-                        </div>
-                    ))}
+                    {foes.map((foe, index) => {
+                    if (foe) { // Replace 'foe.condition' with your actual condition
+                        return (
+                            <div className='game-board__enemy' key={index} id={index}>  
+                                <div><p>{foe.name}</p></div>
+                                <div><p><Number n={foe.health}/></p></div>
+                                
+                                <div><img src={foe.url} alt={foe.name} /></div>
+                            
+                            </div>
+                        );
+                    }
+                    return null; // If condition is false, return null or nothing
+                })}
+
 
             </div>
         </div>
