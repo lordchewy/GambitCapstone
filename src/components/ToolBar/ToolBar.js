@@ -17,26 +17,34 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
 
     const [foe, setFoe] = useState([
-        { name: 'Krieg', health: 60, attack: 8, url: viking },
-        { name: 'banshee', health: 30, attack: 8, url: ghost },
+        { name: 'Krieg', health: 60, attack: 8, url: viking, id: 1 },
+        { name: 'banshee', health: 30, attack: 8, url: ghost, id: 2},
     ]);
 
     
     function attackFunc() {
         if (count <= 4) {
             console.log(p1, foe[0]);
-            const newHp = Number(foe[0].health) - Number(p1.attack);
-            
+            const newHp = Number(foe[0].health) - Number(p1.attack);    
             if (newHp <= 0) {
                 setFoe(prevFoe => prevFoe.slice(1));
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
+            const specificFoeId =0; // Replace this with the id of the specific foe you want to flash
+            const specificFoeElement = document.getElementById(0);
+            
+            if (specificFoeElement) {
+                specificFoeElement.classList.add('flash-red');
+                setTimeout(() => {
+                    specificFoeElement.classList.remove('flash-red');
+                }, 200); // Flash duration in milliseconds
+            }
         } else {
             console.log('you have no more power');
         }
     }
-
+    
 
     // useEffect(() => {
     // }, [[attackFunc], foe[0]]);
@@ -64,6 +72,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                 { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || '' },
                 // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
             ]}
+            attackFunc={attackFunc}
         />
 
         <div className='toolBar'>
@@ -82,7 +91,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
             <section className="new">
             <div className="container">
                         {count <= 4 && (
-                            <div className="card" id='1'>
+                            <div className="card" id='a'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
@@ -93,7 +102,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                         )}
 
                         {count <= 3 && (
-                            <div className="card" id='2'>
+                            <div className="card" id='b'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
@@ -104,7 +113,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                         )}
 
                         {count <= 2 && (
-                            <div className="card" id='3'>
+                            <div className="card" id='c'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
@@ -115,7 +124,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                         )}
 
                         {count <= 1 && (
-                            <div className="card" id='4'>
+                            <div className="card" id='d'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
@@ -126,7 +135,7 @@ function ToolBar({ count, cardPressed,player, health,attack, portrait}){
                         )}
 
                     {count <= 0 && (
-                            <div className="card" id='5'>
+                            <div className="card" id='e'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>

@@ -23,7 +23,7 @@ function App() {
     <div className="App">
             <div>
                 <button onClick={openModal} className='modal-button'>Open Modal</button>
-                <Alert isOpen={isOpen} onClose={closeModal} message="This is the modal content." />
+                <Alert isOpen={isOpen} onClose={closeModal} message="welcome to gambit, pick a hero and let's start" />
             </div>
       <BrowserRouter>
         <Routes>

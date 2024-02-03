@@ -14,7 +14,7 @@ function Game({portrait,health, player,
     function Number({ n }) {
         const { number } = useSpring({
             from: { number: 0 },
-            number: n || 0, // Ensure n is a number or default to 0
+            number: n || 0, // Ensure n is a number or default to 
             delay: 200,
             config: { mass: 1, tension: 20, friction: 10 },
         });
@@ -22,30 +22,6 @@ function Game({portrait,health, player,
         return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
     }
 
-
-
-        function RedBar({ width }) {
-            const { barWidth } = useSpring({
-                from: { barWidth:'0%'},
-                to: { barWidth:  width },
-                delay: 2000,
-                config: { mass: 1, tension: 120, friction: 14 },
-            });
-
-        
-            return (
-                <div style={{ width: '100%', height: '20px', backgroundColor: 'black', borderRadius: '4px', overflow: 'hidden' }}>
-                    <animated.div
-                        style={{
-                            width: barWidth,
-                            height: '100%',
-                            backgroundColor: 'red',
-                            borderRadius: '4px',
-                        }}
-                    />
-                </div>
-            );
-        }
 
     return(
         
@@ -62,7 +38,7 @@ function Game({portrait,health, player,
                     </div>
                     
                     {foes.map((foe, index) => (
-                        <div className='game-board__enemy' key={index}>  
+                        <div className='game-board__enemy' key={index} id={index}>  
                             <div><p>{foe.name}</p></div>
                             <div><p><Number n={foe.health}/></p></div>
                             {console.log(foe.health)}
