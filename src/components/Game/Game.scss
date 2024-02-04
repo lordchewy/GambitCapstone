@@ -1,14 +1,16 @@
 .game-container{
-    background-image: url('../../assets/Images/background2.jpg');
+    background-image: url('../../assets/Images/background8.jpg');
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: 100%; 
     background-position: center; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     height: 500px;
+    border-radius: 25px;
 }
 .game{
+
     display: flex;
     justify-content: flex-end;
     &-board{

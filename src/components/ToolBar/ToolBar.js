@@ -7,6 +7,7 @@ import Game from '../Game/Game';
 import healthbar from '../../assets/Images/health.png'
 import viking from '../../assets/Images/viking.png'
 import ghost from '../../assets/Images/ghost.png'
+import wolf from '../../assets/Images/wolf.png'
 
 import './ToolBar.scss'
 
@@ -16,10 +17,9 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
     const [imgVisible, setImgVisible] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
-    console.log(playerHealth)
 
     const [foe, setFoe] = useState([
-        { name: 'Krieg', health: 100, attack: 8, url: viking, id: 1 },
+        { name: 'Grim', health: 200, attack: 8, url: wolf, id: 1 },
         { name: 'banshee', health: 50, attack: 8, url: ghost, id: 2},
     ]);
     // console.log(enemyTurn)
