@@ -10,7 +10,7 @@ import slash from '../../assets/Images/slash.png'
 function Game({portrait,health, player, 
     foes,imgVisible
     }){
-    console.log(foes)
+    // console.log(foes)
     
     function Number({ n }) {
         const { number } = useSpring({
@@ -71,8 +71,6 @@ function Game({portrait,health, player,
                     }
                     return null; // If condition is false, return null or nothing
                 })}
-
-
             </div>
         </div>
     )

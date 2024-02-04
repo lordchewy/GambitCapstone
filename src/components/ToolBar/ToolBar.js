@@ -12,7 +12,7 @@ import ghost from '../../assets/Images/ghost.png'
 import './ToolBar.scss'
 
 function ToolBar({ count,player, 
-    health,attack, portrait, enemyTurn,
+    health,attack, portrait,
     setCount}){
     const navigate = useNavigate()
 
@@ -25,7 +25,7 @@ function ToolBar({ count,player,
     ]);
 
     function attackFunc() {
-        if (count <= 4) {
+        // if (count <= 4) {
             console.log(count);
             const newHp = Number(foe[0].health) - Number(p1.attack);
             if (newHp <= 0) {
@@ -43,22 +43,17 @@ function ToolBar({ count,player,
                     setImgVisible(false); // Set the state to hide the img
                 }, 200);
             }
-        } else {
-            console.log('you have no more power');
-        }
+        // } 
         setCount(count + 1);
     }
     
-
-
+    useEffect(() => {
+        if (foe[0] === undefined){
+            alert('you win!');
+            navigate('/');
+        }
+    }, [foe, navigate]);
     
-    if (foe[0] === undefined){
-        alert('you win!')
-        navigate('/')
-    }
-    if (enemyTurn){
-        p1.health -= 5
-    }
 
     const playerTokens = []
         // Your loop to initialize tokens
@@ -74,11 +69,6 @@ function ToolBar({ count,player,
             health={p1.health}
             player={p1.player}
             foes={foe}
-            // {[
-            //     { name: foe[0]?.name || '', health: foe[0]?.health || '', url: foe[0]?.url || null },
-            //     { name: foe[1]?.name || '', health: foe[1]?.health || '', url: foe[1]?.url || null},
-            //     // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
-            // ]}
             attackFunc={attackFunc}
             imgVisible={imgVisible}
         />

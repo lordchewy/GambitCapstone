@@ -13,11 +13,6 @@ function Board(){
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
-    const [playerTurn, setPlayerTurn] = useState(true)
-    const [enemyTurn, setEnemyTurn] = useState(false)
-
-    // console.log('here is the character id on board: ', characterId)
-    // console.log(playerTurn)
 
     const getHero = async (characterId) => {
         try {
@@ -32,26 +27,36 @@ function Board(){
     }, [characterId]);
 
 
+    useEffect(() => {
+        if (count > 4) {
+            // Alert indicating enemy turn need to summon modal here
+            alert('enemy turn');
+    
+            // Update hero's health by reducing it by 10, need to change this as it's not working
+            setHero(prevHero => {
+                return { ...prevHero, health: prevHero.health - 10 };
+            });
+    
+            // Reset count after 200 milliseconds
+            setTimeout(() => {
+                setCount(0);
+            }, 200);
+        }
+    }, [count]);
+    
+
     if (hero === null) {
         return <p>Loading...</p>;
     }
-    if(count > 4){
-        alert('you are out of turns')
-            setEnemyTurn(true)
-            setPlayerTurn(false)
-            setCount(0)
-            setTimeout(() => {
-                setEnemyTurn(false);
-                setPlayerTurn(true);
-            }, 200);
-    }
+
+    
 
 
     return (
         <div className="board">
             <Header/>
             <ToolBar
-            enemyTurn={enemyTurn}  
+            // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
             player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait}
             />

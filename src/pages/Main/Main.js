@@ -38,7 +38,7 @@ function Main() {
     }
 
     const selectedHero = characterId || characters[0].id
-    console.log(selectedHero)
+    // console.log(selectedHero)
 
     const filteredHeroes = characters.filter((character)=>{
         return selectedHero !== character.id;})

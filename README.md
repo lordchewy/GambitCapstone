@@ -2,7 +2,7 @@
 
 ## Overview
 
-My app would be a card game called gambit, User select three heroes and fight undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
+My app would be a card game called gambit, User select a hero and fights undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
 
 ### Problem
 
@@ -34,7 +34,7 @@ my App would mostly be used for gamers either playing through steam or in real t
 
 ### APIs
 
-The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /heros for all and /heroes/:id for individuals
+The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /characters for all and /characters/:id for individuals
 
 ### Sitemap
 
