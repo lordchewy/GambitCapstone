@@ -10,9 +10,27 @@ import slash from '../../assets/Images/slash.png'
 function Game({portrait,health, player, 
     foes,imgVisible,
     enemyTurn, setEnemyTurn}){
-    console.log(enemyTurn)
+    console.log('here is the heal',)
+
+    const ImageStyle = {display: 'block',
+    position: 'absolute',
+    zIndex: 999,
+    width: '500px',
+    marginTop: '600px',
+    marginLeft: '580px',} 
+
+    const ImageStyle2 = {display: 'block',
+    position: 'absolute',
+    zIndex: 999,
+    width: '500px',
+    marginTop: '600px',
+    marginLeft: '-200px',
+    transform: 'scaleX(-1)',} 
 
     const [currHealth, setCurrHealth] = useState(health)
+    const [enemyAttack, setEnemyAttack] = useState(false)
+
+
     function Number({ n }) {
         const { number } = useSpring({
             from: { number: 0 },
@@ -26,13 +44,14 @@ function Game({portrait,health, player,
 
     useEffect(() => {
         if (enemyTurn === true) {
-            // Update health using the previous state
             foes.forEach((foe) => {
                 setCurrHealth(prevHealth => prevHealth - 10);
+                setTimeout(() => {
+                    setEnemyAttack(false)
+                }, 200);
+                setEnemyAttack(true)
+                setEnemyTurn(false);
             });
-            // setCurrHealth(prevHealth => prevHealth - 10);
-            // Reset enemyTurn
-            setEnemyTurn(false);
         }
     }, [enemyTurn]);
     
@@ -60,14 +79,14 @@ function Game({portrait,health, player,
                                 <img
                                     src={slash}
                                     alt="Your Image"
-                                    style={{
-                                        display: 'block',
-                                        position: 'absolute',
-                                        zIndex: 999,
-                                        width: '500px',
-                                        marginTop: '600px',
-                                        marginLeft: '580px',
-                                    }}
+                                    style={ImageStyle}
+                                />
+                            )}
+                            {enemyAttack && (
+                                <img
+                                    src={slash}
+                                    alt="Your Image"
+                                    style={ImageStyle2}
                                 />
                             )}
                         </div>

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 import Game from '../Game/Game';
-
 import healthbar from '../../assets/Images/health.png'
 import viking from '../../assets/Images/viking.png'
 import ghost from '../../assets/Images/ghost.png'
@@ -20,17 +19,20 @@ function ToolBar({ count,player,
 
     const [imgVisible, setImgVisible] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
+    const [heal, setHeal] = useState(p1.health)
+    console.log('player hp: ', heal)
+    
 
     const [foe, setFoe] = useState([
         { name: 'Krieg', health: 100, attack: 8, url: viking, id: 1 },
         { name: 'banshee', health: 50, attack: 8, url: ghost, id: 2},
     ]);
-    console.log(enemyTurn)
+    // console.log(enemyTurn)
 
 
     function attackFunc() {
         // if (count <= 4) {
-            console.log(count);
+            // console.log(count);
             const newHp = Number(foe[0].health) - Number(p1.attack);
             if (newHp <= 0) {
                 setFoe(prevFoe => prevFoe.slice(1));
@@ -51,6 +53,13 @@ function ToolBar({ count,player,
         setCount(count + 1);
     }
 
+    function healFunc(){
+        const healing = Number(health)+10    
+        // console.log(heal)    
+        setHeal(healing)
+        console.log(healing)
+        
+    }
 
 
 
@@ -65,7 +74,7 @@ function ToolBar({ count,player,
     
 
     const playerTokens = []
-        // Your loop to initialize tokens
+        // loop to initialize tokens
         for (let i = 1; i <= 5 - count; i++) {
             playerTokens.push(<div key={i} className={`player token${i}`}></div>);
         }
@@ -74,12 +83,13 @@ function ToolBar({ count,player,
         <>
         <Game
             portrait={p1.portrait}
-            health={p1.health}
+            health={heal}
             player={p1.player}
             foes={foe}
             attackFunc={attackFunc}
             imgVisible={imgVisible}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
+            heal={heal} setHeal={setHeal}
         />
 
         <div className='toolBar'>
@@ -103,7 +113,7 @@ function ToolBar({ count,player,
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => {  attackFunc(); }} id='5'><span>attack </span></button>
+                                    <button className="button" onClick={() => {  attackFunc();}} id='5'><span>attack </span></button>
                                 </div>
                             </div>
                         )}
@@ -147,7 +157,7 @@ function ToolBar({ count,player,
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { attackFunc(); }} id='5'><span>attack </span></button>
+                                    <button className="button" onClick={() => { attackFunc(); healFunc() }} id='5'><span>attack/heal </span></button>
                                 </div>
                             </div>
                         )}  
