@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Game from '../Game/Game';
 import healthbar from '../../assets/Images/health.png'
-import viking from '../../assets/Images/viking.png'
 import ghost from '../../assets/Images/ghost.png'
 import wolf from '../../assets/Images/wolf.png'
 
