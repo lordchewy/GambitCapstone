@@ -13,6 +13,7 @@ function Board(){
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
+    const [enemyTurn, setEnemyTurn] = useState(false)
 
     const getHero = async (characterId) => {
         try {
@@ -31,19 +32,12 @@ function Board(){
         if (count > 4) {
             // Alert indicating enemy turn need to summon modal here
             alert('enemy turn');
-    
-            // Update hero's health by reducing it by 10, need to change this as it's not working
-            setHero(prevHero => {
-                return { ...prevHero, health: prevHero.health - 10 };
-            });
-    
-            // Reset count after 200 milliseconds
+            setEnemyTurn(true) 
             setTimeout(() => {
                 setCount(0);
             }, 200);
         }
     }, [count]);
-    
 
     if (hero === null) {
         return <p>Loading...</p>;
@@ -59,6 +53,7 @@ function Board(){
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
             player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait}
+            enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             />
         </div>
     )

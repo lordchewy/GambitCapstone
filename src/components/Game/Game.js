@@ -8,10 +8,11 @@ import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
 
 function Game({portrait,health, player, 
-    foes,imgVisible
-    }){
-    // console.log(foes)
-    
+    foes,imgVisible,
+    enemyTurn, setEnemyTurn}){
+    console.log(enemyTurn)
+
+    const [currHealth, setCurrHealth] = useState(health)
     function Number({ n }) {
         const { number } = useSpring({
             from: { number: 0 },
@@ -22,6 +23,19 @@ function Game({portrait,health, player,
     
         return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
     }
+
+    useEffect(() => {
+        if (enemyTurn === true) {
+            // Update health using the previous state
+            foes.forEach((foe) => {
+                setCurrHealth(prevHealth => prevHealth - 10);
+            });
+            // setCurrHealth(prevHealth => prevHealth - 10);
+            // Reset enemyTurn
+            setEnemyTurn(false);
+        }
+    }, [enemyTurn]);
+    
 
 
 
@@ -35,7 +49,7 @@ function Game({portrait,health, player,
             <div className='game'>
                     <div className='game-board__player'>
                         <div><p>{player}</p></div>
-                        <div><p>{health}</p></div>
+                        <div><p>{currHealth}</p></div>
                         <div><img src={portrait}/></div>
                     </div>
 

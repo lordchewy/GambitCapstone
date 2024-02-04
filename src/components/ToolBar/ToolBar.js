@@ -13,16 +13,20 @@ import './ToolBar.scss'
 
 function ToolBar({ count,player, 
     health,attack, portrait,
-    setCount}){
+    setCount,
+    enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}
+    }){
     const navigate = useNavigate()
 
     const [imgVisible, setImgVisible] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
 
     const [foe, setFoe] = useState([
-        { name: 'Krieg', health: 60, attack: 8, url: viking, id: 1 },
-        { name: 'banshee', health: 30, attack: 8, url: ghost, id: 2},
+        { name: 'Krieg', health: 100, attack: 8, url: viking, id: 1 },
+        { name: 'banshee', health: 50, attack: 8, url: ghost, id: 2},
     ]);
+    console.log(enemyTurn)
+
 
     function attackFunc() {
         // if (count <= 4) {
@@ -51,6 +55,7 @@ function ToolBar({ count,player,
         if (foe[0] === undefined){
             alert('you win!');
             navigate('/');
+            // need to summon modal here
         }
     }, [foe, navigate]);
     
@@ -61,7 +66,6 @@ function ToolBar({ count,player,
             playerTokens.push(<div key={i} className={`player token${i}`}></div>);
         }
 
-
     return(
         <>
         <Game
@@ -71,6 +75,7 @@ function ToolBar({ count,player,
             foes={foe}
             attackFunc={attackFunc}
             imgVisible={imgVisible}
+            enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
         />
 
         <div className='toolBar'>
