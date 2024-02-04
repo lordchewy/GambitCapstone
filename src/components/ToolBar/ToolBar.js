@@ -10,18 +10,13 @@ import ghost from '../../assets/Images/ghost.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player, 
-    health,attack, portrait,
-    setCount,
-    enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}
-    }){
-    const navigate = useNavigate()
+function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
 
+    const navigate = useNavigate()
     const [imgVisible, setImgVisible] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
-    const [heal, setHeal] = useState(p1.health)
-    console.log('player hp: ', heal)
-    
+    const [playerHealth, setPlayerHealth] = useState(p1.health);
+    console.log(playerHealth)
 
     const [foe, setFoe] = useState([
         { name: 'Krieg', health: 100, attack: 8, url: viking, id: 1 },
@@ -54,11 +49,9 @@ function ToolBar({ count,player,
     }
 
     function healFunc(){
-        const healing = Number(health)+10    
-        // console.log(heal)    
-        setHeal(healing)
+        const healing = Number(playerHealth)+10 
+        setPlayerHealth(healing)   
         console.log(healing)
-        
     }
 
 
@@ -83,13 +76,13 @@ function ToolBar({ count,player,
         <>
         <Game
             portrait={p1.portrait}
-            health={heal}
+            health={playerHealth} setPlayerHealth={setPlayerHealth}
             player={p1.player}
             foes={foe}
             attackFunc={attackFunc}
             imgVisible={imgVisible}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
-            heal={heal} setHeal={setHeal}
+            // heal={heal} setHeal={setHeal}
         />
 
         <div className='toolBar'>

@@ -7,7 +7,7 @@ import './Game.scss'
 import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
 
-function Game({portrait,health, player, 
+function Game({portrait,health,setPlayerHealth, player, 
     foes,imgVisible,
     enemyTurn, setEnemyTurn}){
     console.log('here is the heal',)
@@ -27,7 +27,7 @@ function Game({portrait,health, player,
     marginLeft: '-200px',
     transform: 'scaleX(-1)',} 
 
-    const [currHealth, setCurrHealth] = useState(health)
+    // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
 
 
@@ -45,7 +45,7 @@ function Game({portrait,health, player,
     useEffect(() => {
         if (enemyTurn === true) {
             foes.forEach((foe) => {
-                setCurrHealth(prevHealth => prevHealth - 10);
+                setPlayerHealth(prevHealth => prevHealth - 10)
                 setTimeout(() => {
                     setEnemyAttack(false)
                 }, 200);
@@ -68,7 +68,7 @@ function Game({portrait,health, player,
             <div className='game'>
                     <div className='game-board__player'>
                         <div><p>{player}</p></div>
-                        <div><p>{currHealth}</p></div>
+                        <div><p>{health}</p></div>
                         <div><img src={portrait}/></div>
                     </div>
 
