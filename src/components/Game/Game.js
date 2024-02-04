@@ -5,12 +5,13 @@ import { useTransition, animated, useSpring } from 'react-spring';
 
 import './Game.scss'
 import './../Header/Header'
+import slash from '../../assets/Images/slash.png'
 
 function Game({portrait,health, player, 
-    foes,
+    foes,imgVisible
     }){
     console.log(foes)
-
+    
     function Number({ n }) {
         const { number } = useSpring({
             from: { number: 0 },
@@ -21,6 +22,11 @@ function Game({portrait,health, player,
     
         return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
     }
+
+
+
+
+
 
 
     return(
@@ -34,7 +40,23 @@ function Game({portrait,health, player,
                     </div>
 
                     <div className='game-board'>
-                    
+                        <div className='game-board__animation'>
+                            {/* <img src={slash}/> */}
+                            {imgVisible && (
+                                <img
+                                    src={slash}
+                                    alt="Your Image"
+                                    style={{
+                                        display: 'block',
+                                        position: 'absolute',
+                                        zIndex: 999,
+                                        width: '500px',
+                                        marginTop: '600px',
+                                        marginLeft: '580px',
+                                    }}
+                                />
+                            )}
+                        </div>
                     </div>
                     
                     {foes.map((foe, index) => {
@@ -43,9 +65,7 @@ function Game({portrait,health, player,
                             <div className='game-board__enemy' key={index} id={index}>  
                                 <div><p>{foe.name}</p></div>
                                 <div><p><Number n={foe.health}/></p></div>
-                                
                                 <div><img src={foe.url} alt={foe.name} /></div>
-                            
                             </div>
                         );
                     }

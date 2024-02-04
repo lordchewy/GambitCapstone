@@ -16,6 +16,7 @@ function ToolBar({ count,player,
     setCount}){
     const navigate = useNavigate()
 
+    const [imgVisible, setImgVisible] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
 
     const [foe, setFoe] = useState([
@@ -25,28 +26,31 @@ function ToolBar({ count,player,
 
     function attackFunc() {
         if (count <= 4) {
-            // console.log(p1, foe[0]);
-            console.log(count)
-            const newHp = Number(foe[0].health) - Number(p1.attack);    
+            console.log(count);
+            const newHp = Number(foe[0].health) - Number(p1.attack);
             if (newHp <= 0) {
                 setFoe(prevFoe => prevFoe.slice(1));
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
-            const specificFoeId = 0; // Replace this with the id of the specific foe you want to flash
+
             const specificFoeElement = document.getElementById(0);
-            
             if (specificFoeElement) {
-                specificFoeElement.classList.add('flash-red');
+                setImgVisible(true); // Set the state to display the img
+                specificFoeElement.classList.add('flash');
                 setTimeout(() => {
-                    specificFoeElement.classList.remove('flash-red');
-                }, 200); // Flash duration in milliseconds
+                    specificFoeElement.classList.remove('flash');
+                    setImgVisible(false); // Set the state to hide the img
+                }, 200);
             }
         } else {
             console.log('you have no more power');
         }
-        setCount(count + 1)
+        setCount(count + 1);
     }
+    
+
+
     
     if (foe[0] === undefined){
         alert('you win!')
@@ -76,6 +80,7 @@ function ToolBar({ count,player,
             //     // { name: foe[2]?.name || '', health: foe[2]?.health || '', url: foe[2]?.url || '' }
             // ]}
             attackFunc={attackFunc}
+            imgVisible={imgVisible}
         />
 
         <div className='toolBar'>
