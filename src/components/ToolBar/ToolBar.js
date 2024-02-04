@@ -50,6 +50,10 @@ function ToolBar({ count,player,
         // } 
         setCount(count + 1);
     }
+
+
+
+
     
     useEffect(() => {
         if (foe[0] === undefined){

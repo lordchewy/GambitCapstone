@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-    background-color: rgb(255, 255, 255);
+    background-color: black;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -21,10 +21,10 @@
 }
 
 .modal-button{
+    background-color: black;
     font-family: 'Nosifier';
-    background-color: aqua;
     border-radius:15px ;
-    color: black;
+    color: #0ecdc3;
     border: none;
 }
 .modal-wrap{
@@ -32,6 +32,5 @@
     justify-content: center;
     align-items: center;
     width: 60px;
-    background-color: aquamarine;
     border-radius: 30px;
 }

@@ -11,7 +11,7 @@ function Alert({ message, onClose, isOpen }) {
         <div className="modal" style={displayStyle}>
             <div className="modal-content">
                 <span className="close" onClick={onClose}>
-                    <div className='modal-wrap'><img src={logo} width='40px'/></div>
+                    <div className='modal-wrap'>close</div>
                 </span>
                 <p>{message}</p>
             </div>
