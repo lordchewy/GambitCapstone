@@ -7,6 +7,7 @@ import Game from '../Game/Game';
 import healthbar from '../../assets/Images/health.png'
 import ghost from '../../assets/Images/ghost.png'
 import wolf from '../../assets/Images/wolf.png'
+import dragon from '../../assets/Images/dragon.png'
 
 import './ToolBar.scss'
 
@@ -14,6 +15,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
 
     const navigate = useNavigate()
     const [imgVisible, setImgVisible] = useState(false);
+    const [imgHeal, setImgHeal] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
 
@@ -51,11 +53,13 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
         const healing = Number(playerHealth)+10 
         setPlayerHealth(healing)   
         console.log(healing)
+        setCount(count+2)
+        setImgHeal(true); // Set the state to display the img
+        setTimeout(() => {
+            setImgHeal(false); // Set the state to hide the img
+        }, 200);
     }
 
-
-
-    
     useEffect(() => {
         if (foe[0] === undefined){
             alert('you win!');
@@ -80,6 +84,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
             foes={foe}
             attackFunc={attackFunc}
             imgVisible={imgVisible}
+            imgHeal= {imgHeal}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             // heal={heal} setHeal={setHeal}
         />
@@ -104,8 +109,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
-                                    <div className="filledbar"></div>
-                                    <button className="button" onClick={() => {  attackFunc();}} id='5'><span>attack </span></button>
+                                    <div className="filledbar">cost 1</div>
+                                    <button className="button" onClick={() => {  attackFunc();}} id='5'><span>{p1.attack} dmg </span></button>
                                 </div>
                             </div>
                         )}
@@ -115,8 +120,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
-                                    <div className="filledbar"></div>
-                                    <button className="button" onClick={() => {  attackFunc(); }} id='2'><span>attack </span></button>
+                                    <div className="filledbar">cost 1</div>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='2'><span>{p1.attack} dmg </span></button>
                                 </div>
                             </div>
                         )}
@@ -126,8 +131,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
-                                    <div className="filledbar"></div>
-                                    <button className="button" onClick={() => {  attackFunc(); }} id='3'><span>attack </span></button>
+                                    <div className="filledbar">cost 1</div>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='3'><span>{p1.attack} dmg  </span></button>
                                 </div>
                             </div>
                         )}
@@ -137,8 +142,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
-                                    <div className="filledbar"></div>
-                                    <button className="button" onClick={() => {  attackFunc(); }} id='4'><span>attack </span></button>
+                                    <div className="filledbar">cost 1</div>
+                                    <button className="button" onClick={() => {  attackFunc(); }} id='4'><span>{p1.attack} dmg  </span></button>
                                 </div>
                             </div>
                         )}
@@ -148,8 +153,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <h3 className="title">card</h3>
                                 <div className="bar">
                                     <div className="emptybar"></div>
-                                    <div className="filledbar"></div>
-                                    <button className="button" onClick={() => { attackFunc(); healFunc() }} id='5'><span>attack/heal </span></button>
+                                    <div className="filledbar">cost 2</div>
+                                    <button className="button" onClick={() => {  healFunc() }} id='5'><span>health + 10 </span></button>
                                 </div>
                             </div>
                         )}  

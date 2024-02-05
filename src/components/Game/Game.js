@@ -6,9 +6,10 @@ import { useTransition, animated, useSpring } from 'react-spring';
 import './Game.scss'
 import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
+import heal from '../../assets/Images/heal.png'
 
 function Game({portrait,health,setPlayerHealth, player, 
-    foes,imgVisible,
+    foes,imgVisible,imgHeal,
     enemyTurn, setEnemyTurn}){
     console.log('here is the heal',)
 
@@ -18,6 +19,13 @@ function Game({portrait,health,setPlayerHealth, player,
     width: '500px',
     marginTop: '600px',
     marginLeft: '580px',} 
+
+    const self = {display: 'block',
+    position: 'absolute',
+    zIndex: 999,
+    width: '500px',
+    marginTop: '600px',
+    marginLeft: '-600px'}  
 
     const ImageStyle2 = {display: 'block',
     position: 'absolute',
@@ -78,15 +86,22 @@ function Game({portrait,health,setPlayerHealth, player,
                             {imgVisible && (
                                 <img
                                     src={slash}
-                                    alt="Your Image"
+                                    alt="player attack"
                                     style={ImageStyle}
                                 />
                             )}
                             {enemyAttack && (
                                 <img
                                     src={slash}
-                                    alt="Your Image"
+                                    alt="enemy attack"
                                     style={ImageStyle2}
+                                />
+                            )}
+                            {imgHeal && (
+                                <img
+                                    src={heal}
+                                    alt="heal"
+                                    style={self}
                                 />
                             )}
                         </div>
