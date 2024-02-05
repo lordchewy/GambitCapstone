@@ -18,6 +18,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
     const [imgHeal, setImgHeal] = useState(false);
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
+    // const [playerAtk, setPlayerAtk] = useState(p1.attack);
 
     const [foe, setFoe] = useState([
         { name: 'Grim', health: 200, attack: 8, url: wolf, id: 1 },
@@ -27,15 +28,12 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
 
 
     function attackFunc() {
-        // if (count <= 4) {
-            // console.log(count);
             const newHp = Number(foe[0].health) - Number(p1.attack);
             if (newHp <= 0) {
                 setFoe(prevFoe => prevFoe.slice(1));
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
-
             const specificFoeElement = document.getElementById(0);
             if (specificFoeElement) {
                 setImgVisible(true); // Set the state to display the img
@@ -45,7 +43,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                     setImgVisible(false); // Set the state to hide the img
                 }, 200);
             }
-        // } 
         setCount(count + 1);
     }
 
@@ -59,6 +56,38 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
             setImgHeal(false); // Set the state to hide the img
         }, 200);
     }
+// 
+function attackAll() {
+    setFoe(prevFoe => {
+        return prevFoe.map(fo => {
+            const newHp = fo.health - p1.attack; // Adjust health based on player's attack
+            console.log('attack all: ', newHp);
+
+            // Check if health is less than or equal to 0
+            if (newHp <= 0) {
+                return null; // If health is 0 or less, mark for removal
+            } else {
+                return { ...fo, health: newHp }; // Otherwise, update health
+            }
+        }).filter(Boolean); // Filter out null elements
+    });
+    setCount(count+3)
+}
+
+function attackUp(){
+    const atkUp = Number(p1.attack)+10 
+    console.log(atkUp)
+    setP1({ ...p1, attack: atkUp })
+    setCount(count + 1);
+}
+
+function endTurn(){
+    setCount(5)
+}
+
+// 
+
+
 
     useEffect(() => {
         if (foe[0] === undefined){
@@ -110,7 +139,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar">cost 1</div>
-                                    <button className="button" onClick={() => {  attackFunc();}} id='5'><span>{p1.attack} dmg </span></button>
+                                    <button className="button" onClick={() => {  attackUp();}} id='5'><span>atk + 10 </span></button>
                                 </div>
                             </div>
                         )}
@@ -119,7 +148,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                             <div className="card" id='b'>
                                 <h3 className="title">card</h3>
                                 <div className="bar">
-                                    <div className="emptybar"></div>
+                                    
                                     <div className="filledbar">cost 1</div>
                                     <button className="button" onClick={() => {  attackFunc(); }} id='2'><span>{p1.attack} dmg </span></button>
                                 </div>
@@ -143,7 +172,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                                 <div className="bar">
                                     <div className="emptybar"></div>
                                     <div className="filledbar">cost 1</div>
-                                    <button className="button" onClick={() => {  attackFunc(); }} id='4'><span>{p1.attack} dmg  </span></button>
+                                    <button className="button" onClick={() => {  attackAll(); }} id='4'><span>{p1.attack} dmg to all  </span></button>
                                 </div>
                             </div>
                         )}
@@ -159,7 +188,8 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                             </div>
                         )}  
             </div>
-            </section> 
+            </section>
+            <div><button onClick={()=>{endTurn()}} className='modal-button'>End Turn</button></div> 
             </div>
         </div>
         </>
