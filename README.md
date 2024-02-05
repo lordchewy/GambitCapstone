@@ -22,6 +22,7 @@ my App would mostly be used for gamers either playing through steam or in real t
 -potential for unique card effects(to be determined based on complexity)
 
 ## Implementation
+Using react states for characters and turns player object will render and update information in real time using useEffect upon health changes. The main state of the game will be determined with a useState for count which will determine if players can play(above 4) and when this value touches zero the enemy plays and the state resets until win/loss occurs. Card will operate as functions with a count increase(to progress count state). Before each match a select screen will render chosen character based on id from an api call and using useParams this will translate to the player character upon linking to start game. 
 
 ### Tech Stack
 
@@ -31,10 +32,11 @@ my App would mostly be used for gamers either playing through steam or in real t
 -axios
 -react-router-dom
 -sass
+-nodemon
 
 ### APIs
 
-The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /characters for all and /characters/:id for individuals
+The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /characters for all and /characters/:id for individuals. This is strictly a JSON data structure. 
 
 ### Sitemap
 
