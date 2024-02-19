@@ -48,7 +48,7 @@ function Board(){
 
     return (
         <div className="board">
-            <Header/>
+            {/* <Header/> */}
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}

@@ -21,7 +21,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
     // const [playerAtk, setPlayerAtk] = useState(p1.attack);
 
     const [foe, setFoe] = useState([
-        { name: 'Grim', health: 200, attack: 8, url: wolf, id: 1 },
         { name: 'banshee', health: 50, attack: 8, url: ghost, id: 2},
     ]);
     // console.log(enemyTurn)
@@ -73,7 +72,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
                 return prevFoe.map(fo => {
                     const newHp = fo.health - p1.attack; // Adjust health based on player's attack
                     console.log('attack all: ', newHp);
-    
                     // Check if health is less than or equal to 0
                     if (newHp <= 0) {
                         return null; // If health is 0 or less, mark for removal
@@ -103,9 +101,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
     }
 
 // 
-
-
-
     useEffect(() => {
         if (foe[0] === undefined){
             alert('you win!');
@@ -113,7 +108,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
             // need to summon modal here
         }
     }, [foe, navigate]);
-    
 
     const playerTokens = []
         // loop to initialize tokens
@@ -135,7 +129,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount, enemyTurn={ene
             // heal={heal} setHeal={setHeal}
         />
 
-        <div className='toolBar'>
+        <div className='Bar'>
             <div className='player'>
                 <div className='player-turns'>turns
                     {playerTokens.map((token, index) => (

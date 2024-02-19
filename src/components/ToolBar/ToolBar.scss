@@ -1,4 +1,6 @@
-.toolBar{
+
+
+.Bar{
     display: flex;
     justify-content: space-between;
     background-image:url('../../assets/Images/emptyboard.png');
@@ -7,6 +9,7 @@
     height: 240px;
     color: #0ecdc3;
     opacity: 1;
+    box-sizing: border-box;
     // width: 1535px;
 }
 .player{
@@ -70,31 +73,34 @@
 }
 
 .container {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
-    height: 300px;
+    height: 180px;
     width: 600px;
     left: calc(50% - 300px);
-    bottom: calc(-80px);
+    // bottom: calc(-80px);
     display: flex;
   }
   
   .card {
     z-index: 1;
     display: flex;
-    height: 280px;
-    max-width: 230px;
+    height: 230px;
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
     box-shadow: -1rem 0 3rem #0ecdc3;
     transition: 0.4s ease-out;
     position: relative;
     left: 0px;
+    flex-wrap: wrap;
   }
   
-  .card:not(:first-child) {
-      margin-left: -70px;
-  }
+  // .card:not(:first-child) {
+  //     margin-left: -70px;
+  // }
   
   .card:hover {
     transform: translateY(-20px);
@@ -128,7 +134,7 @@
     text-shadow: 2px 4px 3px #0ecdc3;
     font-size: 15px;
     font-weight: 700;
-    padding: 50px;
+    // padding: 50px;
   }
 
 
