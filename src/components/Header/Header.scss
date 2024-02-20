@@ -1,12 +1,13 @@
 .header{
-
-  background-color: black;
+  background-image: url('../../assets/Images/branch.png');
+  background-size: contain;
+  background-color: rgb(218, 127, 16);
   border-radius: 10px;
   display: flex;
   justify-content: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color:#0ecdc3;
+  color:black;
   &-bar{
       display: flex;
       flex-direction: row;
@@ -14,35 +15,35 @@
         display: flex;
         align-items: flex-end;
         margin: 0.5rem;
-        border: #0ecdc3 2px solid;
+        border: black solid 1px;
         border-radius: 15px;
         padding: 0.5rem;
-        box-shadow: 5px 2px 2px #0ecdc3;;
+        box-shadow: 5px 2px 2px white;
       }
   }
 }
 
 .link{
   text-decoration: none;
-  color:#0ecdc3;
+  color:black;
 }
 
 
 
 
-.header{
-  background-image: url('../../assets/Images/rain.png');
-  animation: rain 10s linear infinite;
-  position: relative;
-}
-@keyframes rain{
-  0%{
-      background-position: 0% 0%;
-  }
-  100%{
-    background-position: 20% 100%;
-  }
-}
+// .header{
+//   background-image: url('../../assets/Images/rain.png');
+//   animation: rain 10s linear infinite;
+//   position: relative;
+// }
+// @keyframes rain{
+//   0%{
+//       background-position: 0% 0%;
+//   }
+//   100%{
+//     background-position: 20% 100%;
+//   }
+// }
 // .header::before{
 //   content: "";
 //   position: absolute;

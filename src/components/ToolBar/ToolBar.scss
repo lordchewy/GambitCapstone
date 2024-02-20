@@ -3,10 +3,11 @@
 .Bar{
     display: flex;
     justify-content: space-between;
-    background-image:url('../../assets/Images/emptyboard.png');
+    background-image:url('../../assets/Images/branch.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 240px;
+    align-items: flex-end;
+    height: 200px;
     color: #0ecdc3;
     opacity: 1;
     box-sizing: border-box;
@@ -78,7 +79,7 @@
     height: 180px;
     width: 600px;
     left: calc(50% - 300px);
-    // bottom: calc(-80px);
+    bottom: calc(1px);
     display: flex;
   }
   
@@ -94,7 +95,7 @@
     max-width: 150px;
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
-    box-shadow: -1rem 0 3rem #0ecdc3;
+    box-shadow: -1rem 0 3rem #cd610e;
     transition: 0.4s ease-out;
     position: relative;
     left: 0px;

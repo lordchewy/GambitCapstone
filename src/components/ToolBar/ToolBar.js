@@ -7,7 +7,7 @@ import Game from '../Game/Game';
 import Card from '../Card/Card'
 
 import healthbar from '../../assets/Images/health.png'
-import ghost from '../../assets/Images/ghost.png'
+import ghost from '../../assets/Images/Crow.png'
 
 
 import './ToolBar.scss'

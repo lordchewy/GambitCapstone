@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Card.scss'
 
-import ghost from '../../assets/Images/ghost.png'
+
 
 const Card = ({count, p1, setCount, foe, setFoe}) => {
     const [randomCards, setRandomCards] = useState([]);

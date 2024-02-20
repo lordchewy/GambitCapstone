@@ -1,17 +1,18 @@
 .game-container{
+    background-color: white;
     background-image: url('../../assets/Images/background6.png');
     opacity: 1;
     background-repeat: no-repeat;
-    background-size: 100%; 
+    background-size: contain; 
     background-position: center; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 500px;
+    height: 600px;
     border-radius: 25px;
 }
-.game{
 
+.game{
     display: flex;
     justify-content: flex-end;
     &-board{
@@ -41,8 +42,8 @@
                 img{
                     margin-left: 1rem;
                     margin-bottom: 1rem;
-                    width: 300px;
-                    height: 350px  
+                    width: 200px;
+                    height: 250px  
                 }
                 color: white;
                 text-shadow: 5px 2px 2px purple;
