@@ -83,8 +83,11 @@
   }
   
   .card {
+    border: solid 1px white;
     z-index: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 230px;
     width: 150px;
     min-width: 150px;
@@ -116,20 +119,22 @@
 // text
   
   .title {
+    border: solid 1px white;
     // z-index: 1;
     color: white;
     font-weight: 300;
-    position: absolute;
+    // position: absolute;
     left: 20px;
     top: 15px;
   }
   
 
 .button {
+  border: solid 1px white;
   z-index: 1;
     margin-top: 30px;
     background-color:black;
-    border: none;
+    // border: none;
     color: white;
     text-shadow: 2px 4px 3px #0ecdc3;
     font-size: 15px;

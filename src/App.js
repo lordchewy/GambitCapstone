@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import Board from './pages/Board/Board';
 import Main from './pages/Main/Main';
+import Test from './pages/Test/Test'
 // import Alert from './components/Alert/Alert';
 
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/:characterId' element={<Main/>}></Route>
           </Route>
           <Route path='/board/:characterId' element={<Board/>}></Route>
+          <Route path='/test' element={<Test/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -11,8 +11,6 @@ import heal from '../../assets/Images/heal.png'
 function Game({portrait,health,setPlayerHealth, player, 
     foes,imgVisible,imgHeal,
     enemyTurn, setEnemyTurn}){
-    console.log('here is the heal',)
-
     const ImageStyle = {display: 'block',
     position: 'absolute',
     zIndex: 999,
