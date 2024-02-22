@@ -63,27 +63,23 @@ function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, ene
         />
 
         <div className='Bar'>
-            <div className='player'>
-                <div className='player-turns'>turns
-                    {playerTokens.map((token, index) => (
-                        <div key={index} className={`player token${index + 1}`}></div>
-                    ))}
-                </div>
-            <div className='player-turns'>
-                <img src={healthbar} alt='turns' width='200px' />
-            </div>
-            </div>
             <div>
+                <p>{count}/5</p>
+            </div>
+            
+
+
             <section className="new">
-
-
-            <div className="container">
-                <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}/>
-            </div>
-
+                <div className="container">
+                    <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}/>
+                </div>
             </section>
-            <div><button onClick={()=>{endTurn()}} className='modal-button'>End Turn</button></div> 
-            </div>
+
+
+            <div>
+                <button onClick={()=>{endTurn()}}>End Turn</button>
+            </div> 
+            
         </div>
         </>
     )

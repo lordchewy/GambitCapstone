@@ -1,9 +1,12 @@
 .hand{
     display: flex;
-    color: white;
     justify-content: center;
+    position: relative;
+    align-items: center;
 }
 .card{
+    position: absolute;
     background-image: url('../../assets/Images/card.png');
     background-size: contain;
+    z-index: 3;
 }

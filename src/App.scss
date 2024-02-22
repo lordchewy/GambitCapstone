@@ -3,13 +3,29 @@
 
 
 .App {
-  // background-color: black;
-  background-color: rgb(84, 11, 11);
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Nosifier';
-  text-align: center;
-  width: 1535px;
+  // font-family: 'Nosifier';
+  // text-align: center;
+  // // background-color: aqua;
+  // background-position: center;
+  // width: 1500px;
+  // height: 700px;
+  // margin: 1rem;
+  // border-radius: 25px;
+
+    z-index: 0;
+    width: 1500px;
+    height: 750px;
+    position: relative;
+    display: flex;
+    flex-direction:column;
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aqua;
+}
+*{
+  border: solid black 1px;
 }
 
 

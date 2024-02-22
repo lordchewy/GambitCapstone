@@ -7,6 +7,7 @@ import './Game.scss'
 import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
 import heal from '../../assets/Images/heal.png'
+import world from '../../assets/Images/background6.png'
 
 function Game({portrait,health,setPlayerHealth, player, 
     foes,imgVisible,imgHeal,
@@ -71,7 +72,11 @@ function Game({portrait,health,setPlayerHealth, player,
     return(
         
         <div className='game-container'>
+            <img src={world} className='map'/>
             <div className='game'>
+                    
+
+
                     <div className='game-board__player'>
                         <div><p>{player}</p></div>
                         <div><p>{health}</p></div>

@@ -1,8 +1,89 @@
-.proto{
-    background-image: url('../../assets/Images/background8.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 1500px;
-    height: 600px;
-}
+// *{
+//     border: solid black 1px;
+// }
+
+// .proto{
+//     z-index: 0;
+//     width: 1500px;
+//     height: 600px;
+//     position: relative;
+//     display: flex;
+//     flex-direction:column;
+//     box-sizing: border-box;
+//     overflow: hidden;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+// .map {
+//     z-index: 1;
+//     // display: flex;
+//     position: relative;
+//     // flex-direction: column;
+//     width: auto; /* Adjust as needed */
+//     height: auto; /* Adjust as needed */
+//     box-sizing: border-box;
+// }
+
+// .hero {
+//     z-index: 2;
+//     position: absolute;
+//     width: 200px;
+//     transform: scaleX(-1);
+//     left: 0px;
+//     bottom: 0px;
+//     right: 0px;
+//     top: 0px;
+
+// }
+
+
+
+// .info{
+//     z-index: 3;
+//     position: relative;
+//     display: flex;
+//     justify-content: space-evenly;
+//     width: 100%;
+//     &-option{
+//         width: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//     }
+// }
+
+
+// // .hand {
+// //     position: relative;
+// //     background-color: aqua;
+// // }
+
+// .yellow-box, .red-box, .blue-box {
+//     position: absolute;
+//     width: 200px;
+//     height: 200px;
+// }
+
+// .yellow-box {
+//     background-color: yellow;
+//     z-index: 1;
+//     width: 200px;
+//     height: 50px;
+// }
+
+// .red-box {
+//     background-color: red;
+//     z-index: 2;
+//     width: 100px;
+//     height: 50px;
+
+// }
+
+// .blue-box {
+//     background-color: blue;
+//     z-index: 3;
+//     width: 50px;
+//     height: 50px;
+
+// }

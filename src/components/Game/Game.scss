@@ -1,20 +1,31 @@
 .game-container{
-    background-color: white;
-    background-image: url('../../assets/Images/background6.png');
-    opacity: 1;
-    background-repeat: no-repeat;
-    background-size: contain; 
-    background-position: center; 
+    // background-color: white;
+    // background-image: url('../../assets/Images/background5.png');
+    // opacity: 1;
+    // background-repeat: no-repeat;
+    // background-size: cover; 
+    // background-position: center; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     height: 600px;
     border-radius: 25px;
 }
+.map {
+    z-index: 1;
+    // display: flex;
+    position: relative;
+    // flex-direction: column;
+    width: auto; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+    box-sizing: border-box;
+}
 
 .game{
+    position: absolute;
     display: flex;
     justify-content: flex-end;
+    z-index: 2;
     &-board{
             flex-direction: column;
             display: flex;
