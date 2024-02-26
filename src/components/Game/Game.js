@@ -7,11 +7,14 @@ import './Game.scss'
 import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
 import heal from '../../assets/Images/heal.png'
-import world from '../../assets/Images/background6.png'
+import world from '../../assets/Images/background5.png'
+
+import atk from '../../assets/Images/attack.png'
+import def from '../../assets/Images/defense.png'
 
 function Game({portrait,health,setPlayerHealth, player, 
     foes,imgVisible,imgHeal,
-    enemyTurn, setEnemyTurn}){
+    enemyTurn, setEnemyTurn, playerAttack}){
     const ImageStyle = {display: 'block',
     position: 'absolute',
     zIndex: 999,
@@ -78,9 +81,17 @@ function Game({portrait,health,setPlayerHealth, player,
 
 
                     <div className='game-board__player'>
-                        <div><p>{player}</p></div>
-                        <div><p>{health}</p></div>
-                        <div><img src={portrait}/></div>
+                        <div className='game-board__player__health'>
+                            <p>{player}</p>
+                            <p>{health}</p>
+                        </div>
+                        <div className='game-board__player__stats'>
+                            <p>{health}<img src={def} className='stat'/></p>
+                            <p>{playerAttack}<img src={atk} className='stat'/></p>   
+                        </div>
+                        <div>
+                            <img src={portrait} className='playerImg'/>
+                        </div>
                     </div>
 
                     <div className='game-board'>
@@ -116,7 +127,7 @@ function Game({portrait,health,setPlayerHealth, player,
                             <div className='game-board__enemy' key={index} id={index}>  
                                 <div><p>{foe.name}</p></div>
                                 <div><p><Number n={foe.health}/></p></div>
-                                <div><img src={foe.url} alt={foe.name} /></div>
+                                <div><img src={foe.url} alt={foe.name} className='playerImg'/></div>
                             </div>
                         );
                     }

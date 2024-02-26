@@ -4,7 +4,7 @@ import './Card.scss'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe}) => {
+const Card = ({count, p1, setCount, foe, setFoe, health,setPlayerHealth,setP1}) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
 
@@ -35,21 +35,21 @@ const Card = ({count, p1, setCount, foe, setFoe}) => {
         setCount(count + 1);
         }
     }
-//     function healFunc(index){
-//         if(count > 3){
-//             alert('pick another card')
-//         }else {
-//             const healing = Number(playerHealth)+10 
-//             setPlayerHealth(healing)   
-//             console.log(healing)
-//             setCount(count+2)
-//             setImgHeal(true); // Set the state to display the img
-//             setTimeout(() => {
-//                 setImgHeal(false); // Set the state to hide the img
-//             }, 200);
-//         }
-//         console.log(index)
-//     }
+    function healFunc(index){
+        if(count > 3){
+            alert('pick another card')
+        }else {
+            const healing = Number(health)+10 
+            setPlayerHealth(healing)   
+            console.log(healing)
+            setCount(count+2)
+            // setImgHeal(true); // Set the state to display the img
+            setTimeout(() => {
+                // setImgHeal(false); // Set the state to hide the img
+            }, 200);
+        }
+        console.log(index)
+    }
 // // 
 //     function attackAll() {
 //         if(count > 2){
@@ -71,20 +71,38 @@ const Card = ({count, p1, setCount, foe, setFoe}) => {
 //         }
 //     }
 
-//     function attackUp(){
-//         if(count > 3){
-//             alert('pick another card')
-//         } else{
+    function attackUp(){
+        if(count > 3){
+            alert('pick another card')
+        } else{
 
-//             const atkUp = Number(p1.attack)+10 
-//             console.log(atkUp)
-//             setP1({ ...p1, attack: atkUp })
-//             setCount(count + 2);
-//         }
-//     }
+            const atkUp = Number(p1.attack)+10 
+            console.log(atkUp)
+            setP1({ ...p1, attack: atkUp })
+            setCount(count + 2);
+        }
+    }
+// ------------------------------------
+function handleEffect(effect) {
+    switch (effect) {
+        case 'attack' || 'attackAll':
+            attackFunc(); // Call the attack function
+            break;
+        case 'heal':
+            healFunc(); // Call the defense function
+            break;
+        case 'buff':
+            attackUp(); // Call the defense function
+            break;
+        // Add more cases for other effects as needed
+        default:
+            console.error(`Unknown effect: ${effect}`);
+    }
+}
 
 
 
+// -------------------------------------------------------------------------
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -117,10 +135,10 @@ const Card = ({count, p1, setCount, foe, setFoe}) => {
                 <div className="card" key={index}>
                     <h3 className="title">{card.title}</h3>
                     <div className="bar">
-                        <div className="filledbar">Effect: {card.effect}
+                        <div className="description">{card.effect}
                         </div>
-                        <button onClick={() => {attackFunc()}}>
-                            {p1.attack}
+                        <button onClick={() => handleEffect(card.effect)}>
+                            effect
                         </button>
                     </div>
                 </div>

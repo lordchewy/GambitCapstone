@@ -5,8 +5,69 @@
     align-items: center;
 }
 .card{
-    position: absolute;
+    position: relative;
     background-image: url('../../assets/Images/card.png');
     background-size: contain;
+    background-repeat: no-repeat;
     z-index: 3;
+
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #490303;
+    transition: 0.4s ease-out;
+
+    height: 170px;
+    width: 120px;
+    min-width: 100px;
+    max-width: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    // position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+// text
+  
+  .title {
+    border: solid 1px white;
+    // z-index: 1;
+    color: white;
+    font-weight: 300;
+    // position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+  
+
+.button {
+  border: solid 1px white;
+  z-index: 1;
+    margin-top: 30px;
+    background-color:black;
+    border: none;
+    color: white;
+    text-shadow: 2px 4px 3px #0ecdc3;
+    font-size: 15px;
+    font-weight: 700;
+    // padding: 50px;
+  }
+
+  .description{
+    max-height: 50px;
+  }
+
+
+.flash {
+  filter: brightness(50%);
+  transition: filter 0.2s ease;
 }

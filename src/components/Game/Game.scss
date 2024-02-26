@@ -16,33 +16,47 @@
     // display: flex;
     position: relative;
     // flex-direction: column;
-    width: auto; /* Adjust as needed */
-    height: auto; /* Adjust as needed */
+    width: 80%; /* Adjust as needed */
+    height: 100%; /* Adjust as needed */
     box-sizing: border-box;
+    
 }
 
 .game{
     position: absolute;
     display: flex;
-    justify-content: flex-end;
     z-index: 2;
+    bottom: 130px;
     &-board{
             flex-direction: column;
             display: flex;
             width: 300px;
             height: 500px;
             margin: 1rem;
+
             &__player{
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                align-items: flex-end;
-                img{
-                    width: 200px;
-                    height: 250px  
-                }
+                // align-items: flex-end;
                 color: white;
                 text-shadow: 5px 2px 2px #0ecdc3;
+                // background-color: red;
+                &__health{
+                    display: flex;
+                    justify-content: center;
+                    
+                }
+                &__stats{
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    height: 30px;
+                    & img{
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
             }
             &__enemy{
 
@@ -50,17 +64,8 @@
                 flex-direction: column;
                 justify-content: flex-end;
                 align-items: flex-end;
-                img{
-                    margin-left: 1rem;
-                    margin-bottom: 1rem;
-                    width: 200px;
-                    height: 250px  
-                }
                 color: white;
                 text-shadow: 5px 2px 2px purple;
-                img{
-                    transform: scaleX(-1);
-                }
             }
             &__animation{
                 display: flex;
@@ -69,5 +74,16 @@
             }
     }
 }
+
+// .stat{
+//     width: 10px;
+//     height: 10px;
+// }
+
+.playerImg{
+    width: 180px;
+    height: 250px;
+}
+  
 
 

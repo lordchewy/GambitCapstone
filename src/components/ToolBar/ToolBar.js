@@ -59,6 +59,7 @@ function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, ene
             // imgVisible={imgVisible}
             imgHeal= {imgHeal}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
+            playerAttack = {p1.attack}
             // heal={heal} setHeal={setHeal}
         />
 
@@ -67,20 +68,21 @@ function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, ene
                 <p>{count}/5</p>
             </div>
             
-
-
             <section className="new">
                 <div className="container">
-                    <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}/>
+                    <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}
+                    health={playerHealth} setPlayerHealth={setPlayerHealth}
+                    setP1={setP1}
+                    />
                 </div>
             </section>
-
 
             <div>
                 <button onClick={()=>{endTurn()}}>End Turn</button>
             </div> 
-            
         </div>
+
+        
         </>
     )
 }
