@@ -3,15 +3,7 @@
 
 
 .App {
-  // font-family: 'Nosifier';
-  // text-align: center;
-  // // background-color: aqua;
-  // background-position: center;
-  // width: 1500px;
-  // height: 700px;
-  // margin: 1rem;
-  // border-radius: 25px;
-
+  font-family: 'Nosifier';
     z-index: 0;
     width: 1500px;
     height: 750px;
@@ -22,10 +14,22 @@
     overflow: hidden;
     justify-content: space-between;
     align-items: center;
-    background-color: aqua;
+    background-image: url('assets/Images/background6.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 *{
-  border: solid black 1px;
+  // border: solid black 1px;
+}
+
+button{
+  background-color: yellow;
+  // border-right: 10px solid; 
+  // border-bottom: 10px solid;
+  // height: 30px;
+  // width: 30px;
+  // transform: rotate(-45deg);
+
 }
 
 

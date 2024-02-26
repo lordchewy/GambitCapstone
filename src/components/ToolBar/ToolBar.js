@@ -5,26 +5,26 @@ import { useNavigate } from 'react-router-dom';
 
 import Game from '../Game/Game';
 import Card from '../Card/Card'
-
-import healthbar from '../../assets/Images/health.png'
 import ghost from '../../assets/Images/Crow.png'
+import icon from '../../assets/Images/wolftoken.png'
 
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
+function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
     console.log(typeof setCount)
 
     const navigate = useNavigate()
     // const [imgVisible, setImgVisible] = useState(false);
-    const [imgHeal, setImgHeal] = useState(false);
-    const [p1, setP1] = useState({  player: player, health: health, attack: attack, portrait:portrait});
+    // const [imgHeal, setImgHeal] = useState(false);
+    const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
     // const [playerAtk, setPlayerAtk] = useState(p1.attack);
     // console.log(enemyTurn)
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 50, attack: 8, url: ghost, id: 2},
+        { name: 'banshee', health: 10, attack: 2, url: ghost, id: 2},
     ]);
+    console.log(foe[0].attack)
 
 
 
@@ -32,15 +32,6 @@ function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, ene
     function endTurn(){
         setCount(5)
     }
-
-// 
-    useEffect(() => {
-        if (foe[0] === undefined){
-            alert('you win!');
-            navigate('/');
-            // need to summon modal here
-        }
-    }, [foe, navigate]);
 
     const playerTokens = []
         // loop to initialize tokens
@@ -51,33 +42,36 @@ function ToolBar({ count,player,health,attack, portrait,setCount={setCount}, ene
     return(
         <>
         <Game
+            health={playerHealth}
+            setP1Health= {setPlayerHealth}
             portrait={p1.portrait}
-            health={playerHealth} setPlayerHealth={setPlayerHealth}
             player={p1.player}
             foes={foe}
+            enemyAtk = {foe[0].attack}
             // attackFunc={attackFunc}
             // imgVisible={imgVisible}
-            imgHeal= {imgHeal}
+            // imgHeal= {imgHeal}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             playerAttack = {p1.attack}
+            playerDefense = {p1.defense}
             // heal={heal} setHeal={setHeal}
         />
 
         <div className='Bar'>
-            <div>
+            <div className='Bar-turn'>
+                <img src={icon}/>
                 <p>{count}/5</p>
             </div>
-            
-            <section className="new">
-                <div className="container">
-                    <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}
-                    health={playerHealth} setPlayerHealth={setPlayerHealth}
-                    setP1={setP1}
-                    />
-                </div>
-            </section>
 
-            <div>
+            <div className="Bar-hand">
+                <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}
+                health={playerHealth}
+                setP1Health= {setPlayerHealth}
+                setP1={setP1}
+                />
+            </div>
+        
+            <div className='Bar-next'>
                 <button onClick={()=>{endTurn()}}>End Turn</button>
             </div> 
         </div>

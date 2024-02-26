@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Card.scss'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe, health,setPlayerHealth,setP1}) => {
+const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1}) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
+    const navigate = useNavigate()
 
     const [imgVisible, setImgVisible] = useState(false);
-    console.log(typeof setCount)
+    // console.log(typeof setCount)
+    console.log(health)
+
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------
@@ -18,8 +22,10 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setPlayerHealth,setP1}) 
             alert('pick another card')
         } else{
             const newHp = Number(foe[0].health) - Number(p1.attack);
-            if (newHp <= 0) {
-                setFoe(prevFoe => prevFoe.slice(1));
+            if (newHp <= 0 || foe[0] === undefined) {
+                    alert('you win!');
+                    navigate('/');
+
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
@@ -39,9 +45,8 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setPlayerHealth,setP1}) 
         if(count > 3){
             alert('pick another card')
         }else {
-            const healing = Number(health)+10 
-            setPlayerHealth(healing)   
-            console.log(healing)
+            const healing = Number(health) + 2;
+            setP1Health(healing);
             setCount(count+2)
             // setImgHeal(true); // Set the state to display the img
             setTimeout(() => {
@@ -76,7 +81,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setPlayerHealth,setP1}) 
             alert('pick another card')
         } else{
 
-            const atkUp = Number(p1.attack)+10 
+            const atkUp = Number(p1.attack)+1 
             console.log(atkUp)
             setP1({ ...p1, attack: atkUp })
             setCount(count + 2);
@@ -127,7 +132,7 @@ function handleEffect(effect) {
             setRandomCards(selectedCards);
         }
     }, [deck]);
-    console.log(deck)
+    // console.log(deck)
 
     return (
         <div className='hand'>

@@ -52,7 +52,7 @@ function Board(){
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait}
+            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait} defense={hero.defense}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             />
         </div>

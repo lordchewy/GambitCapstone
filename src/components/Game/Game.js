@@ -12,9 +12,11 @@ import world from '../../assets/Images/background5.png'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
-function Game({portrait,health,setPlayerHealth, player, 
-    foes,imgVisible,imgHeal,
-    enemyTurn, setEnemyTurn, playerAttack}){
+function Game({portrait,health, player,playerAttack, playerDefense,
+    setP1Health,
+    foes,enemyAtk,
+    imgVisible,imgHeal,
+    enemyTurn, setEnemyTurn}){
     const ImageStyle = {display: 'block',
     position: 'absolute',
     zIndex: 999,
@@ -39,7 +41,9 @@ function Game({portrait,health,setPlayerHealth, player,
 
     // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
-
+    console.log(health)
+    console.log(enemyAtk)
+        
 
     function Number({ n }) {
         const { number } = useSpring({
@@ -55,7 +59,8 @@ function Game({portrait,health,setPlayerHealth, player,
     useEffect(() => {
         if (enemyTurn === true) {
             foes.forEach((foe) => {
-                setPlayerHealth(prevHealth => prevHealth - 10)
+                const newHealth = health - foe.attack;
+                setP1Health(newHealth);
                 setTimeout(() => {
                     setEnemyAttack(false)
                 }, 200);
@@ -64,7 +69,7 @@ function Game({portrait,health,setPlayerHealth, player,
             });
         }
     }, [enemyTurn]);
-    
+
 
 
 
@@ -86,7 +91,7 @@ function Game({portrait,health,setPlayerHealth, player,
                             <p>{health}</p>
                         </div>
                         <div className='game-board__player__stats'>
-                            <p>{health}<img src={def} className='stat'/></p>
+                            <p>{playerDefense}<img src={def} className='stat'/></p>
                             <p>{playerAttack}<img src={atk} className='stat'/></p>   
                         </div>
                         <div>
