@@ -5,7 +5,7 @@
 .App {
   font-family: 'Nosifier';
     z-index: 0;
-    width: 1500px;
+    width: 100vw;
     height: 750px;
     position: relative;
     display: flex;
@@ -14,21 +14,24 @@
     overflow: hidden;
     justify-content: space-between;
     align-items: center;
-    background-image: url('assets/Images/background6.png');
+    background-image: url('../../gambit/src/assets/Images/rose.png');
+
+
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 *{
   // border: solid black 1px;
 }
 
 button{
-  background-color: yellow;
-  // border-right: 10px solid; 
-  // border-bottom: 10px solid;
-  // height: 30px;
-  // width: 30px;
-  // transform: rotate(-45deg);
+  color: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 25px;
+  background: rgb(0,0,0);
+  background: linear-gradient(142deg, rgba(0,0,0,1) 36%, rgba(79,21,11,1) 51%); 
+
 
 }
 

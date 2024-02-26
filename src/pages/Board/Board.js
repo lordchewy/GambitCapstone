@@ -14,6 +14,8 @@ function Board(){
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
     const [enemyTurn, setEnemyTurn] = useState(false)
+    const [turn, setTurn] = useState(0)
+    console.log(turn)
 
     const getHero = async (characterId) => {
         try {
@@ -32,7 +34,8 @@ function Board(){
         if (count > 4) {
             // Alert indicating enemy turn need to summon modal here
             alert('enemy turn');
-            setEnemyTurn(true) 
+            setEnemyTurn(true)
+            setTurn(turn+1) 
             setTimeout(() => {
                 setCount(0);
             }, 200);
@@ -54,6 +57,7 @@ function Board(){
             count={count}  setCount={setCount}
             player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait} defense={hero.defense}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
+            turn ={turn}
             />
         </div>
     )

@@ -11,8 +11,9 @@ import icon from '../../assets/Images/wolftoken.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
-    console.log(typeof setCount)
+function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, 
+    turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
+    // console.log(typeof setCount)
 
     const navigate = useNavigate()
     // const [imgVisible, setImgVisible] = useState(false);
@@ -22,9 +23,9 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     // const [playerAtk, setPlayerAtk] = useState(p1.attack);
     // console.log(enemyTurn)
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 10, attack: 2, url: ghost, id: 2},
+        { name: 'banshee', health: 100, attack: 2, url: ghost, id: 2},
     ]);
-    console.log(foe[0].attack)
+    // console.log(foe[0].attack)
 
 
 
@@ -33,11 +34,11 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         setCount(5)
     }
 
-    const playerTokens = []
-        // loop to initialize tokens
-        for (let i = 1; i <= 5 - count; i++) {
-            playerTokens.push(<div key={i} className={`player token${i}`}></div>);
-        }
+    // const playerTokens = []
+    //     // loop to initialize tokens
+    //     for (let i = 1; i <= 5 - count; i++) {
+    //         playerTokens.push(<div key={i} className={`player token${i}`}></div>);
+    //     }
 
     return(
         <>
@@ -58,7 +59,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         />
 
         <div className='Bar'>
-            <div className='Bar-turn'>
+            <div className='Bar-curr'>
                 <img src={icon}/>
                 <p>{count}/5</p>
             </div>
@@ -68,11 +69,13 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
                 health={playerHealth}
                 setP1Health= {setPlayerHealth}
                 setP1={setP1}
+                turn={turn}
                 />
             </div>
         
             <div className='Bar-next'>
                 <button onClick={()=>{endTurn()}}>End Turn</button>
+                <p>current turn: {turn}</p>
             </div> 
         </div>
 

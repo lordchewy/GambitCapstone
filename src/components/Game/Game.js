@@ -41,8 +41,8 @@ function Game({portrait,health, player,playerAttack, playerDefense,
 
     // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
-    console.log(health)
-    console.log(enemyAtk)
+    // console.log(health)
+    // console.log(enemyAtk)
         
 
     function Number({ n }) {

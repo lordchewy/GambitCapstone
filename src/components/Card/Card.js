@@ -5,20 +5,20 @@ import './Card.scss'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1}) => {
+const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn}) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
 
     const [imgVisible, setImgVisible] = useState(false);
     // console.log(typeof setCount)
-    console.log(health)
+    // console.log(health)
 
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------
     function attackFunc() {
-        if(count > 3){
+        if(count > 5){
             alert('pick another card')
         } else{
             const newHp = Number(foe[0].health) - Number(p1.attack);
@@ -53,7 +53,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1}) => {
                 // setImgHeal(false); // Set the state to hide the img
             }, 200);
         }
-        console.log(index)
+        // console.log(index)
     }
 // // 
 //     function attackAll() {
@@ -82,7 +82,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1}) => {
         } else{
 
             const atkUp = Number(p1.attack)+1 
-            console.log(atkUp)
+            // console.log(atkUp)
             setP1({ ...p1, attack: atkUp })
             setCount(count + 2);
         }
@@ -131,7 +131,7 @@ function handleEffect(effect) {
             }));
             setRandomCards(selectedCards);
         }
-    }, [deck]);
+    }, [deck, turn]);
     // console.log(deck)
 
     return (
