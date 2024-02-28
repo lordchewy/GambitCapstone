@@ -41,6 +41,8 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn})
         setCount(count + 1);
         }
     }
+
+
     function healFunc(index){
         if(count > 3){
             alert('pick another card')
@@ -86,12 +88,17 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn})
             setP1({ ...p1, attack: atkUp })
             setCount(count + 2);
         }
+        return
     }
 // ------------------------------------
 function handleEffect(effect) {
     switch (effect) {
         case 'attack' || 'attackAll':
-            attackFunc(); // Call the attack function
+            attackFunc();
+            return(<p>
+                {p1.attack}
+            </p>)
+            // Call the attack function
             break;
         case 'heal':
             healFunc(); // Call the defense function
@@ -125,9 +132,10 @@ function handleEffect(effect) {
         if (deck.length > 0) {
             const shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
             const selectedCards = shuffledDeck.slice(0, 5).map(card => ({
-                title: `Card ${card.id}`,
-                cost: 2,
-                effect: card.effect
+                cost: `${card.cost}`,
+                effect: card.effect,
+                description: card.description
+
             }));
             setRandomCards(selectedCards);
         }
@@ -138,12 +146,12 @@ function handleEffect(effect) {
         <div className='hand'>
             {randomCards.map((card, index) => (
                 <div className="card" key={index}>
-                    <h3 className="title">{card.title}</h3>
+                    <h3 className="cost">{card.cost}</h3>
                     <div className="bar">
                         <div className="description">{card.effect}
                         </div>
                         <button onClick={() => handleEffect(card.effect)}>
-                            effect
+                        {card.description}
                         </button>
                     </div>
                 </div>

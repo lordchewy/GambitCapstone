@@ -7,16 +7,17 @@ import './Game.scss'
 import './../Header/Header'
 import slash from '../../assets/Images/slash.png'
 import heal from '../../assets/Images/heal.png'
-import world from '../../assets/Images/background5.png'
+import world from '../../assets/Images/cityview.png'
 
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
 function Game({portrait,health, player,playerAttack, playerDefense,
     setP1Health,
-    foes,enemyAtk,
+    foes,enemyAtk,enemyDef,
     imgVisible,imgHeal,
-    enemyTurn, setEnemyTurn}){
+    enemyTurn, setEnemyTurn})
+    {
     const ImageStyle = {display: 'block',
     position: 'absolute',
     zIndex: 999,
@@ -43,29 +44,30 @@ function Game({portrait,health, player,playerAttack, playerDefense,
     const [enemyAttack, setEnemyAttack] = useState(false)
     // console.log(health)
     // console.log(enemyAtk)
-        
+    console.log(typeof playerDefense)
 
-    function Number({ n }) {
-        const { number } = useSpring({
-            from: { number: 0 },
-            number: n || 0, // Ensure n is a number or default to 
-            delay: 200,
-            config: { mass: 1, tension: 20, friction: 10 },
-        });
+    // function Number({ n }) {
+    //     const { number } = useSpring({
+    //         from: { number: 0 },
+    //         number: n || 0, // Ensure n is a number or default to 
+    //         delay: 200,
+    //         config: { mass: 1, tension: 20, friction: 10 },
+    //     });
     
-        return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
-    }
+    //     return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
+    // }
 
     useEffect(() => {
         if (enemyTurn === true) {
             foes.forEach((foe) => {
-                const newHealth = health - foe.attack;
-                setP1Health(newHealth);
+                const newHealth = Number(health) + Number(playerDefense) - foe.attack;
                 setTimeout(() => {
                     setEnemyAttack(false)
                 }, 200);
+                setP1Health(newHealth);
                 setEnemyAttack(true)
                 setEnemyTurn(false);
+
             });
         }
     }, [enemyTurn]);
@@ -129,11 +131,19 @@ function Game({portrait,health, player,playerAttack, playerDefense,
                     {foes.map((foe, index) => {
                     if (foe) { // Replace 'foe.condition' with your actual condition
                         return (
-                            <div className='game-board__enemy' key={index} id={index}>  
-                                <div><p>{foe.name}</p></div>
-                                <div><p><Number n={foe.health}/></p></div>
-                                <div><img src={foe.url} alt={foe.name} className='playerImg'/></div>
-                            </div>
+                            <div className='game-board__enemy' key={index} id={index}>
+
+
+                                                        <div className='game-board__player__health'>
+                            <p>{foe.name}</p>
+                            <p>{foe.health}</p>
+                        </div>
+                        <div className='game-board__player__stats'>
+                            <p>{enemyDef}<img src={def} className='stat'/></p>
+                            <p>{enemyAtk}<img src={atk} className='stat'/></p>   
+                        </div>  
+                            <div><img src={foe.url} alt={foe.name} className='enemyImg'/></div>
+                        </div>
                         );
                     }
                     return null; // If condition is false, return null or nothing

@@ -23,7 +23,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     // const [playerAtk, setPlayerAtk] = useState(p1.attack);
     // console.log(enemyTurn)
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 100, attack: 2, url: ghost, id: 2},
+        { name: 'banshee', health: 100, attack: 2, defense:1,  url: ghost, id: 2},
     ]);
     // console.log(foe[0].attack)
 
@@ -49,6 +49,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             player={p1.player}
             foes={foe}
             enemyAtk = {foe[0].attack}
+            enemyDef = {foe[0].defense}
             // attackFunc={attackFunc}
             // imgVisible={imgVisible}
             // imgHeal= {imgHeal}

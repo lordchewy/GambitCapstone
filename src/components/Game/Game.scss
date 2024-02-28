@@ -20,7 +20,7 @@
     width: 80%; /* Adjust as needed */
     height: 100%; /* Adjust as needed */
     box-sizing: border-box;
-    
+    border: solid black 10px;
 }
 
 .game{
@@ -84,6 +84,12 @@
 .playerImg{
     width: 180px;
     height: 250px;
+}
+
+.enemyImg{
+    width: 180px;
+    height: 250px;
+    transform: scaleX(-1);
 }
   
 
