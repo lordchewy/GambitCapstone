@@ -93,4 +93,13 @@
 }
   
 
+@keyframes slideToLeft {
+    0% {
+        left: 100%; /* Start from the right side */
+    }
+    100% {
+        left: 0%; /* End at the left side */
+    }
+}
+
 

@@ -37,8 +37,8 @@ function Main() {
         return <p>Loading...</p>;
     }
 
-    const selectedHero = characterId || 1
-    // console.log(selectedHero)
+    const selectedHero = characterId || characters
+    console.log(characters)
 
     const filteredHeroes = characters.filter((character)=>{
         return selectedHero !== character.id;})

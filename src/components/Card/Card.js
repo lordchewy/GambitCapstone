@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Card.scss'
+import slash from '../../assets/Images/slash.png'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn}) => {
+const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn, 
+    setImgVisible, setImgHeal
+}) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
-
-    const [imgVisible, setImgVisible] = useState(false);
     // console.log(typeof setCount)
     // console.log(health)
 
@@ -36,23 +37,23 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn})
                 setTimeout(() => {
                     specificFoeElement.classList.remove('flash');
                     setImgVisible(false); // Set the state to hide the img
-                }, 200);
+                }, 400);
             }
         setCount(count + 1);
         }
     }
 
 
-    function healFunc(index){
+    function healFunc(){
         if(count > 3){
             alert('pick another card')
         }else {
             const healing = Number(health) + 2;
             setP1Health(healing);
             setCount(count+2)
-            // setImgHeal(true); // Set the state to display the img
+            setImgHeal(true); // Set the state to display the img
             setTimeout(() => {
-                // setImgHeal(false); // Set the state to hide the img
+                setImgHeal(false); // Set the state to hide the img
             }, 200);
         }
         // console.log(index)

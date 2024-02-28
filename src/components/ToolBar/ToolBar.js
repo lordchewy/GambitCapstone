@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Game from '../Game/Game';
 import Card from '../Card/Card'
 import ghost from '../../assets/Images/Crow.png'
-import icon from '../../assets/Images/wolftoken.png'
 
 
 import './ToolBar.scss'
@@ -16,10 +15,14 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     // console.log(typeof setCount)
 
     const navigate = useNavigate()
-    // const [imgVisible, setImgVisible] = useState(false);
-    // const [imgHeal, setImgHeal] = useState(false);
+
+    
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
+
+
+    const [imgVisible, setImgVisible] = useState(false);
+    const [imgHeal, setImgHeal] = useState(false);
     // const [playerAtk, setPlayerAtk] = useState(p1.attack);
     // console.log(enemyTurn)
     const [foe, setFoe] = useState([
@@ -50,19 +53,19 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             foes={foe}
             enemyAtk = {foe[0].attack}
             enemyDef = {foe[0].defense}
-            // attackFunc={attackFunc}
-            // imgVisible={imgVisible}
-            // imgHeal= {imgHeal}
+        
+            imgVisible={imgVisible}
+            imgHeal= {imgHeal}
+
+
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             playerAttack = {p1.attack}
             playerDefense = {p1.defense}
-            // heal={heal} setHeal={setHeal}
         />
 
         <div className='Bar'>
             <div className='Bar-curr'>
-                <img src={icon}/>
-                <p>{count}/5</p>
+                {count}/5
             </div>
 
             <div className="Bar-hand">
@@ -71,12 +74,17 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
                 setP1Health= {setPlayerHealth}
                 setP1={setP1}
                 turn={turn}
+
+                setImgVisible={setImgVisible}
+                setImgHeal={setImgHeal}
                 />
             </div>
         
             <div className='Bar-next'>
-                <button onClick={()=>{endTurn()}}>End Turn</button>
+                <button onClick={()=>{endTurn()}}>End Turn
                 <p>current turn: {turn}</p>
+                </button>
+                
             </div> 
         </div>
 
