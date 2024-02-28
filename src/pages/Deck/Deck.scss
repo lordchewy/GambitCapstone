@@ -1,5 +1,56 @@
 *{
-    background-color: aqua;
     margin: 0px;
     padding: 0px;
 }
+
+.deck{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: aqua;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+    &-card{
+        background-image: url('../../assets/Images/card.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 3;
+        border-radius: 10px;
+        box-shadow: -1rem 0 3rem #490303;
+        border: solid black 5px;
+        height: 340px;
+        width: 240px;
+        min-width: 200px;
+        max-width: 200px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+    &-description{
+        color: white;
+        max-height: 100px;
+    }
+    &-cost {
+        background-color: rgb(231, 145, 33);
+        display: flex;
+        justify-content: center;
+        border: solid 1px black;
+        width: 50%;
+        border-radius: 30%;
+        font-weight: 300;
+        left: 40px;
+        top: 30px;
+    }
+}
+
+
+
+
+
+
+
+

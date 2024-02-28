@@ -14,7 +14,8 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
     const navigate = useNavigate()
     // console.log(typeof setCount)
     // console.log(health)
-
+    let hand = 5
+    console.log(deck)
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------
@@ -56,8 +57,24 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
                 setImgHeal(false); // Set the state to hide the img
             }, 200);
         }
-        // console.log(index)
     }
+
+
+    function draw(){
+        if(count > 5){
+            alert('pick another card')
+        }else {
+            const shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
+            const selectedCards = shuffledDeck.slice(0, 3).map(card => ({
+                cost: card.cost,
+                effect: card.effect,
+                description: card.description
+
+            }));
+            console.log(selectedCards)
+            setRandomCards(prevCards => [...prevCards, ...selectedCards]);
+            setCount(count+2)
+    }}
 // // 
 //     function attackAll() {
 //         if(count > 2){
@@ -107,6 +124,9 @@ function handleEffect(effect) {
         case 'buff':
             attackUp(); // Call the defense function
             break;
+        case 'draw':
+            draw(); // Call the defense function
+            break;
         // Add more cases for other effects as needed
         default:
             console.error(`Unknown effect: ${effect}`);
@@ -132,8 +152,8 @@ function handleEffect(effect) {
     useEffect(() => {
         if (deck.length > 0) {
             const shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
-            const selectedCards = shuffledDeck.slice(0, 5).map(card => ({
-                cost: `${card.cost}`,
+            const selectedCards = shuffledDeck.slice(0, hand).map(card => ({
+                cost: card.cost,
                 effect: card.effect,
                 description: card.description
 
