@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated, useSpring } from 'react-spring';
 
-
+import Alert from '../Alert/Alert';
 
 import './Game.scss'
 import './../Header/Header'
+
+
+
 import slash from '../../assets/Images/alastorslash.png'
 import skewer from '../../assets/Images/border.png'
+import ult from '../../assets/Images/alastorult.png'
 import heal from '../../assets/Images/heal.png'
 import world from '../../assets/Images/cityview.png'
-
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
-function Game({portrait,health, player,playerAttack, playerDefense,
+function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,
     setP1Health,
     foes,enemyAtk,enemyDef,
-    imgVisible,imgHeal,
+    imgVisible,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn})
     {
     const ImageStyle = {display: 'block',
@@ -28,52 +31,66 @@ function Game({portrait,health, player,playerAttack, playerDefense,
     transform: 'translate(-50%, -50%)',
     animation: 'slideToLeft 10s linear forwards'} 
 
+    const ImageStyle3 = {display: 'block',
+    position: 'absolute',
+    zIndex: 999,
+    width: '1000px',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    animation: 'slideToLeft 20s linear forwards'} 
+
 
     const self = {display: 'block',
     position: 'absolute',
     zIndex: 999,
     width: '500px',
-    marginTop: '600px',
-    marginLeft: '-600px'}  
+    top: '0%',
+    right:'60%',}
+
 
     const ImageStyle2 = {display: 'block',
     position: 'absolute',
     zIndex: 999,
     width: '500px',
-    marginTop: '600px',
-    marginLeft: '-200px',
+    top: '30%',
+    right:'60%',
     transform: 'scaleX(-1)',} 
 
     // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
-    // console.log(health)
-    // console.log(enemyAtk)
-    console.log(typeof playerDefense)
 
-    // function Number({ n }) {
-    //     const { number } = useSpring({
-    //         from: { number: 0 },
-    //         number: n || 0, // Ensure n is a number or default to 
-    //         delay: 200,
-    //         config: { mass: 1, tension: 20, friction: 10 },
-    //     });
-    
-    //     return <animated.div>{number.to((n) => (typeof n === 'number' ? n.toFixed(0) : ''))}</animated.div>;
-    // }
 
     useEffect(() => {
         if (enemyTurn === true) {
+            console.log(foes)
+            let x = 0
             foes.forEach((foe) => {
-                const newHealth = Number(health) + Number(playerDefense) - foe.attack;
-                setTimeout(() => {
-                    setEnemyAttack(false)
-                }, 200);
-                setP1Health(newHealth);
-                setEnemyAttack(true)
-                setEnemyTurn(false);
-
+                if(playerDefense){
+                    const leftover = Number(playerDefense) - foe.attack
+                    const newHealth = Number(health)- (-1*Number(leftover));
+                    x+= 1
+                    setTimeout(() => {
+                        setEnemyAttack(false)
+                    }, 400);
+                    setP1Health(newHealth);
+                    setEnemyAttack(true)
+                    setEnemyTurn(false)
+                }else{
+                    const newHealth = Number(health)- foe.attack;
+                    setTimeout(() => {
+                        setEnemyAttack(false)
+                    }, 400);
+                    setP1Health(newHealth);
+                    setEnemyAttack(true)
+                    setEnemyTurn(false)
+                    
+                }
             });
+        console.log('enemy count: ', x)
         }
+        setP1({ ...p1, defense: baseDef })
+        
     }, [enemyTurn]);
 
 
@@ -86,11 +103,13 @@ function Game({portrait,health, player,playerAttack, playerDefense,
     return(
         
         <div className='game-container'>
+            <Alert/>
             <img src={world} className='map'/>
+
+
+
             <div className='game'>
                     
-
-
                     <div className='game-board__player'>
                         <div className='game-board__player__health'>
                             <p>{player}</p>
@@ -112,6 +131,14 @@ function Game({portrait,health, player,playerAttack, playerDefense,
                                     src={slash}
                                     alt="player attack"
                                     style={ImageStyle}
+                                />
+                            )}
+                            {imgUlt && (
+                                <img
+                                    src={ult}
+                                    alt="player ultimate"
+                                    style={ImageStyle3}
+                                    width='100%'
                                 />
                             )}
                             {enemyAttack && (
@@ -150,6 +177,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,
                     return null; // If condition is false, return null or nothing
                 })}
             </div>
+            <Alert foes={foes}/>
         </div>
     )
 }

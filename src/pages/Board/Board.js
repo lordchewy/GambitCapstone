@@ -33,12 +33,15 @@ function Board(){
     useEffect(() => {
         if (count > 4) {
             // Alert indicating enemy turn need to summon modal here
-            alert('enemy turn');
-            setEnemyTurn(true)
-            setTurn(turn+1) 
+            // alert('enemy turn');
+            // setEnemyTurn(true)
+            // setTurn(turn+1) 
             setTimeout(() => {
+                alert('enemy turn');
+                setEnemyTurn(true)
+                setTurn(turn+1) 
                 setCount(0);
-            }, 200);
+            }, 400);
         }
     }, [count]);
 

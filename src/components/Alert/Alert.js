@@ -1,20 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
 
-import './Alert.scss';
+import './Alert.scss'
 import logo from '../../assets/Images/logo.png'
+import { Link } from 'react-router-dom';
 
-function Alert({ message, onClose, isOpen }) {
+function Alert({foes}) {
+    const [round, setRound] = useState(0)
+    console.log(foes)
+    function nextRound(){
+            setRound(round+1)
+    }
     // Conditionally render the modal based on the isOpen prop
-    const displayStyle = isOpen ? { display: 'flex' } : { display: 'none' };
 
     return (
-        <div className="modal" style={displayStyle}>
-            <div className="modal-content">
-                <span className="close" onClick={onClose}>
-                    <div className='modal-wrap'>close</div>
-                </span>
-                <p>{message}</p>
-            </div>
+        <div className="next">
+            <button onClick={nextRound}> Next Round</button>
+            <div>{round}</div>
+
         </div>
     );
 }

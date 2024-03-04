@@ -19,19 +19,18 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
-
+    
+    const baseDef = defense
 
     const [imgVisible, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
-    // const [playerAtk, setPlayerAtk] = useState(p1.attack);
-    // console.log(enemyTurn)
+    const [imgUlt, setImgUlt] = useState(false);
+
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 100, attack: 2, defense:1,  url: ghost, id: 2},
+        { name: 'banshee', health: 20, attack: 4, defense:1,  url: ghost, id: 2},
+
     ]);
     // console.log(foe[0].attack)
-
-
-
 
     function endTurn(){
         setCount(5)
@@ -46,6 +45,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     return(
         <>
         <Game
+            setP1={setP1}
+            p1 ={p1}
             health={playerHealth}
             setP1Health= {setPlayerHealth}
             portrait={p1.portrait}
@@ -53,14 +54,17 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             foes={foe}
             enemyAtk = {foe[0].attack}
             enemyDef = {foe[0].defense}
+            
         
             imgVisible={imgVisible}
             imgHeal= {imgHeal}
+            imgUlt = {imgUlt}
 
 
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             playerAttack = {p1.attack}
             playerDefense = {p1.defense}
+            baseDef = {baseDef}
         />
 
         <div className='Bar'>
@@ -77,6 +81,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
 
                 setImgVisible={setImgVisible}
                 setImgHeal={setImgHeal}
+                setImgUlt={setImgUlt}
                 />
             </div>
         
