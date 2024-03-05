@@ -27,8 +27,9 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     const [imgUlt, setImgUlt] = useState(false);
 
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 20, attack: 4, defense:1,  url: ghost, id: 2},
-
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 3},
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 4}
     ]);
     // console.log(foe[0].attack)
 
@@ -41,7 +42,11 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     //     for (let i = 1; i <= 5 - count; i++) {
     //         playerTokens.push(<div key={i} className={`player token${i}`}></div>);
     //     }
-
+    
+    if(foe[0] === undefined){
+        // alert('you win!');
+        navigate('/');
+    }
     return(
         <>
         <Game
@@ -52,8 +57,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             portrait={p1.portrait}
             player={p1.player}
             foes={foe}
-            enemyAtk = {foe[0].attack}
-            enemyDef = {foe[0].defense}
+            enemyAtk = {foe[0]?.attack || 0}
+            enemyDef = {foe[0]?.defense || 0}
             
         
             imgVisible={imgVisible}

@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 
 function Alert({foes}) {
     const [round, setRound] = useState(0)
-    console.log(foes)
+    // console.log(foes[0].health)
     function nextRound(){
+        if(foes[0].health === 0){
             setRound(round+1)
+        }
     }
     // Conditionally render the modal based on the isOpen prop
 

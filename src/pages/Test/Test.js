@@ -13,7 +13,6 @@ const Test = () => {
     return (
         <div className='test'>
             <p>hello</p>
-            <Alert/>
         </div>
         
     );

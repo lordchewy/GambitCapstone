@@ -13,10 +13,9 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
-    // console.log(typeof setCount)
-    // console.log(health)
     let hand = 5
-    // console.log(deck)
+
+
 
 
     // ---------------------------------------------------------------------------------------------------------------------------------
@@ -27,10 +26,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
             const newHp = Number(foe[0].health) - Number(p1.attack -foe[0].defense);
             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             if (newHp <= 0 || foe[0] === undefined) {
-                    alert('you win!');
-                    // navigate('/');
-
-
+                setFoe(prevFoe => prevFoe.slice(1));
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             }
@@ -54,8 +50,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
             const newHp = Number(foe[0].health) - 4 * Number(p1.attack);
             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
             if (newHp <= 0 || foe[0] === undefined) {
-                    alert('you win!');
-                    // navigate('/');
+                setFoe(prevFoe => prevFoe.slice(1));
 
             } else {
                 setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
