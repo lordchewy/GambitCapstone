@@ -9,11 +9,11 @@ function Alert({foes}) {
     const [round, setRound] = useState(0)
     // console.log(foes[0].health)
     function nextRound(){
-        if(foes[0].health === 0){
-            setRound(round+1)
+        if (foes && foes[0] === undefined) {
+            setRound(round + 1);
         }
     }
-    // Conditionally render the modal based on the isOpen prop
+
 
     return (
         <div className="next">

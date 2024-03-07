@@ -103,7 +103,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
     return(
         
         <div className='game-container'>
-            <Alert foes={foes}/>
+            {/* <Alert foes={foes}/> */}
             <img src={world} className='map'/>
 
 

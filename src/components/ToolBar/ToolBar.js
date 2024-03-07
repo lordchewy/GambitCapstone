@@ -45,7 +45,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     
     if(foe[0] === undefined){
         // alert('you win!');
-        navigate('/');
+        // navigate('/');
     }
     return(
         <>

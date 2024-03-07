@@ -8,8 +8,6 @@ import Header from "../../components/Header/Header";
 import './Board.scss'
 
 function Board(){
-
-
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);

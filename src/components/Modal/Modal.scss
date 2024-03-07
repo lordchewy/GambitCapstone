@@ -1,0 +1,13 @@
+.modal{
+    position: fixed;
+    background-color: rgb(192, 121, 35);
+    border-radius: 25px;
+    width: 25rem;
+    height: 25rem;
+    &-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
