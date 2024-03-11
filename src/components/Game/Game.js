@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated, useSpring } from 'react-spring';
 
-import Alert from '../Alert/Alert';
+// import Alert from '../Alert/Alert';
+import Modal from '../Modal/Modal';
 
 import './Game.scss'
 import './../Header/Header'
@@ -12,6 +13,8 @@ import slash from '../../assets/Images/alastorslash.png'
 import skewer from '../../assets/Images/border.png'
 import ult from '../../assets/Images/alastorult.png'
 import heal from '../../assets/Images/heal.png'
+
+
 import world from '../../assets/Images/cityview.png'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
@@ -103,7 +106,9 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
     return(
         
         <div className='game-container'>
-            {/* <Alert foes={foes}/> */}
+            <div>
+                <Modal/>
+            </div>
             <img src={world} className='map'/>
 
 
@@ -177,7 +182,9 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                     return null; // If condition is false, return null or nothing
                 })}
             </div>
-            <Alert foes={foes}/>
+            <div>
+                <Modal/>
+            </div>
         </div>
     )
 }

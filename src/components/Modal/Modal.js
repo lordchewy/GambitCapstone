@@ -3,7 +3,7 @@ import './Modal.scss'
 
 
 function Modal(){
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
     const toggleModal = () => {
         setModal(!modal) 
         // The set state of !modal will set state to opposite of current
@@ -12,7 +12,7 @@ function Modal(){
     }
     return(
         <>
-        <button className='modal-btn' onClick={toggleModal}>Open</button>
+        <button className='modal-btn' onClick={toggleModal}>Next</button>
         {/* if modal is true return modal if not return nothing */}
         {modal &&(
             <div className='modal'>
