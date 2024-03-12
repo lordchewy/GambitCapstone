@@ -36,7 +36,6 @@ function Board(){
             setShowEnemyTurnMessage(true);
             setTimeout(() => {
                 setShowEnemyTurnMessage(false);
-                // alert('enemy turn');
                 setEnemyTurn(true)
                 setTurn(turn+1) 
                 setCount(0);

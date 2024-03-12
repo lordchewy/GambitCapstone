@@ -104,13 +104,11 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
 
 
     return(
-        
         <div className='game-container'>
             <div>
                 <Modal text={'relics'}/>
             </div>
             <img src={world} className='map'/>
-
 
 
             <div className='game'>
