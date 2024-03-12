@@ -22,7 +22,7 @@ import def from '../../assets/Images/defense.png'
 function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,
     setP1Health,
     foes,enemyAtk,enemyDef,
-    imgVisible,imgHeal,imgUlt,
+    imgAttack,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn})
     {
     const ImageStyle = {display: 'block',
@@ -107,7 +107,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
         
         <div className='game-container'>
             <div>
-                <Modal/>
+                <Modal text={'relics'}/>
             </div>
             <img src={world} className='map'/>
 
@@ -131,7 +131,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
 
                     <div className='game-board'>
                         <div className='game-board__animation'>
-                            {imgVisible && (
+                            {imgAttack && (
                                 <img
                                     src={slash}
                                     alt="player attack"
@@ -183,7 +183,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                 })}
             </div>
             <div>
-                <Modal/>
+                <Modal text={'next'}/>
             </div>
         </div>
     )

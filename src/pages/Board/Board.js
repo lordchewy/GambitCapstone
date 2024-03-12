@@ -5,6 +5,7 @@ import axios from "axios";
 
 import ToolBar from "../../components/ToolBar/ToolBar";
 import Header from "../../components/Header/Header";
+import Modal from "../../components/Modal/Modal";
 import './Board.scss'
 
 function Board(){
@@ -13,6 +14,8 @@ function Board(){
     const [hero, setHero] = useState(null);
     const [enemyTurn, setEnemyTurn] = useState(false)
     const [turn, setTurn] = useState(0)
+
+    const [showEnemyTurnMessage, setShowEnemyTurnMessage] = useState(false);
     console.log(turn)
 
     const getHero = async (characterId) => {
@@ -30,12 +33,10 @@ function Board(){
 
     useEffect(() => {
         if (count > 4) {
-            // Alert indicating enemy turn need to summon modal here
-            // alert('enemy turn');
-            // setEnemyTurn(true)
-            // setTurn(turn+1) 
+            setShowEnemyTurnMessage(true);
             setTimeout(() => {
-                alert('enemy turn');
+                setShowEnemyTurnMessage(false);
+                // alert('enemy turn');
                 setEnemyTurn(true)
                 setTurn(turn+1) 
                 setCount(0);
@@ -52,6 +53,9 @@ function Board(){
 
     return (
         <div className="board">
+            {showEnemyTurnMessage && (
+                <p className="board-message">Enemy's Turn</p>
+            )}
             {/* <Header/> */}
             <ToolBar
             // enemyTurn={enemyTurn}  

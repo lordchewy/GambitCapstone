@@ -2,7 +2,7 @@ import React , {useState} from 'react'
 import './Modal.scss'
 
 
-function Modal(){
+function Modal({text}){
     const [modal, setModal] = useState(false);
     const toggleModal = () => {
         setModal(!modal) 
@@ -12,19 +12,17 @@ function Modal(){
     }
     return(
         <>
-        <button className='modal-btn' onClick={toggleModal}>Next</button>
+        <button className='modal-btn' onClick={toggleModal}>{text}</button>
         {/* if modal is true return modal if not return nothing */}
         {modal &&(
             <div className='modal'>
             <div className='modal-overlay' onClick={toggleModal}></div>
             <div className='modal-content'>
-                <h1>modal content</h1>
-                <p>text of some sort</p>
+                <p>next round</p>
                 <button className='modal-close'onClick={toggleModal} >close</button>
             </div>
             </div>
         )}
-
         </>
     )
 }

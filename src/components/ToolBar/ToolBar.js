@@ -15,6 +15,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     // console.log(typeof setCount)
 
     const navigate = useNavigate()
+    const [showVictoryMessage, setShowVictoryMessage] = useState(false);
+
 
     
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
@@ -22,7 +24,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     
     const baseDef = defense
 
-    const [imgVisible, setImgVisible] = useState(false);
+    const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
 
@@ -31,24 +33,29 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 3},
         { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 4}
     ]);
-    // console.log(foe[0].attack)
+
 
     function endTurn(){
         setCount(5)
     }
-
-    // const playerTokens = []
-    //     // loop to initialize tokens
-    //     for (let i = 1; i <= 5 - count; i++) {
-    //         playerTokens.push(<div key={i} className={`player token${i}`}></div>);
-    //     }
     
-    if(foe[0] === undefined){
-        // alert('you win!');
-        // navigate('/');
-    }
+    useEffect(() => {
+        if (foe[0] === undefined) {
+            setShowVictoryMessage(true);
+            setTimeout(() => {
+                setShowVictoryMessage(false);
+            }, 400);
+        }
+    }, [foe[0]]);
+
+
     return(
         <>
+        <div>
+            {showVictoryMessage && (
+                <p className="board-message">You win!</p>
+            )}
+        </div>
         <Game
             setP1={setP1}
             p1 ={p1}
@@ -61,7 +68,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             enemyDef = {foe[0]?.defense || 0}
             
         
-            imgVisible={imgVisible}
+            imgAttack={imgAttack}
             imgHeal= {imgHeal}
             imgUlt = {imgUlt}
 
