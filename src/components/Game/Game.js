@@ -23,7 +23,8 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
     setP1Health,
     foes,enemyAtk,enemyDef,
     imgAttack,imgHeal,imgUlt,
-    enemyTurn, setEnemyTurn})
+    enemyTurn, setEnemyTurn,
+    round, setRound})
     {
     const ImageStyle = {display: 'block',
     position: 'absolute',
@@ -181,7 +182,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                 })}
             </div>
             <div>
-                <Modal text={'next'}/>
+                <Modal text={`Round: ${round}`}/>
             </div>
         </div>
     )

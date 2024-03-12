@@ -11,7 +11,7 @@ import ghost from '../../assets/Images/Crow.png'
 import './ToolBar.scss'
 
 function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, 
-    turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}}){
+    turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
     // console.log(typeof setCount)
 
     const navigate = useNavigate()
@@ -42,9 +42,16 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     useEffect(() => {
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
+            setRound(round+1)
+            setFoe([
+                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 2 },
+                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 3 },
+                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 4 }
+            ]);
+            setCount(0)
             setTimeout(() => {
                 setShowVictoryMessage(false);
-            }, 400);
+            }, 700);
         }
     }, [foe[0]]);
 
@@ -53,7 +60,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         <>
         <div>
             {showVictoryMessage && (
-                <p className="board-message">You win!</p>
+                <p className="board-message">Next Round</p>
             )}
         </div>
         <Game
@@ -77,6 +84,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             playerAttack = {p1.attack}
             playerDefense = {p1.defense}
             baseDef = {baseDef}
+
+            round={round} setRound={setRound}
         />
 
         <div className='Bar'>

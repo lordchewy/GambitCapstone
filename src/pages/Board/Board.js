@@ -9,6 +9,7 @@ import Modal from "../../components/Modal/Modal";
 import './Board.scss'
 
 function Board(){
+    const [round, setRound] = useState(0)
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
@@ -16,7 +17,7 @@ function Board(){
     const [turn, setTurn] = useState(0)
 
     const [showEnemyTurnMessage, setShowEnemyTurnMessage] = useState(false);
-    console.log(turn)
+    // console.log(turn)
 
     const getHero = async (characterId) => {
         try {
@@ -62,6 +63,7 @@ function Board(){
             player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait} defense={hero.defense}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
+            round={round} setRound={setRound}
             />
         </div>
     )
