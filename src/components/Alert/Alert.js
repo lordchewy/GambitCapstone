@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 
 import './Alert.scss'
-import logo from '../../assets/Images/logo.png'
-import { Link } from 'react-router-dom';
+// import logo from '../../assets/Images/logo.png'
+// import { Link } from 'react-router-dom';
 
 function Alert({foes}) {
     const [round, setRound] = useState(0)

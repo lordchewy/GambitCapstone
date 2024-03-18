@@ -9,7 +9,7 @@ import './Card.scss'
 
 
 const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn, 
-    setImgVisible, setImgHeal,setImgUlt
+    setImgVisible, setImgHeal,setImgUlt, round
 }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
@@ -75,8 +75,7 @@ function handleEffect(effect) {
             }));
             setRandomCards(selectedCards);
         }
-    }, [deck, turn]);
-    // console.log(deck)
+    }, [deck, turn, round]);
 
     return (
         <div className='hand'>

@@ -9,7 +9,7 @@ import Modal from "../../components/Modal/Modal";
 import './Board.scss'
 
 function Board(){
-    const [round, setRound] = useState(0)
+    const [round, setRound] = useState(1)
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
@@ -27,13 +27,25 @@ function Board(){
             console.log(err);
         }
     };
+
+    const getEnemy = async (round)  => {
+        try {
+            console.log('round: ', round)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+
     useEffect(() => {
         getHero(characterId);
-    }, [characterId]);
+        getEnemy(round)
+    }, [characterId, round]);
 
 
     useEffect(() => {
-        if (count > 4) {
+        if (count > 5) {
             setShowEnemyTurnMessage(true);
             setTimeout(() => {
                 setShowEnemyTurnMessage(false);

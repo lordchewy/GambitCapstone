@@ -29,14 +29,12 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     const [imgUlt, setImgUlt] = useState(false);
 
     const [foe, setFoe] = useState([
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 3},
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 4}
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}
     ]);
 
 
     function endTurn(){
-        setCount(5)
+        setCount(6)
     }
     
     useEffect(() => {
@@ -44,14 +42,12 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             setShowVictoryMessage(true);
             setRound(round+1)
             setFoe([
-                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 2 },
-                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 3 },
-                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 4 }
+                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 2 }
             ]);
             setCount(0)
             setTimeout(() => {
                 setShowVictoryMessage(false);
-            }, 700);
+            }, 1000);
         }
     }, [foe[0]]);
 
@@ -60,7 +56,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         <>
         <div>
             {showVictoryMessage && (
-                <p className="board-message">Next Round</p>
+                <p className="board-message__victory">Next Round</p>
             )}
         </div>
         <Game
@@ -103,6 +99,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
                 setImgVisible={setImgVisible}
                 setImgHeal={setImgHeal}
                 setImgUlt={setImgUlt}
+
+                round={round} setRound={setRound}
                 />
             </div>
         

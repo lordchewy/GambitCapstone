@@ -1,6 +1,6 @@
 //basic attack card
 export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount) {
-    if(count > 5){
+    if(count >= 5){
         alert('pick another card')
     } else{
         const newHp = Number(foe[0].health) - Number(p1.attack -foe[0].defense);
@@ -32,7 +32,8 @@ export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount) {
             const updatedFoe = [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)];
             if (newHp <= 0 || foe[0] === undefined) {
                 return updatedFoe.slice(1);
-            } else {
+            } 
+            else {
                 return updatedFoe;
             }
         });
@@ -43,7 +44,7 @@ export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount) {
             setTimeout(() => {
                 specificFoeElement.classList.remove('flash');
                 setImgUlt(false); // Set the state to hide the img
-            }, 400);
+            }, 1000);
         }
         setCount(count + 3);
     }
@@ -59,7 +60,7 @@ export function healFunc(count, health, setP1Health, setCount, setImgHeal) {
         setImgHeal(true); // Set the state to display the img
         setTimeout(() => {
             setImgHeal(false); // Set the state to hide the img
-        }, 400);
+        }, 600);
     }
 }
 
@@ -86,7 +87,7 @@ export function attackAll(count, p1, setFoe, setCount) {
         setFoe(prevFoe => {
             return prevFoe.map(fo => {
                 const newHp = fo.health - Number(p1.attack - fo.defense); // Adjust health based on player's attack
-                console.log('attack all: ', newHp);
+                // console.log('attack all: ', newHp);
                 // Check if health is less than or equal to 0
                 if (newHp <= 0) {
                     return null; // If health is 0 or less, mark for removal
