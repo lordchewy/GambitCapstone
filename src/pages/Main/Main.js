@@ -15,12 +15,13 @@ function Main() {
     // const [selectedHero, setSelectedHero] = useState(characters[0].id)
     const { characterId } = useParams();
 
-    console.log('here is the character id on main: ', characterId)
+    // console.log('here is the character id on main: ', characterId)
 
     const getCharacters = async () => {
         try {
             const response = await axios.get('http://localhost:8080/characters');
             setCharacters(response.data);
+            // console.log(response.data)
         } catch (err) {
             console.log(err);
         }
@@ -38,10 +39,10 @@ function Main() {
     }
 
     const selectedHero = characterId || characters
-    console.log(characters)
+    // console.log(characters)
 
     const filteredHeroes = characters.filter((character)=>{
-        return selectedHero !== character.id;})
+        return selectedHero !== character.hero_id;})
 
     return (
         <div className="main">
@@ -50,9 +51,9 @@ function Main() {
                 <Select characterId={selectedHero}/>
                 <ul className="heroes-option">
                     {filteredHeroes.map(hero => (
-                        <Link to={`/${hero.id}`}>
-                        <li key={hero.id} className="heroes-option__other">
-                            {hero.playable && <img src={hero.portrait} width='150px' height='200px' alt={hero.name} />}
+                        <Link to={`/${hero.hero_id}`}>
+                        <li key={hero.hero_id} className="heroes-option__other">
+                            {hero.playable && <img src={hero.portrait_url} width='150px' height='200px' alt={hero.name} />}
                         </li>
                         </Link>
                     ))}

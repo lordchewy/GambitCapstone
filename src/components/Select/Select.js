@@ -18,13 +18,13 @@ function Select({characterId}){
     if (hero === null) {
         return <p>Loading...</p>;
     }
-    console.log(hero)
-    console.log(hero.portrait)
+    // console.log(hero)
+    // console.log(hero[0].portrait_url)
 
     
     return(
         <div className='heroes-selected'>
-            <img src={hero.portrait} alt='sorry' width='300px' height='400px'/>
+            <img src={hero[0].portrait_url} alt='sorry' width='300px' height='400px'/>
         </div>    
     )
 }

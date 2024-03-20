@@ -22,7 +22,8 @@ function Board(){
     const getHero = async (characterId) => {
         try {
             const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
-            setHero(response.data);
+            setHero(response.data[0]);
+            console.log(response.data)
         } catch (err) {
             console.log(err);
         }
@@ -60,8 +61,6 @@ function Board(){
         return <p>Loading...</p>;
     }
 
-    
-
 
     return (
         <div className="board">
@@ -72,7 +71,7 @@ function Board(){
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait} defense={hero.defense}
+            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait_url} defense={hero.defense}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
             round={round} setRound={setRound}
