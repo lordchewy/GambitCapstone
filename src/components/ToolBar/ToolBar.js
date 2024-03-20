@@ -10,7 +10,7 @@ import ghost from '../../assets/Images/Crow.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, 
+function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, setTurn={setTurn},
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
     // console.log(typeof setCount)
 
@@ -29,6 +29,8 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     const [imgUlt, setImgUlt] = useState(false);
 
     const [foe, setFoe] = useState([
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
+        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
         { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}
     ]);
 
@@ -41,6 +43,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
             setRound(round+1)
+            setTurn(0)
             setFoe([
                 { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 2 }
             ]);

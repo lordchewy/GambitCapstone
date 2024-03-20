@@ -23,7 +23,7 @@ function Board(){
         try {
             const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
             setHero(response.data[0]);
-            console.log(response.data)
+            // console.log(response.data)
         } catch (err) {
             console.log(err);
         }
@@ -75,6 +75,7 @@ function Board(){
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
             round={round} setRound={setRound}
+            setTurn={setTurn}
             />
         </div>
     )

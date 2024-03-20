@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { attackFunc, ultimateFunc, healFunc,draw, attackAll, attackUp,defenseUp } from '../../utils/cardUtils';
 import Alert from '../Alert/Alert';
@@ -14,11 +14,12 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
+    const { characterId } = useParams();
     let hand = 5
 
 
 
-
+console.log(deck)
 function handleEffect(effect) {
     switch (effect) {
         case 'attack':
@@ -54,8 +55,10 @@ function handleEffect(effect) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/card');
+                const response = await axios.get(`http://localhost:8080/cards/${characterId}`);
                 setDeck(response.data);
+                console.log(response.data)
+
             } catch (err) {
                 console.log(err);
             }
@@ -69,7 +72,7 @@ function handleEffect(effect) {
             const shuffledDeck = [...deck].sort(() => Math.random() - 0.5);
             const selectedCards = shuffledDeck.slice(0, hand).map(card => ({
                 cost: card.cost,
-                effect: card.effect,
+                effect: card.type,
                 description: card.description
 
             }));
@@ -83,10 +86,10 @@ function handleEffect(effect) {
                 <div className="card" key={index}>
                     <h3 className="cost">{card.cost}</h3>
                     <div className="bar">
-                        <div className="description">{card.effect}
+                        <div className="description">{card.description}
                         </div>
-                        <button onClick={() => handleEffect(card.effect)}>
-                        {card.description}
+                        <button onClick={() => handleEffect(card.effect) }>
+                        {card.effect}
                         </button>
                     </div>
                 </div>
