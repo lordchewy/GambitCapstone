@@ -1,5 +1,5 @@
 //basic attack card
-export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount) {
+export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost) {
     if(count >= 5){
         alert('pick another card')
     } else{
@@ -19,11 +19,11 @@ export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount) {
                 setImgVisible(false); // Set the state to hide the img
             }, 400);
         }
-    setCount(count + 1);
+    setCount(count + cost);
     }
 }
 //ultimate card
-export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount) {
+export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost) {
     if (count >= 3) {
         alert('pick another card');
     } else {
@@ -46,17 +46,17 @@ export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount) {
                 setImgUlt(false); // Set the state to hide the img
             }, 1000);
         }
-        setCount(count + 3);
+        setCount(count + cost);
     }
 }
 //heal card
-export function healFunc(count, health, setP1Health, setCount, setImgHeal) {
+export function healFunc(count, health, setP1Health, setCount, setImgHeal, cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
         const healing = Number(health) + 2;
         setP1Health(healing);
-        setCount(count + 2);
+        setCount(count + cost);
         setImgHeal(true); // Set the state to display the img
         setTimeout(() => {
             setImgHeal(false); // Set the state to hide the img
@@ -65,7 +65,7 @@ export function healFunc(count, health, setP1Health, setCount, setImgHeal) {
 }
 
 // draw cards from deck
-export function draw(count, deck, setRandomCards, setCount) {
+export function draw(count, deck, setRandomCards, setCount,cost) {
     if (count > 5) {
         alert('pick another card');
     } else {
@@ -76,12 +76,12 @@ export function draw(count, deck, setRandomCards, setCount) {
             description: card.description
         }));
         setRandomCards(prevCards => [...prevCards, ...selectedCards]);
-        setCount(count + 2);
+        setCount(count + cost);
     }
 }
 // attack all card
-export function attackAll(count, p1, setFoe, setCount) {
-    if (count > 2) {
+export function attackAll(count, p1, setFoe, setCount,cost) {
+    if (count > 5) {
         alert('pick another card');
     } else {
         setFoe(prevFoe => {
@@ -96,27 +96,27 @@ export function attackAll(count, p1, setFoe, setCount) {
                 }
             }).filter(Boolean); // Filter out null elements
         });
-        setCount(count + 3);
+        setCount(count + cost);
     }
 }
 // atk buff card
-export function attackUp(count, p1, setP1, setCount) {
+export function attackUp(count, p1, setP1, setCount,cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
         const atkUp = Number(p1.attack) + 1;
         setP1({ ...p1, attack: atkUp });
-        setCount(count + 2);
+        setCount(count + cost);
     }
 }
 // buff def card
-export function defenseUp(count, p1, setP1, setCount){
+export function defenseUp(count, p1, setP1, setCount,cost){
     if(count > 3){
         alert('pick another card')
     } else{
         const defUp = Number(p1.defense)+1 
         setP1({ ...p1, defense: defUp })
-        setCount(count + 2);
+        setCount(count + cost);
     }
     return
 }
