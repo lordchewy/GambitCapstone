@@ -17,8 +17,6 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
 
-
-    
     const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
     const [playerHealth, setPlayerHealth] = useState(p1.health);
     
@@ -27,34 +25,50 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
-
-    const [foe, setFoe] = useState([
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},
-        { name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}
-    ]);
-
-
     function endTurn(){
         setCount(6)
     }
+
+
+
     
+    const Round = {1:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: ghost, id: 2}],
+    2:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}],
+    3:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}]
+    }
+    useEffect(() => {
+        console.log(round); // Ensure the correct round value is logged
+    
+        // Check if the current round exists in the Round object
+        if (Round[round] === undefined) {
+            navigate('/'); // Redirect if round does not exist
+        } else {
+            // Update foe state with the foes for the current round
+            setFoe([...Round[round]]);
+        }
+    }, [round]); // Listen for changes in the round prop
+    const [foe, setFoe] = useState([...Round[round]]);
+
+
+
+
     useEffect(() => {
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
-            setRound(round+1)
+            setRound(prevRound => prevRound + 1)
+            console.log(round)
             setTurn(0)
             setFoe([
-                { name: 'banshee', health: 5, attack: 4, defense: 1, url: ghost, id: 2 }
+                ...Round[round]
             ]);
             setCount(0)
             setTimeout(() => {
                 setShowVictoryMessage(false);
-            }, 1000);
+            }, 2000);
         }
     }, [foe[0]]);
 
-
+    console.log(foe)
     return(
         <>
         <div>

@@ -41,8 +41,8 @@ function Board(){
 
     useEffect(() => {
         getHero(characterId);
-        getEnemy(round)
-    }, [characterId, round]);
+        // getEnemy(round)
+    }, [characterId]);
 
 
     useEffect(() => {

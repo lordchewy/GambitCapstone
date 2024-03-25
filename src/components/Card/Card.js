@@ -19,7 +19,7 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
 
 
 
-console.log(deck)
+// console.log(deck)
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
@@ -57,7 +57,7 @@ function handleEffect(effect,cost) {
             try {
                 const response = await axios.get(`http://localhost:8080/cards/${characterId}`);
                 setDeck(response.data);
-                console.log(response.data)
+                // console.log(response.data)
 
             } catch (err) {
                 console.log(err);
