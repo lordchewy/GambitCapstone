@@ -6,6 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import Game from '../Game/Game';
 import Card from '../Card/Card'
 import ghost from '../../assets/Images/Crow.png'
+// test enemies
+import crusader from '../../assets/Enemies/crusader.png'
+import death from '../../assets/Enemies/death.png'
+import mage from '../../assets/Enemies/mage.png'
+import pirate from '../../assets/Enemies/pirate.png'
+import soldier from '../../assets/Enemies/soldier.png'
 
 
 import './ToolBar.scss'
@@ -32,24 +38,31 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
 
 
     
-    const Round = {1:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: ghost, id: 2}],
-    2:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}],
-    3:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}]
+    const Round = {1:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: soldier, id: 2}],
+    2:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: mage, id: 2}],
+    3:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}],
+    4:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: mage, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: pirate, id: 2}],
+    5:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: crusader, id: 2}],
+    6:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: death, id: 2}],
+    7:[]
+}
+    if (!Round[round]){
+        navigate('/')
     }
     useEffect(() => {
         console.log(round); // Ensure the correct round value is logged
     
         // Check if the current round exists in the Round object
-        if (Round[round] === undefined) {
-            navigate('/'); // Redirect if round does not exist
+        if (Round[round].length === 0) {
+            navigate('/') // Redirect if round does not exist
         } else {
             // Update foe state with the foes for the current round
             setFoe([...Round[round]]);
         }
     }, [round]); // Listen for changes in the round prop
+
+
     const [foe, setFoe] = useState([...Round[round]]);
-
-
 
 
     useEffect(() => {
@@ -64,7 +77,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             setCount(0)
             setTimeout(() => {
                 setShowVictoryMessage(false);
-            }, 2000);
+            }, 200);
         }
     }, [foe[0]]);
 
@@ -125,7 +138,6 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
                 <button onClick={()=>{endTurn()}}>End Turn
                 <p>current turn: {turn}</p>
                 </button>
-                
             </div> 
         </div>
 
