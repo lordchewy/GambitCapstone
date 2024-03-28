@@ -1,41 +1,3 @@
-# Project Title
-
-## Overview
-
-My app would be a card game called gambit, User select a hero and fights undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
-
-### Problem
-
-I grew up playing card games and wanted to make one from my own art. Something easy to pick up yet every time you play changes would occur in either hero composition and enemy composition to keep encounters fresh.
-
-### User Profile
-
-my App would mostly be used for gamers either playing through steam or in real time with physical cards. fans of pokemon and yugioh would have an attraction to the concept.
-
-### Features
-
--main menu functionality to start a run
--react app to use state for enemy/player turns
--api to call and render cards
--css animation for user interaction and card draws.
--logic for attacking, defending.
--potential for unique card effects(to be determined based on complexity)
-
-## Implementation
-
-### Tech Stack
-
--react
--express
--react-spring
--axios
--react-router-dom
--sass
-
-### APIs
-
-The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /characters for all and /characters/:id for individuals
-
 ### Sitemap
 
 -main menu page(start button and hero library)
@@ -47,11 +9,8 @@ The only external source of data would be my own collection of drawings. the dat
 
 ### Mockups
 
-![routing between pages](./src/assets/wireFrame/page-routing-mockup.png)
 ![main page](./src/assets/wireFrame/main.png)
 ![game page](./src/assets/wireFrame/gamePage.png)
-![hero list page](./src/assets/wireFrame/heroPage.png)
-![next round](./src/assets/wireFrame/nextroundpage.png)
 
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
