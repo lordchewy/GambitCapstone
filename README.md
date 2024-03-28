@@ -41,3 +41,4 @@ Not for now.
 -more heroes and drawings, these are hand made so they will be added as more are produced.
 -a more complex game design, adding potential for a rogue lite mechanic where every run (win or lose) players would be rewarded with new cards to make next runs easier. this would add a greater sense of progression.
 -wayyyyyy down the line would be animating all monsters and heroes.
+
