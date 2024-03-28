@@ -36,19 +36,23 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     }
 
 
-
-    
-    const Round = {1:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: soldier, id: 2}],
-    2:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: mage, id: 2}],
-    3:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: ghost, id: 2}],
-    4:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: mage, id: 2},{ name: 'banshee', health: 5, attack: 4, defense:1,  url: pirate, id: 2}],
-    5:[{ name: 'banshee', health: 5, attack: 4, defense:1,  url: crusader, id: 2}],
-    6:[{ name: 'banshee', health: 5, attack: 4, defense:1,url: death, id: 2}],
+    const Round = {1:[{ name: 'draugr', health: 5, attack: 4, defense:1,url: soldier, id: 2}],
+    2:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: mage, id: 2}],
+    3:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'Corvian', health: 20, attack: 4, defense:1,  url: ghost, id: 2}],
+    4:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: mage, id: 2},{ name: 'Pirate lord', health: 20, attack: 4, defense:1,  url: pirate, id: 2}],
+    5:[{ name: 'Crusader Aldric', health: 50, attack: 4, defense:6,  url: crusader, id: 2}],
+    6:[{ name: 'Undead King Lorian', health: 100, attack: 4, defense:10,url: death, id: 2}],
     7:[]
-}
+    }
+
+
     if (!Round[round]){
         navigate('/')
     }
+    if(playerHealth <= 0){
+        navigate('/')
+    }
+    
     useEffect(() => {
         console.log(round); // Ensure the correct round value is logged
     
@@ -96,6 +100,9 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             setP1Health= {setPlayerHealth}
             portrait={p1.portrait}
             player={p1.player}
+            playerAttack = {p1.attack}
+            playerDefense = {p1.defense}
+            baseDef = {baseDef}
             foes={foe}
             enemyAtk = {foe[0]?.attack || 0}
             enemyDef = {foe[0]?.defense || 0}
@@ -107,9 +114,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
 
 
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
-            playerAttack = {p1.attack}
-            playerDefense = {p1.defense}
-            baseDef = {baseDef}
+
 
             round={round} setRound={setRound}
         />

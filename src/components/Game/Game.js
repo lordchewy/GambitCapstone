@@ -130,7 +130,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
 
                     <div className='game-board'>
                         <div className='game-board__animation'>
-                            {imgAttack && (
+                            {/* {imgAttack && (
                                 <img
                                     src={slash}
                                     alt="player attack"
@@ -158,7 +158,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                                     alt="heal"
                                     style={self}
                                 />
-                            )}
+                            )} */}
                         </div>
                     </div>
                     
