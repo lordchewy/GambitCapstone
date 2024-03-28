@@ -7,9 +7,6 @@
 -board page will also need to contain all the logic available for combat. and a next round button.
 -a defeat page and victory page
 
-### Mockups
-![main page](./src/assets/wireFrame/main.png)
-![game page](./src/assets/wireFrame/gamePage.png)
 
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
