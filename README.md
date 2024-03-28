@@ -1,8 +1,8 @@
-# Project Title
+# Gambit
 
 ## Overview
 
-My app would be a card game called gambit, User select a hero and fights undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
+My app is a card game called gambit, User select a hero and fights undead monsters. game will split into enemy phase and player phase where players will draw 5 cards at the start of their turn to use either defensively or offensively.
 
 ### Problem
 
@@ -33,10 +33,12 @@ Using react states for characters and turns, player objects will render and upda
 -react-router-dom
 -sass
 -nodemon
+-knexjs
+
+To run program, first clone both GambitCapstone and Gambit server. In the command line terminal run "npm i" in both parent folders to install dependencies and run 'npm start' in GambitCapstone folder to start react app and run 'npm run start' in the server folder to start database.
 
 ### APIs
-
-The only external source of data would be my own collection of drawings. the data structure will have objects with {id: x, img:x, atk:x, health:x}. end points to call will be /characters for all and /characters/:id for individuals. This is strictly a JSON data structure. 
+Current api is run as a database with knexjs
 
 ### Sitemap
 
