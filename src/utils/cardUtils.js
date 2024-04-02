@@ -1,11 +1,11 @@
 //basic attack card
-export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost) {
+export function attackFunc(count, target, user, setFoe, setImgVisible, setCount,cost) {
     if(count > 5){
         alert('pick another card')
     } else{
-        const newHp = Number(foe[0].health) - Number(p1.attack -foe[0].defense);
+        const newHp = Number(target.health) - Number(user.attack -target.defense);
         setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-        if (newHp <= 0 || foe[0] === undefined) {
+        if (newHp <= 0 || target === undefined) {
             setFoe(prevFoe => prevFoe.slice(1));
         } else {
             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);

@@ -13,6 +13,8 @@ function Board(){
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
     const [hero, setHero] = useState(null);
+    const [enemy, setEnemy] = useState(null)
+    const [foes, setFoes] = useState(null)
     const [enemyTurn, setEnemyTurn] = useState(false)
     const [turn, setTurn] = useState(0)
 
@@ -29,19 +31,64 @@ function Board(){
         }
     };
 
-    const getEnemy = async (round)  => {
+
+    
+
+    const getEnemy = async () => {
         try {
-            console.log('round: ', round)
+            // Fetch data from API
+            const response = await axios.get(`http://localhost:8080/characters`);
+            const enemyData = response.data;
+    
+            // Create a heroMap for efficient lookup
+            const heroMap = new Map(enemyData.map(foe => [foe.hero_id, foe]));
+    
+            // Define resultList
+            const resultList = [
+                {1:[5]},
+                {2:[5,6]},
+                {3:[5,5,2]},
+                {4:[5,6,7]},
+                {5:[3]},
+                {6:[4]},
+                {7:[]}
+            ];
+    
+            // Process resultList to create Round
+            const Round = {};
+            resultList.forEach(item => {
+                const [key, values] = Object.entries(item)[0];
+                Round[key] = values.map(value => {
+                    const enemy = heroMap.get(value);
+                    if (enemy) {
+                        return {
+                            name: enemy.name,
+                            health: enemy.health,
+                            attack: enemy.attack,
+                            defense: enemy.defense,
+                            url: enemy.portrait_url,
+                            id: enemy.hero_id
+                        };
+                    }
+                    return null;
+                });
+            });
+    
+            console.log(Round);
+    
+            // Set foes using Round
+            setFoes(Round);
         } catch (err) {
             console.log(err);
         }
     }
+    
 
 
 
     useEffect(() => {
         getHero(characterId);
-        // getEnemy(round)
+        getEnemy()
     }, [characterId]);
 
 
@@ -60,8 +107,11 @@ function Board(){
     if (hero === null) {
         return <p>Loading...</p>;
     }
+    if (foes === null) {
+        return <p>Loading...</p>;
+    }
 
-
+    console.log(foes)
     return (
         <div className="board">
             {showEnemyTurnMessage && (
@@ -76,6 +126,8 @@ function Board(){
             turn ={turn}
             round={round} setRound={setRound}
             setTurn={setTurn}
+            enemies={foes}
+            setEnemies={setFoes}
             />
         </div>
     )

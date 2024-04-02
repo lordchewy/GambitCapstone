@@ -9,7 +9,8 @@ import './Card.scss'
 
 
 const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn, 
-    setImgVisible, setImgHeal,setImgUlt, round
+    setImgVisible, setImgHeal,setImgUlt, round,
+    enemyTurn, setEnemyTurn,
 }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
@@ -19,11 +20,18 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
 
 
 
+useEffect(()=>{
+    if(enemyTurn){
+        console.log('hi')
+    }
+},[enemyTurn])
+
+
 // console.log(deck)
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
-            attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost);
+            attackFunc(count, foe[0], p1, setFoe, setImgVisible, setCount,cost);
             break;
         case 'attackall':
             attackAll(count, p1, setFoe, setCount,cost);
