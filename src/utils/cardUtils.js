@@ -1,6 +1,6 @@
 //basic attack card
 export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost) {
-    if(count >= 5){
+    if(count > 5){
         alert('pick another card')
     } else{
         const newHp = Number(foe[0].health) - Number(p1.attack -foe[0].defense);
@@ -24,7 +24,7 @@ export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost)
 }
 //ultimate card
 export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost) {
-    if (count >= 3) {
+    if (count > 3) {
         alert('pick another card');
     } else {
         const newHp = Number(foe[0]?.health) - 4 * Number(p1.attack);
