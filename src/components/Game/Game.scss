@@ -16,18 +16,20 @@
     box-sizing: border-box;
     border: solid black 10px;
     display: flex;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    align-items: flex-end;
 }
 
 .game{
     position: absolute;
     display: flex;
+    align-items: flex-end;
     z-index: 2;
     height: fit-content;
     width: 75%;
     justify-content: center;
-    bottom: 100px;
-    border: solid 2px blue;
+    bottom: 110px;
+    // border: solid blue 2px;
     &-board{
             &__player{
                 color: white;
@@ -56,7 +58,6 @@
 
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-end;
                 align-items: flex-end;
                 color: white;
                 text-shadow: 5px 2px 2px purple;
@@ -79,15 +80,28 @@
 // }
 
 .playerImg{
-    
     width: 80%;
     height: 80%;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
+.playerImg:hover {
+    border-color: #0ecdc3; /* Change border color on hover */
+    box-shadow: #0ecdc3;
+}
+
+
 .enemyImg{
-    width: 180px;
-    height: 250px;
+    width: 80%;
+    height: 80%;
     transform: scaleX(-1);
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.enemyImg:hover {
+    border-color: purple; /* Change border color on hover */
+    box-shadow: purple;
 }
   
 

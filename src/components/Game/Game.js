@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated, useSpring } from 'react-spring';
+import axios from 'axios';
+
 
 // import Alert from '../Alert/Alert';
 import Modal from '../Modal/Modal';
@@ -63,6 +65,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
 
     // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
+    const [enemyMoves, setEnemyMoves] = useState(null)
 
 
     useEffect(() => {
@@ -70,6 +73,20 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
             console.log(foes)
             let x = 0
             foes.forEach((foe) => {
+                // testing to load enemy cards
+                console.log(foe.id)
+                const fetchData = async () => {
+                    try {
+                        const response = await axios.get(`http://localhost:8080/cards/${foe.id}`);
+                        setEnemyMoves(response.data);
+                        // console.log(response.data)
+        
+                    } catch (err) {
+                        console.log(err);
+                    }
+                };
+                fetchData();
+                // 
                 if(playerDefense){
                     const leftover = Number(playerDefense) - foe.attack
                     const newHealth = Number(health)- (-1*Number(leftover));
@@ -94,11 +111,11 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
         console.log('enemy count: ', x)
         }
         setP1({ ...p1, defense: baseDef })
-        
     }, [enemyTurn]);
 
 
 
+console.log(enemyMoves)
 
 
 

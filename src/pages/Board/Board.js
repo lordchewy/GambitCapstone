@@ -74,7 +74,7 @@ function Board(){
                 });
             });
     
-            console.log(Round);
+            // console.log(Round);
     
             // Set foes using Round
             setFoes(Round);
@@ -111,7 +111,7 @@ function Board(){
         return <p>Loading...</p>;
     }
 
-    console.log(foes)
+    // console.log(foes)
     return (
         <div className="board">
             {showEnemyTurnMessage && (
