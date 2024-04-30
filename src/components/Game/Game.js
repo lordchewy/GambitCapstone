@@ -26,42 +26,41 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
     enemyTurn, setEnemyTurn,
     round, setRound})
     {
-    const ImageStyle = {display: 'block',
-    position: 'absolute',
-    zIndex: 999,
-    width: '400px',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    animation: 'slideToLeft 10s linear forwards'} 
+    // const ImageStyle = {display: 'block',
+    // position: 'absolute',
+    // zIndex: 999,
+    // width: '400px',
+    // top: '50%',
+    // left: '50%',
+    // transform: 'translate(-50%, -50%)',
+    // animation: 'slideToLeft 10s linear forwards'} 
 
-    const ImageStyle3 = {display: 'block',
-    position: 'absolute',
-    zIndex: 999,
-    width: '1000px',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    animation: 'slideToLeft 20s linear forwards'} 
-
-
-    const self = {display: 'block',
-    position: 'absolute',
-    zIndex: 999,
-    width: '500px',
-    top: '0%',
-    right:'60%',}
+    // const ImageStyle3 = {display: 'block',
+    // position: 'absolute',
+    // zIndex: 999,
+    // width: '1000px',
+    // top: '50%',
+    // left: '50%',
+    // transform: 'translate(-50%, -50%)',
+    // animation: 'slideToLeft 20s linear forwards'} 
 
 
-    const ImageStyle2 = {display: 'block',
-    position: 'absolute',
-    zIndex: 999,
-    width: '500px',
-    top: '30%',
-    right:'60%',
-    transform: 'scaleX(-1)',} 
+    // const self = {display: 'block',
+    // position: 'absolute',
+    // zIndex: 999,
+    // width: '500px',
+    // top: '0%',
+    // right:'60%',}
 
-    // const [currHealth, setCurrHealth] = useState(health)
+
+    // const ImageStyle2 = {display: 'block',
+    // position: 'absolute',
+    // zIndex: 999,
+    // width: '500px',
+    // top: '30%',
+    // right:'60%',
+    // transform: 'scaleX(-1)',} 
+
     const [enemyAttack, setEnemyAttack] = useState(false)
 
 
