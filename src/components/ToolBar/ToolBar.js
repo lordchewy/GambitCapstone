@@ -17,22 +17,13 @@ import soldier from '../../assets/Enemies/soldier.png'
 import './ToolBar.scss'
 
 function ToolBar({ 
-    count,
-    hero,setHero,
-    setCount={setCount}, setTurn={setTurn},
-    turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
-
-
-    // console.log(hero)
-
+    hero,setHero,count,
+    setCount={setCount}, setTurn={setTurn},turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, 
+    round, setRound}){
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
-
-    const [imgAttack, setImgVisible] = useState(false);
-    const [imgHeal, setImgHeal] = useState(false);
-    const [imgUlt, setImgUlt] = useState(false);
     function endTurn(){
-        setCount(6)
+        setTurn(turn+1) 
     }
 
 
@@ -44,30 +35,26 @@ function ToolBar({
     6:[{ name: 'Undead King Lorian', health: 100, attack: 4, defense:10,url: death, id: 2}],
     7:[]
     }
+    let CurrRound = 2
 
 
     if (!Round[round]){
         navigate('/')
     }
-    if(hero.health <= 0){
-        navigate('/')
-    }
-    
-    useEffect(() => {
-        // console.log(round); // Ensure the correct round value is logged
-    
-        // Check if the current round exists in the Round object
-        if (Round[round].length === 0) {
-            navigate('/') // Redirect if round does not exist
-        } else {
-            // Update foe state with the foes for the current round
-            setFoe([...Round[round]]);
-        }
-    }, [round]); // Listen for changes in the round prop
+
+    // useEffect(() => {
+    //     // console.log(round); // Ensure the correct round value is logged
+    //     // Check if the current round exists in the Round object
+    //     if (Round[round].length === 0 | Round[round === undefined]) {
+    //         navigate('/') // Redirect if round does not exist
+    //     } else {
+    //         // Update foe state with the foes for the current round
+    //         setFoe([...Round[round]]);
+    //     }
+    // }, [round]); // Listen for changes in the round prop
 
 
-    const [foe, setFoe] = useState([...Round[round]]);
-
+    const [foe, setFoe] = useState(Round[CurrRound]);
 
     useEffect(() => {
         if (foe[0] === undefined) {
@@ -85,7 +72,9 @@ function ToolBar({
         }
     }, [foe[0]]);
 
-    // console.log(foe)
+    if (foe === null) {
+        return <p>Loading...</p>;
+    }
     return(
         <>
         <div>
@@ -97,50 +86,11 @@ function ToolBar({
             hero={hero} setHero={setHero}
 
             foe={foe} setFoe={setFoe}
-            
-            enemyAtk = {foe[0]?.attack || 0}
-            enemyDef = {foe[0]?.defense || 0}
-            
-        
-            imgAttack={imgAttack}
-            imgHeal= {imgHeal}
-            imgUlt = {imgUlt}
-
-
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
-
-
             round={round} setRound={setRound}
+            endTurn={endTurn} turn={turn}
+            count={count} setCount={setCount}
         />
-
-        <div className='Bar'>
-            <div className='Bar-curr'>
-                {count}/5
-            </div>
-
-            <div className="Bar-hand">
-                <Card 
-                count={count} foe={foe} setCount={setCount} setFoe={setFoe}
-
-                hero={hero}setHero={setHero}
-                turn={turn}
-
-                setImgVisible={setImgVisible}
-                setImgHeal={setImgHeal}
-                setImgUlt={setImgUlt}
-
-                round={round} setRound={setRound}
-                />
-            </div>
-        
-            <div className='Bar-next'>
-                <button onClick={()=>{endTurn()}}>End Turn
-                <p>current turn: {turn}</p>
-                </button>
-            </div> 
-        </div>
-
-        
         </>
     )
 }

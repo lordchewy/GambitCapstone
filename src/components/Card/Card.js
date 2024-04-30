@@ -10,17 +10,16 @@ import './Card.scss'
 
 const Card = ({
     count, setCount,
-    hero,setHero,
-    foe,setFoe,
+    enemies,setEnemies,
+    player,setPlayer,
     turn, 
-    setImgVisible, setImgHeal,setImgUlt, round
+    round
     }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
     const { characterId } = useParams();
     let hand = 5
-    // console.log(typeof(setFoe))
 
 
 
@@ -28,26 +27,26 @@ const Card = ({
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
-            attackFunc();
+            attackFunc(count, enemies, setEnemies,setCount,cost,player);
             break;
-        case 'attackall':
-            attackAll(count,hero,setHero,setFoe, setCount,cost);
-            break;
-        case 'ultimate':
-            ultimateFunc(count, foe, hero,setHero, setFoe, setImgUlt, setCount,cost);
-            break;
-        case 'heal':
-            healFunc(count, hero,setHero, setCount, setImgHeal,cost); 
-            break;
-        case 'atkbuff':
-            attackUp(count,hero,setHero, setCount,cost); // Call the defense function
-            break;
-        case 'defbuff':
-            defenseUp(count, hero,setHero, setCount,cost); // Call the defense function
-            break;
-        case 'draw':
-            draw(count, deck, setRandomCards, setCount,cost); // Call the defense function
-            break;
+        // case 'attackall':
+        //     attackAll(count,hero,setHero,setFoe, setCount,cost);
+        //     break;
+        // case 'ultimate':
+        //     ultimateFunc(count, foe, hero,setHero, setFoe, setImgUlt, setCount,cost);
+        //     break;
+        // case 'heal':
+        //     healFunc(count, hero,setHero, setCount, setImgHeal,cost); 
+        //     break;
+        // case 'atkbuff':
+        //     attackUp(count,hero,setHero, setCount,cost); // Call the defense function
+        //     break;
+        // case 'defbuff':
+        //     defenseUp(count, hero,setHero, setCount,cost); // Call the defense function
+        //     break;
+        // case 'draw':
+        //     draw(count, deck, setRandomCards, setCount,cost); // Call the defense function
+        //     break;
         // Add more cases for other effects as needed
         default:
             console.error(`Unknown effect: ${effect}`);

@@ -1,18 +1,36 @@
 //basic attack card
-export function attackFunc(count, foe, setFoe, setImgVisible, setCount,cost, hero) {
-    console.log(foe)
-    if(count > 5){
-        alert('pick another card')
-    } else{
-        console.log(foe)
-        // const newHp = Number(foe[0].health) - Number(hero.attack -foe[0].defense);
-        // console.log(newHp)
-        // setFoe({ ...foe[0], health: newHp });
-        // if (newHp <= 0 || foe[0] === undefined) {
-        //     setFoe(prevFoe => prevFoe.slice(1));
-        // } else {
-        //     setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-        // }
+export function attackFunc(count, enemies, setEnemies, setCount, cost, player) {
+    // Check if count exceeds the limit
+    if (count > 5) {
+        alert('Pick another card.');
+    } else {
+        // Increase the count
+        setCount(count + 1);
+
+        // Calculate new health for the first enemy
+        const newHp = enemies[0].health - player.attack;
+        console.log(newHp)
+
+        // Update the health of the first enemy if its health is greater than 0
+        if (newHp > 0) {
+            const updatedEnemies = [...enemies]; // Create a copy of the enemies array
+            updatedEnemies[0] = { ...updatedEnemies[0], health: newHp }; // Update the health of the first enemy
+            setEnemies(updatedEnemies); // Set the updated enemies array in state
+        } else {
+            // Handle the case when the enemy's health reaches 0 or below
+            // You can remove the enemy from the array or perform any other desired action
+        }
+    }
+}
+
+    //     const newHp = Number(foe.health) - Number(hero.attack -foe[0].defense);
+    //     console.log(newHp)
+    //     setFoe({ ...foe[0], health: newHp });
+    //     if (newHp <= 0 || foe[0] === undefined) {
+    //         setFoe({...foe, health:newHp});
+    //     } else {
+    //         setFoe({...foe, health:newHp});
+    //     }
 
 
         // const specificFoeElement = document.getElementById(0);
@@ -25,8 +43,8 @@ export function attackFunc(count, foe, setFoe, setImgVisible, setCount,cost, her
         //     }, 400);
         // }
     // setCount(count + cost);
-    }
-}
+    // }
+
 
 
 

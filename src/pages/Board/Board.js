@@ -11,7 +11,7 @@ import './Board.scss'
 function Board(){
     const [round, setRound] = useState(1)
     const [count, setCount] = useState(0);
-    const { characterId } = useParams();
+    const {characterId } = useParams();
     const [hero, setHero] = useState(null);
     const [enemyTurn, setEnemyTurn] = useState(false)
     const [turn, setTurn] = useState(0)
@@ -58,10 +58,12 @@ function Board(){
         }
     }, [count]);
 
+
+    
+
     if (hero === null) {
         return <p>Loading...</p>;
     }
-
 
     return (
         <div className="board">
@@ -72,8 +74,7 @@ function Board(){
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            hero={hero}
-            setHero={setHero}
+            hero={hero} setHero={setHero}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
             round={round} setRound={setRound}
