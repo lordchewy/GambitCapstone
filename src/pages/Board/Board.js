@@ -28,6 +28,7 @@ function Board(){
             console.log(err);
         }
     };
+    // console.log(hero)
 
     const getEnemy = async (round)  => {
         try {
@@ -71,7 +72,8 @@ function Board(){
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait_url} defense={hero.defense}
+            hero={hero}
+            setHero={setHero}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
             round={round} setRound={setRound}

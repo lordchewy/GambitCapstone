@@ -16,17 +16,17 @@ import soldier from '../../assets/Enemies/soldier.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, setTurn={setTurn},
+function ToolBar({ 
+    count,
+    hero,setHero,
+    setCount={setCount}, setTurn={setTurn},
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
-    // console.log(typeof setCount)
+
+
+    // console.log(hero)
 
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
-
-    const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
-    const [playerHealth, setPlayerHealth] = useState(p1.health);
-    
-    const baseDef = defense
 
     const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
@@ -49,12 +49,12 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     if (!Round[round]){
         navigate('/')
     }
-    if(playerHealth <= 0){
+    if(hero.health <= 0){
         navigate('/')
     }
     
     useEffect(() => {
-        console.log(round); // Ensure the correct round value is logged
+        // console.log(round); // Ensure the correct round value is logged
     
         // Check if the current round exists in the Round object
         if (Round[round].length === 0) {
@@ -73,7 +73,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
             setRound(prevRound => prevRound + 1)
-            console.log(round)
+            // console.log(round)
             setTurn(0)
             setFoe([
                 ...Round[round]
@@ -85,7 +85,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         }
     }, [foe[0]]);
 
-    console.log(foe)
+    // console.log(foe)
     return(
         <>
         <div>
@@ -94,16 +94,10 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             )}
         </div>
         <Game
-            setP1={setP1}
-            p1 ={p1}
-            health={playerHealth}
-            setP1Health= {setPlayerHealth}
-            portrait={p1.portrait}
-            player={p1.player}
-            playerAttack = {p1.attack}
-            playerDefense = {p1.defense}
-            baseDef = {baseDef}
-            foes={foe}
+            hero={hero} setHero={setHero}
+
+            foe={foe} setFoe={setFoe}
+            
             enemyAtk = {foe[0]?.attack || 0}
             enemyDef = {foe[0]?.defense || 0}
             
@@ -125,10 +119,10 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             </div>
 
             <div className="Bar-hand">
-                <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}
-                health={playerHealth}
-                setP1Health= {setPlayerHealth}
-                setP1={setP1}
+                <Card 
+                count={count} foe={foe} setCount={setCount} setFoe={setFoe}
+
+                hero={hero}setHero={setHero}
                 turn={turn}
 
                 setImgVisible={setImgVisible}

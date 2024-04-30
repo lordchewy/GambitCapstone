@@ -1,33 +1,51 @@
 //basic attack card
-export function attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost) {
+export function attackFunc(count, foe, setFoe, setImgVisible, setCount,cost, hero) {
+    console.log(foe)
     if(count > 5){
         alert('pick another card')
     } else{
-        const newHp = Number(foe[0].health) - Number(p1.attack -foe[0].defense);
-        setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-        if (newHp <= 0 || foe[0] === undefined) {
-            setFoe(prevFoe => prevFoe.slice(1));
-        } else {
-            setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-        }
-        const specificFoeElement = document.getElementById(0);
-        if (specificFoeElement) {
-            setImgVisible(true); // Set the state to display the img
-            specificFoeElement.classList.add('flash');
-            setTimeout(() => {
-                specificFoeElement.classList.remove('flash');
-                setImgVisible(false); // Set the state to hide the img
-            }, 400);
-        }
-    setCount(count + cost);
+        console.log(foe)
+        // const newHp = Number(foe[0].health) - Number(hero.attack -foe[0].defense);
+        // console.log(newHp)
+        // setFoe({ ...foe[0], health: newHp });
+        // if (newHp <= 0 || foe[0] === undefined) {
+        //     setFoe(prevFoe => prevFoe.slice(1));
+        // } else {
+        //     setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
+        // }
+
+
+        // const specificFoeElement = document.getElementById(0);
+        // if (specificFoeElement) {
+        //     setImgVisible(true); // Set the state to display the img
+        //     specificFoeElement.classList.add('flash');
+        //     setTimeout(() => {
+        //         specificFoeElement.classList.remove('flash');
+        //         setImgVisible(false); // Set the state to hide the img
+        //     }, 400);
+        // }
+    // setCount(count + cost);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 //ultimate card
-export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost) {
+export function ultimateFunc(count, foe, hero, setFoe, setImgUlt, setCount,cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
-        const newHp = Number(foe[0]?.health) - 4 * Number(p1.attack);
+        const newHp = Number(foe[0]?.health) - 4 * Number(hero.attack);
         setFoe(prevFoe => {
             const updatedFoe = [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)];
             if (newHp <= 0 || foe[0] === undefined) {
@@ -50,12 +68,12 @@ export function ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost) {
     }
 }
 //heal card
-export function healFunc(count, health, setP1Health, setCount, setImgHeal, cost) {
+export function healFunc(count, hero,setHero, setCount, setImgHeal, cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
-        const healing = Number(health) + 2;
-        setP1Health(healing);
+        const healing = Number(hero.health) + 2;
+        setHero({...hero, health:healing})
         setCount(count + cost);
         setImgHeal(true); // Set the state to display the img
         setTimeout(() => {
@@ -100,22 +118,22 @@ export function attackAll(count, p1, setFoe, setCount,cost) {
     }
 }
 // atk buff card
-export function attackUp(count, p1, setP1, setCount,cost) {
+export function attackUp(count, hero, setHero, setCount,cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
-        const atkUp = Number(p1.attack) + 1;
-        setP1({ ...p1, attack: atkUp });
+        const atkUp = Number(hero.attack) + 1;
+        setHero({ ...hero, attack: atkUp });
         setCount(count + cost);
     }
 }
 // buff def card
-export function defenseUp(count, p1, setP1, setCount,cost){
+export function defenseUp(count, hero, setHero, setCount,cost){
     if(count > 3){
         alert('pick another card')
     } else{
-        const defUp = Number(p1.defense)+1 
-        setP1({ ...p1, defense: defUp })
+        const defUp = Number(hero.defense)+1 
+        setHero({ ...hero, defense: defUp })
         setCount(count + cost);
     }
     return

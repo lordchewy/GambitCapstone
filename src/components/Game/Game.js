@@ -19,9 +19,9 @@ import world from '../../assets/Images/background5.png'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
-function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,
-    setP1Health,
-    foes,enemyAtk,enemyDef,
+function Game({
+    hero, setHero,
+    foe,enemyAtk,enemyDef,
     imgAttack,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn,
     round, setRound})
@@ -63,29 +63,29 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
 
     // const [currHealth, setCurrHealth] = useState(health)
     const [enemyAttack, setEnemyAttack] = useState(false)
-
+    const baseDef = hero.defense
 
     useEffect(() => {
         if (enemyTurn === true) {
-            console.log(foes)
-            let x = 0
-            foes.forEach((foe) => {
-                if(playerDefense){
-                    const leftover = Number(playerDefense) - foe.attack
-                    const newHealth = Number(health)- (-1*Number(leftover));
+            let x = 0 //set a counter to if correct amount of attacks occur
+            foe.forEach((fo) => {
+                if(hero.defense){
+                    const leftover = Number(hero.defense) - fo.attack
+                    const newHealth = Number(hero.health)- (-1*Number(leftover));
+                    console.log(newHealth)
                     x+= 1
                     setTimeout(() => {
                         setEnemyAttack(false)
                     }, 400);
-                    setP1Health(newHealth);
+                    setHero({...hero, health: newHealth})
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                 }else{
-                    const newHealth = Number(health)- foe.attack;
+                    const newHealth = Number(hero.health)- fo.attack;
                     setTimeout(() => {
                         setEnemyAttack(false)
                     }, 400);
-                    setP1Health(newHealth);
+                    setHero(newHealth);
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                     
@@ -93,7 +93,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
             });
         console.log('enemy count: ', x)
         }
-        setP1({ ...p1, defense: baseDef })
+        setHero({ ...hero, defense: baseDef })
         
     }, [enemyTurn]);
 
@@ -116,15 +116,15 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                     
                     <div className='game-board__player'>
                         <div className='game-board__player__health'>
-                            <p>{player}</p>
-                            <p>{health}</p>
+                            <p>{hero.name}</p>
+                            <p>{hero.health}</p>
                         </div>
                         <div className='game-board__player__stats'>
-                            <p>{playerDefense}<img src={def} className='stat'/></p>
-                            <p>{playerAttack}<img src={atk} className='stat'/></p>   
+                            <p>{hero.defense}<img src={def} className='stat'/></p>
+                            <p>{hero.attack}<img src={atk} className='stat'/></p>   
                         </div>
                         <div>
-                            <img src={portrait} className='playerImg'/>
+                            <img src={hero.portrait_url} className='playerImg'/>
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                         </div>
                     </div>
                     
-                    {foes.map((foe, index) => {
+                    {foe.map((foe, index) => {
                     if (foe) { // Replace 'foe.condition' with your actual condition
                         return (
                             <div className='game-board__enemy' key={index} id={index}>

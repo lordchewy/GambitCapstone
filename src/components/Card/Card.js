@@ -8,14 +8,19 @@ import './Card.scss'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn, 
+const Card = ({
+    count, setCount,
+    hero,setHero,
+    foe,setFoe,
+    turn, 
     setImgVisible, setImgHeal,setImgUlt, round
-}) => {
+    }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
     const { characterId } = useParams();
     let hand = 5
+    // console.log(typeof(setFoe))
 
 
 
@@ -23,22 +28,22 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
-            attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost);
+            attackFunc();
             break;
         case 'attackall':
-            attackAll(count, p1, setFoe, setCount,cost);
+            attackAll(count,hero,setHero,setFoe, setCount,cost);
             break;
         case 'ultimate':
-            ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost);
+            ultimateFunc(count, foe, hero,setHero, setFoe, setImgUlt, setCount,cost);
             break;
         case 'heal':
-            healFunc(count, health, setP1Health, setCount, setImgHeal,cost); 
+            healFunc(count, hero,setHero, setCount, setImgHeal,cost); 
             break;
         case 'atkbuff':
-            attackUp(count, p1, setP1, setCount,cost); // Call the defense function
+            attackUp(count,hero,setHero, setCount,cost); // Call the defense function
             break;
         case 'defbuff':
-            defenseUp(count, p1, setP1, setCount,cost); // Call the defense function
+            defenseUp(count, hero,setHero, setCount,cost); // Call the defense function
             break;
         case 'draw':
             draw(count, deck, setRandomCards, setCount,cost); // Call the defense function
