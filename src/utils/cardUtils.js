@@ -86,17 +86,13 @@ export function attackAll(count, hero, setFoe, setCount,cost) {
     }
 }
 //heal card
-export function healFunc(count, hero, setHero, setCount, setImgHeal, cost) {
+export function healFunc(count, hero, setHero, setCount,cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
         const healing = Number(hero.health) + 2;
-        setHero({ ...hero, health: healing });
+        setHero(prevHero => ({...prevHero, health:healing}))
         setCount(count + cost);
-        // setImgHeal(true); // Set the state to display the img
-        // setTimeout(() => {
-        //     setImgHeal(false); // Set the state to hide the img
-        // }, 600);
     }
 }
 // atk buff card

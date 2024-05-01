@@ -8,10 +8,12 @@ import './Card.scss'
 
 
 
-const Card = ({count,setCount, foe, setFoe,turn, 
-    setImgVisible, setImgHeal,setImgUlt, round,
+const Card = ({
+    count,setCount, 
+    foe, setFoe,
+    turn, round,
     hero,setHero
-}) => {
+    }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
@@ -24,16 +26,16 @@ const Card = ({count,setCount, foe, setFoe,turn,
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
-            attackFunc(count, foe, hero, setFoe, setImgVisible, setCount,cost);
+            attackFunc(count, foe, hero, setFoe, setCount,cost);
             break;
         case 'attackall':
             attackAll(count, hero, setFoe, setCount,cost);
             break;
         case 'ultimate':
-            ultimateFunc(count, foe, hero, setFoe, setImgUlt, setCount,cost);
+            ultimateFunc(count, foe, hero, setFoe, setCount,cost);
             break;
         case 'heal':
-            healFunc(count, hero.health, setHero, setCount, setImgHeal,cost); 
+            healFunc(count, hero, setHero, setCount,cost); 
             break;
         case 'atkbuff':
             attackUp(count, hero, setHero, setCount,cost); // Call the defense function
