@@ -8,8 +8,9 @@ import './Card.scss'
 
 
 
-const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn, 
-    setImgVisible, setImgHeal,setImgUlt, round
+const Card = ({count,setCount, foe, setFoe,turn, 
+    setImgVisible, setImgHeal,setImgUlt, round,
+    hero,setHero
 }) => {
     const [randomCards, setRandomCards] = useState([]);
     const [deck, setDeck] = useState([]);
@@ -23,22 +24,22 @@ const Card = ({count, p1, setCount, foe, setFoe, health,setP1Health,setP1,turn,
 function handleEffect(effect,cost) {
     switch (effect) {
         case 'attack':
-            attackFunc(count, foe, p1, setFoe, setImgVisible, setCount,cost);
+            attackFunc(count, foe, hero, setFoe, setImgVisible, setCount,cost);
             break;
         case 'attackall':
-            attackAll(count, p1, setFoe, setCount,cost);
+            attackAll(count, hero, setFoe, setCount,cost);
             break;
         case 'ultimate':
-            ultimateFunc(count, foe, p1, setFoe, setImgUlt, setCount,cost);
+            ultimateFunc(count, foe, hero, setFoe, setImgUlt, setCount,cost);
             break;
         case 'heal':
-            healFunc(count, health, setP1Health, setCount, setImgHeal,cost); 
+            healFunc(count, hero.health, setHero, setCount, setImgHeal,cost); 
             break;
         case 'atkbuff':
-            attackUp(count, p1, setP1, setCount,cost); // Call the defense function
+            attackUp(count, hero, setHero, setCount,cost); // Call the defense function
             break;
         case 'defbuff':
-            defenseUp(count, p1, setP1, setCount,cost); // Call the defense function
+            defenseUp(count,hero,setHero, setCount,cost); // Call the defense function
             break;
         case 'draw':
             draw(count, deck, setRandomCards, setCount,cost); // Call the defense function
@@ -82,8 +83,8 @@ function handleEffect(effect,cost) {
 
     return (
         <div className='hand'>
-            {randomCards.map((card, index) => (
-                <div className="card" key={index}>
+            {randomCards.map((card, id) => (
+                <div className="card" key={id}>
                     <h3 className="cost">{card.cost}</h3>
                     <div className="bar">
                         <div className="description">{card.description}

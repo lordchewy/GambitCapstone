@@ -127,16 +127,11 @@ function ToolBar({
 
             <div className="Bar-hand">
                 <Card count={count} foe={foe}  setCount={setCount} setFoe={setFoe}
-                // p1={p1}
-                // health={playerHealth}
-                // setP1Health= {setPlayerHealth}
-                // setP1={setP1}
+                hero={hero} setHero={setHero}
                 turn={turn}
-
                 setImgVisible={setImgVisible}
                 setImgHeal={setImgHeal}
                 setImgUlt={setImgUlt}
-
                 round={round} setRound={setRound}
                 />
             </div>
