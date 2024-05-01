@@ -19,8 +19,9 @@ import world from '../../assets/Images/background5.png'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
-function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,
-    setP1Health,
+function Game({
+    hero,setHero,
+    // portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,setP1Health,
     foes,enemyAtk,enemyDef,
     imgAttack,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn,
@@ -62,6 +63,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
     // transform: 'scaleX(-1)',} 
 
     const [enemyAttack, setEnemyAttack] = useState(false)
+    console.log('hero: ', hero)
 
 
     useEffect(() => {
@@ -69,22 +71,23 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
             console.log(foes)
             let x = 0
             foes.forEach((foe) => {
-                if(playerDefense){
-                    const leftover = Number(playerDefense) - foe.attack
-                    const newHealth = Number(health)- (-1*Number(leftover));
+                if(hero.defense){
+                    const leftover = Number(hero.defense) - foe.attack
+                    const newHealth = Number(hero.health)- (-1*Number(leftover));
                     x+= 1
                     setTimeout(() => {
                         setEnemyAttack(false)
                     }, 400);
-                    setP1Health(newHealth);
+                    setHero(prevHero => ({...prevHero, health:newHealth}))
+                    // setP1Health(newHealth);
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                 }else{
-                    const newHealth = Number(health)- foe.attack;
+                    // const newHealth = Number(health)- foe.attack;
                     setTimeout(() => {
                         setEnemyAttack(false)
                     }, 400);
-                    setP1Health(newHealth);
+                    // setP1Health(newHealth);
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                     
@@ -92,7 +95,7 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
             });
         console.log('enemy count: ', x)
         }
-        setP1({ ...p1, defense: baseDef })
+        // setHero({ ...hero, defense: baseDef })
         
     }, [enemyTurn]);
 
@@ -115,15 +118,15 @@ function Game({portrait,health, player,playerAttack, playerDefense,baseDef,setP1
                     
                     <div className='game-board__player'>
                         <div className='game-board__player__health'>
-                            <p>{player}</p>
-                            <p>{health}</p>
+                            <p>{hero.name}</p>
+                            <p>{hero.health}</p>
                         </div>
                         <div className='game-board__player__stats'>
-                            <p>{playerDefense}<img src={def} className='stat'/></p>
-                            <p>{playerAttack}<img src={atk} className='stat'/></p>   
+                            <p>{hero.defense}<img src={def} className='stat'/></p>
+                            <p>{hero.attack}<img src={atk} className='stat'/></p>   
                         </div>
                         <div>
-                            <img src={portrait} className='playerImg'/>
+                            <img src={hero.portrait_url} className='playerImg'/>
                         </div>
                     </div>
 

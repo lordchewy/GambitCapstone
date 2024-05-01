@@ -16,24 +16,26 @@ import soldier from '../../assets/Enemies/soldier.png'
 
 import './ToolBar.scss'
 
-function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCount}, setTurn={setTurn},
+function ToolBar({ 
+    count,
+    // player,health,attack,defense, portrait,
+    hero,setHero,
+    setCount={setCount}, setTurn={setTurn},
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
-    // console.log(typeof setCount)
-
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
 
-    const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
-    const [playerHealth, setPlayerHealth] = useState(p1.health);
+    // const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
+    // const [playerHealth, setPlayerHealth] = useState(p1.health);
     
-    const baseDef = defense
-
+    // const baseDef = defense
     const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
     function endTurn(){
         setCount(6)
     }
+    
 
 
     const Round = {1:[{ name: 'draugr', health: 5, attack: 4, defense:1,url: soldier, id: 2}],
@@ -49,14 +51,12 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
     if (!Round[round]){
         navigate('/')
     }
-    if(playerHealth <= 0){
-        navigate('/')
-    }
+    // if(playerHealth <= 0){
+    //     navigate('/')
+    // }
     
     useEffect(() => {
-        console.log(round); // Ensure the correct round value is logged
-    
-        // Check if the current round exists in the Round object
+            // Check if the current round exists in the Round object
         if (Round[round].length === 0) {
             navigate('/') // Redirect if round does not exist
         } else {
@@ -85,7 +85,7 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
         }
     }, [foe[0]]);
 
-    console.log(foe)
+
     return(
         <>
         <div>
@@ -94,15 +94,16 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             )}
         </div>
         <Game
-            setP1={setP1}
-            p1 ={p1}
-            health={playerHealth}
-            setP1Health= {setPlayerHealth}
-            portrait={p1.portrait}
-            player={p1.player}
-            playerAttack = {p1.attack}
-            playerDefense = {p1.defense}
-            baseDef = {baseDef}
+            // setP1={setP1}
+            // p1 ={p1}
+            // health={playerHealth}
+            // setP1Health= {setPlayerHealth}
+            // portrait={p1.portrait}
+            // player={p1.player}
+            // playerAttack = {p1.attack}
+            // playerDefense = {p1.defense}
+            // baseDef = {baseDef}
+            hero={hero} setHero={setHero}
             foes={foe}
             enemyAtk = {foe[0]?.attack || 0}
             enemyDef = {foe[0]?.defense || 0}
@@ -125,10 +126,11 @@ function ToolBar({ count,player,health,attack,defense, portrait,setCount={setCou
             </div>
 
             <div className="Bar-hand">
-                <Card count={count} foe={foe} p1={p1} setCount={setCount} setFoe={setFoe}
-                health={playerHealth}
-                setP1Health= {setPlayerHealth}
-                setP1={setP1}
+                <Card count={count} foe={foe}  setCount={setCount} setFoe={setFoe}
+                // p1={p1}
+                // health={playerHealth}
+                // setP1Health= {setPlayerHealth}
+                // setP1={setP1}
                 turn={turn}
 
                 setImgVisible={setImgVisible}

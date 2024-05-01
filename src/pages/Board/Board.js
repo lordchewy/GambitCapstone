@@ -61,7 +61,6 @@ function Board(){
         return <p>Loading...</p>;
     }
 
-
     return (
         <div className="board">
             {showEnemyTurnMessage && (
@@ -71,7 +70,8 @@ function Board(){
             <ToolBar
             // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait_url} defense={hero.defense}
+            // player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait_url} defense={hero.defense}
+            hero={hero} setHero={setHero}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}
             round={round} setRound={setRound}
