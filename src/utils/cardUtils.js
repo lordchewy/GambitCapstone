@@ -1,5 +1,5 @@
 //basic attack card
-export function attackFunc(count, foe, hero, setFoe, setImgVisible, setCount,cost) {
+export function attackFunc(count, foe, hero, setFoe, setCount,cost) {
     if(count > 5){
         alert('pick another card')
     } else{
@@ -11,19 +11,19 @@ export function attackFunc(count, foe, hero, setFoe, setImgVisible, setCount,cos
             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
         }
         const specificFoeElement = document.getElementById(0);
-        if (specificFoeElement) {
-            setImgVisible(true); // Set the state to display the img
-            specificFoeElement.classList.add('flash');
-            setTimeout(() => {
-                specificFoeElement.classList.remove('flash');
-                setImgVisible(false); // Set the state to hide the img
-            }, 400);
-        }
+        // if (specificFoeElement) {
+        //     setImgVisible(true); // Set the state to display the img
+        //     specificFoeElement.classList.add('flash');
+        //     setTimeout(() => {
+        //         specificFoeElement.classList.remove('flash');
+        //         setImgVisible(false); // Set the state to hide the img
+        //     }, 400);
+        // }
     setCount(count + cost);
     }
 }
 //ultimate card
-export function ultimateFunc(count, foe, hero, setFoe, setImgUlt, setCount,cost) {
+export function ultimateFunc(count, foe, hero, setFoe, setCount,cost) {
     if (count > 3) {
         alert('pick another card');
     } else {
@@ -37,15 +37,15 @@ export function ultimateFunc(count, foe, hero, setFoe, setImgUlt, setCount,cost)
                 return updatedFoe;
             }
         });
-        const specificFoeElement = document.getElementById(0);
-        if (specificFoeElement) {
-            setImgUlt(true); // Set the state to display the img
-            specificFoeElement.classList.add('flash');
-            setTimeout(() => {
-                specificFoeElement.classList.remove('flash');
-                setImgUlt(false); // Set the state to hide the img
-            }, 1000);
-        }
+        // const specificFoeElement = document.getElementById(0);
+        // if (specificFoeElement) {
+        //     setImgUlt(true); // Set the state to display the img
+        //     specificFoeElement.classList.add('flash');
+        //     setTimeout(() => {
+        //         specificFoeElement.classList.remove('flash');
+        //         setImgUlt(false); // Set the state to hide the img
+        //     }, 1000);
+        // }
         setCount(count + cost);
     }
 }
@@ -107,7 +107,7 @@ export function attackUp(count, hero, setHero, setCount,cost) {
 }
 // buff def card
 export function defenseUp(count, hero, setHero, setCount,cost){
-    if(count > 3){
+    if(count > 4){
         alert('pick another card')
     } else{
         const defUp = Number(hero.defense)+1 

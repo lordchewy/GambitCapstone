@@ -24,9 +24,6 @@ function ToolBar({
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
-
-    // const [p1, setP1] = useState({  player: player, health: health, attack: attack, defense: defense, portrait:portrait});
-    // const [playerHealth, setPlayerHealth] = useState(p1.health);
     
     // const baseDef = defense
     const [imgAttack, setImgVisible] = useState(false);
@@ -38,12 +35,12 @@ function ToolBar({
     
 
 
-    const Round = {1:[{ name: 'draugr', health: 5, attack: 4, defense:1,url: soldier, id: 2}],
-    2:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: mage, id: 2}],
-    3:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'Corvian', health: 20, attack: 4, defense:1,  url: ghost, id: 2}],
-    4:[{ name: 'draugr', health: 5, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 5, attack: 4, defense:1,  url: mage, id: 2},{ name: 'Pirate lord', health: 20, attack: 4, defense:1,  url: pirate, id: 2}],
-    5:[{ name: 'Crusader Aldric', health: 50, attack: 4, defense:6,  url: crusader, id: 2}],
-    6:[{ name: 'Undead King Lorian', health: 100, attack: 4, defense:10,url: death, id: 2}],
+    const Round = {1:[{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 2}],
+    2:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2}],
+    3:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'Corvian', health: 20, attack: 4, defense:1,  url: ghost, id: 2}],
+    4:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2},{ name: 'Pirate lord', health: 35, attack: 4, defense:1,  url: pirate, id: 2}],
+    5:[{ name: 'Crusader Aldric', health: 75, attack: 4, defense:6,  url: crusader, id: 2}],
+    6:[{ name: 'Undead King Lorian', health: 200, attack: 10, defense:10,url: death, id: 2}],
     7:[]
     }
 
@@ -51,9 +48,9 @@ function ToolBar({
     if (!Round[round]){
         navigate('/')
     }
-    // if(playerHealth <= 0){
-    //     navigate('/')
-    // }
+    if(hero.health <= 0){
+        navigate('/')
+    }
     
     useEffect(() => {
             // Check if the current round exists in the Round object
@@ -94,15 +91,6 @@ function ToolBar({
             )}
         </div>
         <Game
-            // setP1={setP1}
-            // p1 ={p1}
-            // health={playerHealth}
-            // setP1Health= {setPlayerHealth}
-            // portrait={p1.portrait}
-            // player={p1.player}
-            // playerAttack = {p1.attack}
-            // playerDefense = {p1.defense}
-            // baseDef = {baseDef}
             hero={hero} setHero={setHero}
             foes={foe}
             enemyAtk = {foe[0]?.attack || 0}
