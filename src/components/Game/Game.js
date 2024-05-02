@@ -9,11 +9,6 @@ import './../Header/Header'
 
 
 
-import slash from '../../assets/Images/alastorslash.png'
-import skewer from '../../assets/Images/border.png'
-import ult from '../../assets/Images/alastorult.png'
-import heal from '../../assets/Images/heal.png'
-
 
 import world from '../../assets/Images/background5.png'
 import atk from '../../assets/Images/attack.png'

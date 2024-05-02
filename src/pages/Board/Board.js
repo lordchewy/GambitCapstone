@@ -23,25 +23,23 @@ function Board(){
         try {
             const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
             setHero(response.data[0]);
-            // console.log(response.data)
         } catch (err) {
             console.log(err);
         }
     };
 
-    const getEnemy = async (round)  => {
-        try {
-            console.log('round: ', round)
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    // const getEnemy = async (round)  => {
+    //     try {
+    //         console.log('round: ', round)
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
 
 
     useEffect(() => {
         getHero(characterId);
-        // getEnemy(round)
     }, [characterId]);
 
 
@@ -68,9 +66,7 @@ function Board(){
             )}
             {/* <Header/> */}
             <ToolBar
-            // enemyTurn={enemyTurn}  
             count={count}  setCount={setCount}
-            // player={hero.name} health={hero.health} attack={hero.attack} portrait={hero.portrait_url} defense={hero.defense}
             hero={hero} setHero={setHero}
             enemyTurn={enemyTurn} setEnemyTurn={setEnemyTurn}
             turn ={turn}

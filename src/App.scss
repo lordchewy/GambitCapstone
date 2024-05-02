@@ -15,10 +15,10 @@
     justify-content: space-between;
     align-items: center;
     background-image: url('../../gambit/src/assets/Images/castleoverlook2.png');
-
-
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+    background-color: black;
 }
 *{
   // border: solid black 1px;

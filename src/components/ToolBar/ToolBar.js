@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Game from '../Game/Game';
 import Card from '../Card/Card'
-import ghost from '../../assets/Images/Crow.png'
 // test enemies
 import crusader from '../../assets/Enemies/crusader.png'
 import death from '../../assets/Enemies/death.png'
@@ -37,7 +36,7 @@ function ToolBar({
 
     const Round = {1:[{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 2}],
     2:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2}],
-    3:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'Corvian', health: 20, attack: 4, defense:1,  url: ghost, id: 2}],
+    3:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2}],
     4:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2},{ name: 'Pirate lord', health: 35, attack: 4, defense:1,  url: pirate, id: 2}],
     5:[{ name: 'Crusader Aldric', health: 75, attack: 4, defense:6,  url: crusader, id: 2}],
     6:[{ name: 'Undead King Lorian', health: 200, attack: 10, defense:10,url: death, id: 2}],
