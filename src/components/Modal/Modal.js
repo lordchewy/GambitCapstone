@@ -12,14 +12,13 @@ function Modal({text}){
     }
     return(
         <>
-        <button className='modal-btn' onClick={toggleModal}>{text}</button>
+        <button className='modal-btn' onClick={toggleModal}>Inventory</button>
         {/* if modal is true return modal if not return nothing */}
         {modal &&(
             <div className='modal'>
             <div className='modal-overlay' onClick={toggleModal}></div>
             <div className='modal-content'>
-                <p>next round</p>
-                <button className='modal-close'onClick={toggleModal} >close</button>
+                <p>{text}</p>
             </div>
             </div>
         )}

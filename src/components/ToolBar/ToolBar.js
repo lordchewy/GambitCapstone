@@ -28,6 +28,7 @@ function ToolBar({
     const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
+    const [inv, setInv] = useState([])
     function endTurn(){
         setCount(6)
     }
@@ -93,13 +94,18 @@ function ToolBar({
 
 
     const [foe, setFoe] = useState([...Round[round].enemies]);
+    const rewards = []
 
 
     useEffect(() => {
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
             setRound(prevRound => prevRound + 1)
-            console.log(Round[round].reward)
+            
+            const loot = Round[round].reward
+            console.log('you got: ', loot)
+            setInv([...inv, loot])
+
             setTurn(0)
             setFoe([
                 ...Round[round].enemies
@@ -110,8 +116,10 @@ function ToolBar({
             }, 200);
         }
     }, [foe[0]]);
+    
+    
 
-
+    
     return(
         <>
         <div>
@@ -124,6 +132,8 @@ function ToolBar({
             foes={foe}
             enemyAtk = {foe[0]?.attack || 0}
             enemyDef = {foe[0]?.defense || 0}
+            inv={inv}
+            
             
         
             imgAttack={imgAttack}

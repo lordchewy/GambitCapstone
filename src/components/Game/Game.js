@@ -18,6 +18,7 @@ function Game({
     hero,setHero,
     // portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,setP1Health,
     foes,enemyAtk,enemyDef,
+    inv,
     imgAttack,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn,
     round, setRound})
@@ -60,10 +61,9 @@ function Game({
     const [enemyAttack, setEnemyAttack] = useState(false)
 
 
-
     useEffect(() => {
         if (enemyTurn === true) {
-            console.log(foes)
+            // console.log(foes)
             let x = 0
             foes.forEach((foe) => {
                 if(hero.defense){
@@ -94,17 +94,10 @@ function Game({
         
     }, [enemyTurn]);
 
-
-
-
-
-
-
-
     return(
         <div className='game-container'>
             <div>
-                <Modal text={'relics'}/>
+                <Modal text={inv.map((item)=> {return <li>{item }</li>})}/>
             </div>
             <img src={world} className='map'/>
 
@@ -179,7 +172,7 @@ function Game({
                 })}
             </div>
             <div>
-                <Modal text={`Round: ${round}`}/>
+                {/* <Modal text={`Round: ${round}`}/> */}
             </div>
         </div>
     )
