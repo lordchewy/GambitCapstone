@@ -58,7 +58,7 @@ function Game({
     // transform: 'scaleX(-1)',} 
 
     const [enemyAttack, setEnemyAttack] = useState(false)
-    console.log('hero: ', hero)
+
 
 
     useEffect(() => {

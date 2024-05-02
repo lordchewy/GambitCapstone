@@ -31,20 +31,50 @@ function ToolBar({
     function endTurn(){
         setCount(6)
     }
-    
 
+    const Round = {
+        1: {
+          reward: "Gold coin",
+          enemies: [{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 2}]
+        },
+        2: {
+          reward: "Health potion",
+          enemies: [
+            { name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},
+            { name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2}
+          ]
+        },
+        3:{ 
+            reward: "Gold coin",
+            enemies:[
+                {name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},
+                { name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2}
+            ]
+        },
+        4:{
+            reward: "Gold coin",
+            enemies:[
+                { name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},
+                { name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2},
+                { name: 'Pirate lord', health: 35, attack: 4, defense:1,  url: pirate, id: 2}
+            ]
+        },
+        5:{
+            reward: "Gold coin",
+            enemies:[
+                { name: 'Crusader Aldric', health: 75, attack: 4, defense:6,  url: crusader, id: 2}
+            ]
+        },
+        6:{
+            reward: "Gold coin",
+            enemies:[
+                { name: 'Undead King Lorian', health: 200, attack: 10, defense:10,url: death, id: 2}
+            ]
+        },
+        7:[]    
+      };
 
-    const Round = {1:[{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 2}],
-    2:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2}],
-    3:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2}],
-    4:[{ name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},{ name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2},{ name: 'Pirate lord', health: 35, attack: 4, defense:1,  url: pirate, id: 2}],
-    5:[{ name: 'Crusader Aldric', health: 75, attack: 4, defense:6,  url: crusader, id: 2}],
-    6:[{ name: 'Undead King Lorian', health: 200, attack: 10, defense:10,url: death, id: 2}],
-    7:[]
-    }
-
-
-    if (!Round[round]){
+    if (!Round[round] === undefined){
         navigate('/')
     }
     if(hero.health <= 0){
@@ -57,22 +87,22 @@ function ToolBar({
             navigate('/') // Redirect if round does not exist
         } else {
             // Update foe state with the foes for the current round
-            setFoe([...Round[round]]);
+            setFoe([...Round[round].enemies]);
         }
     }, [round]); // Listen for changes in the round prop
 
 
-    const [foe, setFoe] = useState([...Round[round]]);
+    const [foe, setFoe] = useState([...Round[round].enemies]);
 
 
     useEffect(() => {
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
             setRound(prevRound => prevRound + 1)
-            console.log(round)
+            console.log(Round[round].reward)
             setTurn(0)
             setFoe([
-                ...Round[round]
+                ...Round[round].enemies
             ]);
             setCount(0)
             setTimeout(() => {
