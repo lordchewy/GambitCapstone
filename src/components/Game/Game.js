@@ -78,11 +78,11 @@ function Game({
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                 }else{
-                    // const newHealth = Number(health)- foe.attack;
+                    const newHealth = Number(hero.health)-foe.attack;
                     setTimeout(() => {
                         setEnemyAttack(false)
                     }, 400);
-                    // setP1Health(newHealth);
+                    setHero(prevHero => ({...prevHero, health:newHealth}))
                     setEnemyAttack(true)
                     setEnemyTurn(false)
                     

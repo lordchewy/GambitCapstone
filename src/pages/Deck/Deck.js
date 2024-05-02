@@ -16,7 +16,7 @@ function Deck(){
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/card');
+                const response = await axios.get('http://localhost:8080/cards');
                 setDeck(response.data);
             } catch (err) {
                 console.log(err);
