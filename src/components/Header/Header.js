@@ -22,8 +22,7 @@ function Header({}){
             <div className='header-bar'>
 
                 <div className='header-bar__option'><Link to='/' className='link'> Home</Link></div>
-                <div className='header-bar__option'><Link to='/deck' className='link'> Cards</Link></div>
-                <div className='header-bar__option'><Link to='/test' className='link'> Test</Link></div>             
+                <div className='header-bar__option'><Link to='/deck' className='link'> Cards</Link></div>           
                 <div className='header-bar__option'>
                     {characterId ? (
                         // Render the Link if characterId is defined

@@ -68,7 +68,7 @@ function Game({
             foes.forEach((foe) => {
                 if(hero.defense){
                     const leftover = Number(hero.defense) - foe.attack
-                    const newHealth = Number(hero.health)- (-1*Number(leftover));
+                    const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
                     x+= 1
                     setTimeout(() => {
                         setEnemyAttack(false)

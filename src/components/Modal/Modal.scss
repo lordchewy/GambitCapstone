@@ -1,6 +1,9 @@
+
 .modal{
-    
-    background-color: rgb(192, 121, 35);
+    font-family: 'Nosifier';
+    background-color: black;
+    border: solid 1px rgb(213, 133, 36);
+    border-radius: 10px;
 
     font-size: 10px;
     width: 7rem;
@@ -10,5 +13,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color:white;
     }
 }
