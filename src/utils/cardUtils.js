@@ -120,26 +120,20 @@ export function defenseUp(count, hero, setHero, setCount,cost){
 // enemy attacks ////////////////////////
 
 // enemy def buff
-export function enemyDefUp(foe){
+export function enemyDefUp(foe,setFoe){
     console.log(foe.defense)
     const defUp = foe.defense + 1
-    console.log(defUp)
+    
 }
 // enemy attack
-export function enemyAttack(hero,foe,setEnemyTurn,setHero){
+export function enemyAttack(hero,foe,setHero){
     if(hero.defense){
         const leftover = Number(hero.defense) - foe.attack
         const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
-        setTimeout(() => {
-        }, 400);
         setHero(prevHero => ({...prevHero, health:newHealth}))
-        setEnemyTurn(false)
     }else{
         const newHealth = Number(hero.health)-foe.attack;
-        setTimeout(() => {
-        }, 400);
         setHero(prevHero => ({...prevHero, health:newHealth}))
-        setEnemyTurn(false)
         
     }
 }

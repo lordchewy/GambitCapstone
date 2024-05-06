@@ -63,13 +63,13 @@ function ToolBar({
         5:{
             reward: "Gold coin",
             enemies:[
-                { name: 'Crusader Aldric', health: 75, attack: 4, defense:6,  url: crusader, id: 2}
+                { name: 'Crusader Aldric', health: 50, attack: 4, defense:6,  url: crusader, id: 2}
             ]
         },
         6:{
             reward: "Gold coin",
             enemies:[
-                { name: 'Undead King Lorian', health: 200, attack: 10, defense:10,url: death, id: 2}
+                { name: 'Undead King Lorian', health: 75, attack: 10, defense:10,url: death, id: 2}
             ]
         },
         7:[]    

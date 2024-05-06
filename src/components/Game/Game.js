@@ -12,19 +12,27 @@ import def from '../../assets/Images/defense.png'
 
 function Game({
     hero,setHero,
-    foes,enemyAtk,enemyDef,
+    foes,setFoe,enemyAtk,enemyDef,
     inv,
     enemyTurn, setEnemyTurn,
     round, setRound})
     {
+    
 
     useEffect(() => {
         if (enemyTurn === true) {
             let x = 0
-            foes.forEach((foe) => {
-                enemyDefUp(foe)
-                enemyAttack(hero,foe,setEnemyTurn,setHero)
-            });
+            for (let i = 0; i < foes.length; i++) {
+                const foe = foes[i];
+                console.log(foe);
+                enemyAttack(hero, foe, setHero);
+                x+=1
+                setTimeout(() => {
+                    
+                    setEnemyTurn(false);
+                }, 400);
+            }
+            ;
         console.log('enemy count: ', x)
         }
         // setHero({ ...hero, defense: baseDef })
@@ -89,24 +97,22 @@ function Game({
                         </div>
                     </div>
                     
-                    {foes.map((foe, index) => {
-                    if (foe) {
-                        return (
-                            <div className='game-board__enemy' key={index} id={index}>
-                                <div className='game-board__player__health'>
-                                    <p>{foe.name}</p>
-                                    <p>{foe.health}</p>
-                                </div>
-                                <div className='game-board__player__stats'>
-                                    <p>{enemyDef}<img src={def} className='stat'/></p>
-                                    <p>{enemyAtk}<img src={atk} className='stat'/></p>   
-                                </div>  
-                                    <div><img src={foe.url} alt={foe.name} className='enemyImg'/></div>
-                                </div>
-                        );
-                    }
-                    return null; // If condition is false, return null or nothing
-                })}
+                {Object.entries(foes).map(([key, foe]) => {
+    // Assuming foes is an object with enemy objects as values
+                return (
+                    <div className='game-board__enemy' key={key} id={key}>
+                        <div className='game-board__player__health'>
+                            <p>{foe.name}</p>
+                            <p>{foe.health}</p>
+                        </div>
+                        <div className='game-board__player__stats'>
+                            <p>{enemyDef}<img src={def} className='stat'/></p>
+                            <p>{enemyAtk}<img src={atk} className='stat'/></p>   
+                        </div>  
+                        <div><img src={foe.url} alt={foe.name} className='enemyImg'/></div>
+                    </div>
+                    );
+                    })}
             </div>
             <div>
                 {/* <Modal text={`Round: ${round}`}/> */}
