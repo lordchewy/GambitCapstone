@@ -129,7 +129,7 @@ function ToolBar({
         </div>
         <Game
             hero={hero} setHero={setHero}
-            foes={foe}
+            foes={foe} setFoe={setFoe}
             enemyAtk = {foe[0]?.attack || 0}
             enemyDef = {foe[0]?.defense || 0}
             inv={inv}

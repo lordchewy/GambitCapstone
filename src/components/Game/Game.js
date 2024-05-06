@@ -1,92 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated, useSpring } from 'react-spring';
-
+import {enemyDefUp,enemyAttack} from '../../utils/cardUtils';
 // import Alert from '../Alert/Alert';
 import Modal from '../Modal/Modal';
 
 import './Game.scss'
 import './../Header/Header'
-
-
-
-
 import world from '../../assets/Images/background5.png'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
 
 function Game({
     hero,setHero,
-    // portrait,health, player,playerAttack, playerDefense,baseDef,setP1,p1,setP1Health,
     foes,enemyAtk,enemyDef,
     inv,
-    imgAttack,imgHeal,imgUlt,
     enemyTurn, setEnemyTurn,
     round, setRound})
     {
-    // const ImageStyle = {display: 'block',
-    // position: 'absolute',
-    // zIndex: 999,
-    // width: '400px',
-    // top: '50%',
-    // left: '50%',
-    // transform: 'translate(-50%, -50%)',
-    // animation: 'slideToLeft 10s linear forwards'} 
-
-    // const ImageStyle3 = {display: 'block',
-    // position: 'absolute',
-    // zIndex: 999,
-    // width: '1000px',
-    // top: '50%',
-    // left: '50%',
-    // transform: 'translate(-50%, -50%)',
-    // animation: 'slideToLeft 20s linear forwards'} 
-
-
-    // const self = {display: 'block',
-    // position: 'absolute',
-    // zIndex: 999,
-    // width: '500px',
-    // top: '0%',
-    // right:'60%',}
-
-
-    // const ImageStyle2 = {display: 'block',
-    // position: 'absolute',
-    // zIndex: 999,
-    // width: '500px',
-    // top: '30%',
-    // right:'60%',
-    // transform: 'scaleX(-1)',} 
-
-    const [enemyAttack, setEnemyAttack] = useState(false)
-
 
     useEffect(() => {
         if (enemyTurn === true) {
-            // console.log(foes)
             let x = 0
             foes.forEach((foe) => {
-                if(hero.defense){
-                    const leftover = Number(hero.defense) - foe.attack
-                    const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
-                    x+= 1
-                    setTimeout(() => {
-                        setEnemyAttack(false)
-                    }, 400);
-                    setHero(prevHero => ({...prevHero, health:newHealth}))
-                    // setP1Health(newHealth);
-                    setEnemyAttack(true)
-                    setEnemyTurn(false)
-                }else{
-                    const newHealth = Number(hero.health)-foe.attack;
-                    setTimeout(() => {
-                        setEnemyAttack(false)
-                    }, 400);
-                    setHero(prevHero => ({...prevHero, health:newHealth}))
-                    setEnemyAttack(true)
-                    setEnemyTurn(false)
-                    
-                }
+                enemyDefUp(foe)
+                enemyAttack(hero,foe,setEnemyTurn,setHero)
             });
         console.log('enemy count: ', x)
         }
@@ -153,7 +90,7 @@ function Game({
                     </div>
                     
                     {foes.map((foe, index) => {
-                    if (foe) { // Replace 'foe.condition' with your actual condition
+                    if (foe) {
                         return (
                             <div className='game-board__enemy' key={index} id={index}>
                                 <div className='game-board__player__health'>
