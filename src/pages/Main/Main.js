@@ -49,7 +49,9 @@ function Main() {
 
     return (
         <div className="main">
-            <Header />
+            <div>
+                <Header/>
+            </div>
             <div className="heroes">
                 <Select characterId={selectedHero}/>
                 <ul className="heroes-option">
@@ -61,10 +63,6 @@ function Main() {
                         </Link>
                     ))}
                 </ul>
-            </div>
-            <div className="ocean">
-                <div className="wave"></div>
-                <div className="wave"></div>
             </div>
         </div>
     );

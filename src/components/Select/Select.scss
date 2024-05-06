@@ -1,0 +1,13 @@
+.heroes-selected{
+    border: solid rgb(0, 0, 0) 3px;
+    border-radius: 25px;
+    display: flex;
+    color: rgb(0, 0, 0);
+    width: fit-content;
+    background: linear-gradient(142deg, rgba(0,0,0,1) 36%, rgb(197, 187, 186) 51%);
+    margin: 1rem;
+    .stat{
+        width: 25px;
+        height: 25px;
+    }
+}

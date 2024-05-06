@@ -26,8 +26,10 @@ function Deck(){
         fetchData();
     }, []);
     return (
-        <>
-        <Header/>
+        <div className="fulldeck">
+        <div>
+            <Header/>
+        </div>
         <div className='deck'>
             {deck !==null && deck.map((card, index) => (
                 <div className="deck-card" key={index}>
@@ -42,7 +44,7 @@ function Deck(){
                 </div>
             ))}
         </div>
-        </>
+        </div>
     )
 }
 export default Deck

@@ -13,7 +13,6 @@
   border: solid black 5px;
   border-radius: 25px;
   &-curr{
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +20,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 150px;
-    height: 150px;
+    height: 300px;
     font-size: 2rem;
     text-shadow: 5px 2px 2px rgb(130, 32, 32);
   }
