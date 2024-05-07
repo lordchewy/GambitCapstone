@@ -36,12 +36,12 @@ function ToolBar({
     const Round = {
         1: {
           reward: "Gold coin",
-          enemies: [{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 2}]
+          enemies: [{ name: 'draugr', health: 10, attack: 4, defense:1,url: soldier, id: 1}]
         },
         2: {
           reward: "Health potion",
           enemies: [
-            { name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 2},
+            { name: 'draugr', health: 10, attack: 4, defense:1,  url: soldier, id: 1},
             { name: 'draugr', health: 10, attack: 4, defense:1,  url: mage, id: 2}
           ]
         },

@@ -120,11 +120,20 @@ export function defenseUp(count, hero, setHero, setCount,cost){
 // enemy attacks ////////////////////////
 
 // enemy def buff
-export function enemyDefUp(foe,setFoe){
-    console.log(foe.defense)
-    const defUp = foe.defense + 1
-    
+export function enemyDefUp(foe, setFoe, foes,id) {
+    console.log(foes)
+    const defUp = foe.defense + 1;
+    const updatedFoes = foes.map(enemy => {
+        if (id === foe.id) {
+            console.log(foe.id)
+            return { ...enemy, defense: defUp };
+        }
+        return enemy;
+    });
+    setFoe(updatedFoes);
 }
+
+
 // enemy attack
 export function enemyAttack(hero,foe,setHero){
     if(hero.defense){
@@ -134,7 +143,6 @@ export function enemyAttack(hero,foe,setHero){
     }else{
         const newHealth = Number(hero.health)-foe.attack;
         setHero(prevHero => ({...prevHero, health:newHealth}))
-        
     }
 }
 

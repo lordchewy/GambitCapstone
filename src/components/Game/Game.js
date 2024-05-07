@@ -24,8 +24,10 @@ function Game({
             let x = 0
             for (let i = 0; i < foes.length; i++) {
                 const foe = foes[i];
-                console.log(foe);
+                // console.log(foe);
                 enemyAttack(hero, foe, setHero);
+                const id = foe.id
+                enemyDefUp(foe,setFoe,foes,id)
                 x+=1
                 setTimeout(() => {
                     
