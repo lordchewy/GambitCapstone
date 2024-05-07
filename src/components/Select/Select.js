@@ -4,6 +4,8 @@ import './Select.scss'
 
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
+import agl from '../../assets/Images/agility.png'
+import hp from '../../assets/Images/health.png'
 
 function Select({characterId}){
     const [hero, setHero] = useState(null)
@@ -31,10 +33,10 @@ function Select({characterId}){
             <img src={hero[0].portrait_url} alt='sorry' width='300px' height='400px'/>
             <div>
                 <p>{hero[0].name}</p>
-                <p>{hero[0].health}</p>
+                <p>{hero[0].health}<img src={hp} className='stat'/></p>
                 <p>{hero[0].attack}<img src={atk} className='stat'/></p>
                 <p>{hero[0].defense}<img src={def} className='stat'/></p>
-                <p>{hero[0].agility}</p>
+                <p>{hero[0].agility}<img src={agl} className='stat'/></p>
             </div>     
         </div>    
     )

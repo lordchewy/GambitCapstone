@@ -1,5 +1,6 @@
 import React , {useState} from 'react'
 import './Modal.scss'
+import inventory from '../../assets/Images/bag.png'
 
 
 function Modal({text}){
@@ -12,7 +13,7 @@ function Modal({text}){
     }
     return(
         <>
-        <button className='modal-btn' onClick={toggleModal}>Inventory</button>
+        <button className='modal-btn' onClick={toggleModal}><img src={inventory} className='stat'/></button>
         {/* if modal is true return modal if not return nothing */}
         {modal &&(
             <div className='modal'>
