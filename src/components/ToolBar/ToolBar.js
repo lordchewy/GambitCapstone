@@ -101,19 +101,12 @@ function ToolBar({
         if (foe[0] === undefined) {
             setShowVictoryMessage(true);
             setRound(prevRound => prevRound + 1)
-            
             const loot = Round[round].reward
             console.log('you got: ', loot)
             setInv([...inv, loot])
-
             setTurn(0)
-            setFoe([
-                ...Round[round].enemies
-            ]);
+            setFoe([...Round[round].enemies]);
             setCount(0)
-            setTimeout(() => {
-                setShowVictoryMessage(false);
-            }, 200);
         }
     }, [foe[0]]);
     
@@ -124,7 +117,13 @@ function ToolBar({
         <>
         <div>
             {showVictoryMessage && (
-                <p className="board-message__victory">Next Round</p>
+                <div className="board-message__victory">
+                    <div className='next-round'>
+                        <p>All enemies slain</p>
+                        <p>Spoils: {Round[round-1].reward}</p>
+                        <button onClick={()=>setShowVictoryMessage(false)}>Next</button>
+                    </div>
+                </div>
             )}
         </div>
         <Game
