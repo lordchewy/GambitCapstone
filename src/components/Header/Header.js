@@ -8,7 +8,6 @@ import './Header.scss'
 
 function Header({selecter,setSelecter}){
     const { characterId } = useParams();
-    console.log(selecter)
     return(
         <div className="header">
             <div className='header-bar'>

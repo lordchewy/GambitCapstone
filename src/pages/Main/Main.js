@@ -60,7 +60,7 @@ function Main() {
 
             <div className="heroes">
             {selecter && 
-            <>
+            <div className="begin">
                 <ul className="heroes-option">
                     {filteredHeroes.map(hero => (
                         <Link to={`/${hero.hero_id}`}>
@@ -79,10 +79,9 @@ function Main() {
                         </Link>
                     ))}
                 </ul>
-                <Link to={`/board/${characterId}`} className='link'>Start Game</Link>
-                </>
+                <Link to={`/board/${characterId}`}>Start Game</Link>
+                </div>
             }
-                {/* <Select characterId={selectedHero}/> */}
             </div>
         </div>
     );

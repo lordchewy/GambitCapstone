@@ -4,14 +4,9 @@
     display: flex;
 
 }
-.heroes{
-    width: 100%;
-    height: 100vh;
-    background-image: (url('./../../assets/Images/rose1.png'));
-    background-repeat: no-repeat;
-    background-size: contain;
-}
+
 .heroes-option{
+    margin: 0px;
     display: flex;
     flex-direction: row;
 }
@@ -28,4 +23,11 @@
         width: 25px;
         height: 25px;
     }
+}
+.begin{
+    width: 100vw;
+    height: 100vh;
+    background-image: (url('./../../assets/Images/rose.png'));
+    background-repeat: no-repeat;
+    background-size: cover;
 }
