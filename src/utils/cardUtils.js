@@ -125,7 +125,6 @@ export function enemyDefUp(foe, setFoe, foes,id) {
     const defUp = foe.defense + 1;
     const updatedFoes = foes.map(enemy => {
         if (id === foe.id) {
-            console.log(foe.id)
             return { ...enemy, defense: defUp };
         }
         return enemy;
@@ -135,15 +134,23 @@ export function enemyDefUp(foe, setFoe, foes,id) {
 
 
 // enemy attack
-export function enemyAttack(hero,foe,setHero){
-    if(hero.defense){
-        const leftover = Number(hero.defense) - foe.attack
-        const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
-        setHero(prevHero => ({...prevHero, health:newHealth}))
-    }else{
-        const newHealth = Number(hero.health)-foe.attack;
-        setHero(prevHero => ({...prevHero, health:newHealth}))
+// export function enemyAttack(hero,foe,setHero){
+//     if(hero.defense){
+//         const leftover = Number(hero.defense) - foe.attack
+//         const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
+//         setHero(prevHero => ({...prevHero, health:newHealth}))
+//     }else{
+//         const newHealth = Number(hero.health)-foe.attack;
+//         setHero(prevHero => ({...prevHero, health:newHealth}))
+//     }
+// }
+
+
+export function enemyAttack(updatedHero,foe){
+    if (updatedHero.defense) {
+        const leftover = Number(updatedHero.defense) - foe.attack;
+        updatedHero.health = leftover < 0 ? Number(updatedHero.health) - (-1 * Number(leftover)) : updatedHero.health;
+    } else {
+        updatedHero.health -= foe.attack;
     }
 }
-
-

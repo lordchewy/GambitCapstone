@@ -17,30 +17,41 @@ function Game({
     enemyTurn, setEnemyTurn,
     round, setRound})
     {
-    
+    const [foeTurn, setFoeTurns] = useState(0)
 
     useEffect(() => {
         if (enemyTurn === true) {
-            let x = 0
+            let updatedHero = { ...hero }; // Create a copy of the hero state
+            let x = 0;
+    
             for (let i = 0; i < foes.length; i++) {
                 const foe = foes[i];
-                // console.log(foe);
-                enemyAttack(hero, foe, setHero);
-                const id = foe.id
-                enemyDefUp(foe,setFoe,foes,id)
-                x+=1
-                setTimeout(() => {
-                    
-                    setEnemyTurn(false);
-                }, 400);
+                const id = foe.id;
+    
+                if (foeTurn % 2 === 1) {
+                    enemyAttack(updatedHero,foe)
+                } else {
+                    enemyDefUp(foe, setFoe, foes, id);
+                }
+    
+                x += 1;
             }
-            ;
-        console.log('enemy count: ', x)
+    
+            // Update the hero's state after both enemies have completed their attacks
+            setHero(updatedHero);
+    
+            // Reset enemy turn after all foes have completed their actions
+            setTimeout(() => {
+                setEnemyTurn(false);
+            }, 1000 * foes.length); // Adjust timeout duration as needed
+    
+            console.log('enemy count: ', x);
+            setFoeTurns(prev => prev + 1);
         }
-        // setHero({ ...hero, defense: baseDef })
-        
     }, [enemyTurn]);
-
+    
+    
+    console.log(foeTurn)
     return(
         <div className='game-container'>
             <div>
