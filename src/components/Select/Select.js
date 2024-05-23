@@ -14,7 +14,7 @@ function Select({characterId}){
             const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
             setHero(response.data);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
     useEffect(()=> {
@@ -33,10 +33,10 @@ function Select({characterId}){
             <img src={hero[0].portrait_url} alt='sorry' width='300px' height='400px'/>
             <div>
                 <p>{hero[0].name}</p>
-                <p>{hero[0].health}<img src={hp} className='stat'/></p>
-                <p>{hero[0].attack}<img src={atk} className='stat'/></p>
-                <p>{hero[0].defense}<img src={def} className='stat'/></p>
-                <p>{hero[0].agility}<img src={agl} className='stat'/></p>
+                <p>{hero[0].health}<img src={hp} className='stat' alt="hp"/></p>
+                <p>{hero[0].attack}<img src={atk} className='stat' alt="atk"/></p>
+                <p>{hero[0].defense}<img src={def} className='stat' alt="def"/></p>
+                <p>{hero[0].agility}<img src={agl} className='stat' alt="agi"/></p>
             </div>     
         </div>    
     )

@@ -47,6 +47,10 @@ function Main() {
     const filteredHeroes = characters.filter((character)=>{
         return selectedHero !== character.hero_id;})
 
+        // const audio = new Audio('../../assets/Images/sound.mp3');
+        // audio.play();
+        
+
     return (
         <div className="main">
             <div>
