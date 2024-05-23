@@ -18,33 +18,77 @@ const Card = ({
     const [deck, setDeck] = useState([]);
     const navigate = useNavigate()
     const { characterId } = useParams();
+    const [animationMove,setAnimationMove] = useState(null)
     let hand = 5
 
 
 
 // console.log(deck)
-function handleEffect(effect,cost) {
+function handleEffect(effect,cost,animation) {
     switch (effect) {
         case 'attack':
             attackFunc(count, foe, hero, setFoe, setCount,cost);
+            // return animation ? setAnimationMove(animation): false;
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000);
             break;
         case 'attackall':
             attackAll(count, hero, setFoe, setCount,cost);
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000);
             break;
         case 'ultimate':
             ultimateFunc(count, foe, hero, setFoe, setCount,cost);
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000);
             break;
         case 'heal':
             healFunc(count, hero, setHero, setCount,cost); 
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000);
             break;
         case 'atkbuff':
-            attackUp(count, hero, setHero, setCount,cost); // Call the defense function
+            attackUp(count, hero, setHero, setCount,cost);
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000); // Call the defense function
             break;
         case 'defbuff':
-            defenseUp(count,hero,setHero, setCount,cost); // Call the defense function
+            defenseUp(count,hero,setHero, setCount,cost); 
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000);// Call the defense function
             break;
         case 'draw':
-            draw(count, deck, setRandomCards, setCount,cost); // Call the defense function
+            draw(count, deck, setRandomCards, setCount,cost);
+            if(animation){
+                setAnimationMove(animation)
+            }
+            setTimeout(() => {
+                setAnimationMove(false);
+            }, 1000); // Call the defense function
             break;
         // Add more cases for other effects as needed
         default:
@@ -76,7 +120,8 @@ function handleEffect(effect,cost) {
             const selectedCards = shuffledDeck.slice(0, hand).map(card => ({
                 cost: card.cost,
                 effect: card.type,
-                description: card.description
+                description: card.description,
+                animation : card.animation_url || null
 
             }));
             setRandomCards(selectedCards);
@@ -84,6 +129,12 @@ function handleEffect(effect,cost) {
     }, [deck, turn, round]);
 
     return (
+        <>
+        <div>
+            {animationMove && (
+                <img src={animationMove} className='animation'/>
+            )}
+        </div>
         <div className='hand'>
             {randomCards.map((card, id) => (
                 <div className="card" key={id}>
@@ -91,13 +142,14 @@ function handleEffect(effect,cost) {
                     <div className="bar">
                         <div className="description">{card.description}
                         </div>
-                        <button onClick={() => handleEffect(card.effect, card.cost) }>
+                        <button onClick={() => handleEffect(card.effect, card.cost,card.animation)}>
                         {card.effect}
                         </button>
                     </div>
                 </div>
             ))}
         </div>
+        </>
     );
 };
 
