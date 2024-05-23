@@ -8,10 +8,15 @@ import Select from "../../components/Select/Select";
 
 // import Select from "../../components/Select/Select";
 import './Main.scss'
+import atk from '../../assets/Images/attack.png'
+import def from '../../assets/Images/defense.png'
+import agl from '../../assets/Images/agility.png'
+import hp from '../../assets/Images/health.png'
 
 
 function Main() {
     const [characters, setCharacters] = useState(null);
+    const [selecter, setSelecter] = useState(false)
     // const [selectedHero, setSelectedHero] = useState(characters[0].id)
     const { characterId } = useParams();
 
@@ -50,19 +55,34 @@ function Main() {
     return (
         <div className="main">
             <div>
-                <Header/>
+                <Header selecter={selecter} setSelecter={setSelecter}/>
             </div>
+
             <div className="heroes">
-                <Select characterId={selectedHero}/>
+            {selecter && 
+            <>
                 <ul className="heroes-option">
                     {filteredHeroes.map(hero => (
                         <Link to={`/${hero.hero_id}`}>
-                        <li key={hero.hero_id} className="heroes-option__other">
-                            {hero.playable && <img src={hero.portrait_url} width='150px' height='200px' alt={hero.name} />}
+                        <li key={hero.hero_id}>
+                        <div className='heroes-selected'>
+                            <img src={hero.portrait_url} alt='sorry' width='300px' height='400px'/>
+                            <div>
+                                <p>{hero.name}</p>
+                                <p>{hero.health}<img src={hp} className='stat'/></p>
+                                <p>{hero.attack}<img src={atk} className='stat'/></p>
+                                <p>{hero.defense}<img src={def} className='stat'/></p>
+                                <p>{hero.agility}<img src={agl} className='stat'/></p>
+                            </div>     
+                        </div>    
                         </li>
                         </Link>
                     ))}
                 </ul>
+                <Link to={`/board/${characterId}`} className='link'>Start Game</Link>
+                </>
+            }
+                {/* <Select characterId={selectedHero}/> */}
             </div>
         </div>
     );

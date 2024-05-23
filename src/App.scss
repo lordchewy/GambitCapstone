@@ -20,17 +20,14 @@
     background-position: center;
     background-color: black;
 }
-*{
-  // border: solid black 1px;
-}
+
 
 button{
-  color: white;
-  width:fit-content;
-  height: 5rem;
-  border-radius: 25px;
-  background: rgb(0,0,0);
-  background: linear-gradient(142deg, rgba(0,0,0,1) 36%, rgba(79,21,11,1) 51%); 
+  text-decoration: none;
+  color:rgb(215, 226, 229);
+  text-align: center;
+  font-family: 'Nosifier';
+  background-color: black;
 }
 
 
