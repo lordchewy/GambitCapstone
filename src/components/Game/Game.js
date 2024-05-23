@@ -18,6 +18,7 @@ function Game({
     round, setRound})
     {
     const [foeTurn, setFoeTurns] = useState(0)
+    const [enemyMove, setEnemyMove] = useState(false)
 
     useEffect(() => {
         if (enemyTurn === true) {
@@ -30,13 +31,13 @@ function Game({
     
                 if (foeTurn % 2 === 1) {
                     enemyAttack(updatedHero,foe)
+                    setEnemyMove(true)
                 } else {
                     enemyDefUp(foe, setFoe, foes, id);
                 }
     
                 x += 1;
             }
-    
             // Update the hero's state after both enemies have completed their attacks
             setHero(updatedHero);
     
@@ -44,7 +45,6 @@ function Game({
             setTimeout(() => {
                 setEnemyTurn(false);
             }, 1000 * foes.length); // Adjust timeout duration as needed
-    
             console.log('enemy count: ', x);
             setFoeTurns(prev => prev + 1);
         }
@@ -78,35 +78,11 @@ function Game({
 
                     <div className='game-board'>
                         <div className='game-board__animation'>
-                            {/* {imgAttack && (
-                                <img
-                                    src={slash}
-                                    alt="player attack"
-                                    style={ImageStyle}
-                                />
-                            )}
-                            {imgUlt && (
-                                <img
-                                    src={ult}
-                                    alt="player ultimate"
-                                    style={ImageStyle3}
-                                    width='100%'
-                                />
-                            )}
-                            {enemyAttack && (
-                                <img
-                                    src={skewer}
-                                    alt="enemy attack"
-                                    style={ImageStyle2}
-                                />
-                            )}
-                            {imgHeal && (
-                                <img
-                                    src={heal}
-                                    alt="heal"
-                                    style={self}
-                                />
-                            )} */}
+                            <div>
+                                    { enemyMove && (
+                                        <p className="enemy-move">will attack</p>
+                                    )}
+                            </div>
                         </div>
                     </div>
                     
