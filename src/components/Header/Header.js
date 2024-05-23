@@ -6,14 +6,15 @@ import Select from '../Select/Select';
 import './Header.scss'
 
 
-function Header({selecter,setSelecter}){
+function Header({selector,setSelector}){
     const { characterId } = useParams();
+    
     return(
         <div className="header">
             <div className='header-bar'>
                 <div className='header-bar__option'><Link to='/' className='link'> Home</Link></div>
                 <div className='header-bar__option'><Link to='/deck' className='link'> Cards</Link></div>           
-                <button className='header-bar__option'onClick={()=> setSelecter(!selecter)}>Start</button>
+                <div></div><button className='header-bar__option'onClick={()=> setSelector(!selector)}>Start</button>
             </div>
         </div>
     )

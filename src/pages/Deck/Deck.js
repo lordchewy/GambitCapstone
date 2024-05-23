@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+
 
 import Header from '../../components/Header/Header'
 import './Deck.scss'
@@ -27,9 +28,7 @@ function Deck(){
     }, []);
     return (
         <div className="fulldeck">
-        <div>
-            <Header/>
-        </div>
+            <div className='header-bar__option'><Link to='/' className='link'> Home</Link></div>
         <div className='deck'>
             {deck !==null && deck.map((card, index) => (
                 <div className="deck-card" key={index}>

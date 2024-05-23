@@ -16,7 +16,7 @@ import hp from '../../assets/Images/health.png'
 
 function Main() {
     const [characters, setCharacters] = useState(null);
-    const [selecter, setSelecter] = useState(false)
+    const [selector, setSelector] = useState(false)
     // const [selectedHero, setSelectedHero] = useState(characters[0].id)
     const { characterId } = useParams();
 
@@ -55,11 +55,11 @@ function Main() {
     return (
         <div className="main">
             <div>
-                <Header selecter={selecter} setSelecter={setSelecter}/>
+                <Header selector={selector} setSelector={setSelector}/>
             </div>
 
             <div className="heroes">
-            {selecter && 
+            {selector && 
             <div className="begin">
                 <ul className="heroes-option">
                     {filteredHeroes.map(hero => (
@@ -69,10 +69,10 @@ function Main() {
                             <img src={hero.portrait_url} alt='sorry' width='300px' height='400px'/>
                             <div>
                                 <p>{hero.name}</p>
-                                <p>{hero.health}<img src={hp} className='stat'/></p>
-                                <p>{hero.attack}<img src={atk} className='stat'/></p>
-                                <p>{hero.defense}<img src={def} className='stat'/></p>
-                                <p>{hero.agility}<img src={agl} className='stat'/></p>
+                                <p>{hero.health}<img src={hp} className='stat' alt="stat"/></p>
+                                <p>{hero.attack}<img src={atk} className='stat' alt="stat"/></p>
+                                <p>{hero.defense}<img src={def} className='stat' alt="stat"/></p>
+                                <p>{hero.agility}<img src={agl} className='stat' alt="stat"/></p>
                             </div>     
                         </div>    
                         </li>

@@ -1,6 +1,6 @@
 .fulldeck{
     display: flex;
-    width: 100%;
+    width: 100vw;
 }
 .deck{
     display: flex;
@@ -10,7 +10,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         z-index: 3;
-        border-radius: 10px;
+        // border-radius: 10px;
         box-shadow: -1rem 0 3rem #490303;
         border: solid black 5px;
         height: 340px;
