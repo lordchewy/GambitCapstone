@@ -24,7 +24,7 @@ const Card = ({
 
 
 // console.log(deck)
-function handleEffect(effect,cost,animation) {
+function handleEffect(effect,cost,animation,id) {
     switch (effect) {
         case 'attack':
             attackFunc(count, foe, hero, setFoe, setCount,cost);
@@ -94,6 +94,7 @@ function handleEffect(effect,cost,animation) {
         default:
             console.error(`Unknown effect: ${effect}`);
     }
+    setRandomCards(prevCards => prevCards.filter(card => card.id !== id));
 }
 
 
@@ -121,8 +122,8 @@ function handleEffect(effect,cost,animation) {
                 cost: card.cost,
                 effect: card.type,
                 description: card.description,
-                animation : card.animation_url || null
-
+                animation : card.animation_url || null,
+                id : card.card_id
             }));
             setRandomCards(selectedCards);
         }
@@ -136,13 +137,14 @@ function handleEffect(effect,cost,animation) {
             )}
         </div>
         <div className='hand'>
-            {randomCards.map((card, id) => (
-                <div className="card" key={id}>
+            {randomCards.map((card) => (
+                <div className="card" key={card.id}>
+                    {card.id}
                     <h3 className="cost">{card.cost}</h3>
                     <div className="bar">
                         <div className="description">{card.description}
                         </div>
-                        <button onClick={() => handleEffect(card.effect, card.cost,card.animation)}>
+                        <button onClick={() => handleEffect(card.effect, card.cost,card.animation,card.id)}>
                         {card.effect}
                         </button>
                     </div>
