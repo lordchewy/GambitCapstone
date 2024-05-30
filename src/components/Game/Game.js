@@ -19,8 +19,7 @@ function Game({
     {
     const [foeTurn, setFoeTurns] = useState(0)
     const [enemyMove, setEnemyMove] = useState(false)
-    const baseDef = hero.defense
-    console.log('hero base def: ', baseDef)
+
     useEffect(() => {
         if (enemyTurn === true) {
             let updatedHero = { ...hero }; // Create a copy of the hero state

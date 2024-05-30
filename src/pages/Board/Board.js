@@ -59,6 +59,7 @@ function Board(){
         return <p>Loading...</p>;
     }
 
+
     return (
         <div className="board">
             {showEnemyTurnMessage && (

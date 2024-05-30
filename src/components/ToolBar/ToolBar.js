@@ -23,16 +23,16 @@ function ToolBar({
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
     const navigate = useNavigate()
     const [showVictoryMessage, setShowVictoryMessage] = useState(false);
-    
-    // const baseDef = defense
     const [imgAttack, setImgVisible] = useState(false);
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
     const [inv, setInv] = useState([])
+    const [baseDef,setBaseDef] = useState(hero.defense)
+    console.log('base def: ', baseDef)
+
     function endTurn(){
         setCount(6)
     }
-
     const Round = {
         1: {
           reward: "Gold coin",
@@ -115,6 +115,7 @@ function ToolBar({
                 setShowVictoryMessage(false);
             }, 200);
         }
+        setHero(prevHero => ({...prevHero, defense:baseDef}))
     }, [foe[0]]);
     
     
