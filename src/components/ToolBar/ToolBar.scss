@@ -2,7 +2,7 @@
 
 .Bar{
   z-index: 3;
-  background-image: url('./../../assets/Images/rose1.png');
+  background-image: url('./../../assets/Images/emptyboard.png');
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -25,11 +25,13 @@
     text-shadow: 5px 2px 2px rgb(130, 32, 32);
   }
   &-next{
-    color: white;
+    background-image: url('../../assets/Images/next.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     width: 150px;
-    height: 150px;
+    height: 100px;
   }
 }
 .board-message__victory {
