@@ -78,11 +78,11 @@ function Game({
 
                     <div className='game-board'>
                         <div className='game-board__animation'>
-                            <div>
+                            {/* <div>
                                     { enemyMove && (
                                         <p className="enemy-move">will attack</p>
                                     )}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     

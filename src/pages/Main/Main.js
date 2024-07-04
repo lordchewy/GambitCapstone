@@ -39,18 +39,13 @@ function Main() {
         getCharacters();
     }, [])
 
-        
-
-
     if (characters === null) {
         return <p>Loading...</p>;
     }
 
-    const selectedHero = characterId || characters
-    // console.log(characters)
+    const selectedHero = characters.filter(hero => hero.hero_id == characterId)
+    console.log(selectedHero[0].hero_id)
 
-    const filteredHeroes = characters.filter((character)=>{
-        return selectedHero !== character.hero_id;})
 
     return (
         <div className="main">
@@ -62,21 +57,24 @@ function Main() {
             {selector && 
             <div className="begin">
                 <ul className="heroes-option">
-                    {filteredHeroes.map(hero => (
-                        <Link to={`/${hero.hero_id}`}>
-                        <li key={hero.hero_id}>
-                        <div className='heroes-selected'>
-                            <img src={hero.portrait_url} alt='sorry' width='300px' height='400px'/>
-                            <div>
-                                <p>{hero.name}</p>
-                                <p>{hero.health}<img src={hp} className='stat' alt="stat"/></p>
-                                <p>{hero.attack}<img src={atk} className='stat' alt="stat"/></p>
-                                <p>{hero.defense}<img src={def} className='stat' alt="stat"/></p>
-                                <p>{hero.agility}<img src={agl} className='stat' alt="stat"/></p>
-                            </div>     
-                        </div>    
+                    {characters.map(hero => (
+                        <li key={hero.hero_id} >
+                            <Link to={`/${hero.hero_id}`} >
+                            <div className={`hero-link ${hero.hero_id === selectedHero[0].hero_id? 'selected' : ''}`}>
+
+                            <div className='heroes-selected'>
+                                <img src={hero.portrait_url} alt='sorry' width='300px' height='400px'/>
+                                <div>
+                                    <p>{hero.name}</p>
+                                    <p>{hero.health}<img src={hp} className='stat' alt="stat"/></p>
+                                    <p>{hero.attack}<img src={atk} className='stat' alt="stat"/></p>
+                                    <p>{hero.defense}<img src={def} className='stat' alt="stat"/></p>
+                                    <p>{hero.agility}<img src={agl} className='stat' alt="stat"/></p>
+                                </div>     
+                            </div>    
+                            </div>
+                            </Link>
                         </li>
-                        </Link>
                     ))}
                 </ul>
                 <Link to={`/board/${characterId}`}>Start Game</Link>

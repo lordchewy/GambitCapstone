@@ -2,15 +2,17 @@
     height: 100vh;
     width: 1550px;
     display: flex;
-
 }
 
 .heroes-option{
     margin: 0px;
+    padding: 0px;
     display: flex;
     flex-direction: row;
+    text-decoration:none;
 }
 .heroes-selected{
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     border: solid rgb(0, 0, 0) 3px;
@@ -24,6 +26,19 @@
         height: 25px;
     }
 }
+
+
+.heroes-selected:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgb(59, 59, 101); /* Blue border */
+    box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f; /* Blue glow effect */
+}
+.hero-link.selected {
+    border: 2px solid #00f; /* Example: blue border for selected hero */
+    /* Add more styles as needed */
+}
+
 .begin{
     width: 100vw;
     height: 100vh;
@@ -31,3 +46,4 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
