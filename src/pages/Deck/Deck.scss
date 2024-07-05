@@ -12,11 +12,11 @@
         z-index: 3;
         // border-radius: 10px;
         box-shadow: -1rem 0 3rem #490303;
-        border: solid black 5px;
-        height: 340px;
-        width: 240px;
-        min-width: 200px;
-        max-width: 200px;
+        border: solid black 0.5rem;
+        height: 21.25rem;
+        width: 15rem;
+        min-width: 12.5rem;
+        max-width: 12.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -24,7 +24,7 @@
     }
     &-description{
         color: white;
-        max-height: 100px;
+        max-height: 6.25rem;
     }
     &-cost {
         background-color: rgb(231, 145, 33);
@@ -34,8 +34,8 @@
         width: 50%;
         border-radius: 30%;
         font-weight: 300;
-        left: 40px;
-        top: 30px;
+        left: 2.5rem;
+        top: 1.875rem;
     }
 }
 

@@ -9,9 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  height: 150px;
-  border-radius: 25px;
-  bottom: 20px;
+  height: 10rem;
+  border-radius: 1rem;
+  bottom: 1rem;
   &-curr{
     display: flex;
     justify-content: center;
@@ -19,9 +19,9 @@
     background-image: url('../../assets/Images/wolftoken.png');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 150px;
-    height: 300px;
-    font-size: 2rem;
+    width: 10rem;
+    height: 18.75rem;
+    font-size: 1rem;
     text-shadow: 5px 2px 2px rgb(130, 32, 32);
   }
   &-next{
@@ -30,8 +30,8 @@
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    width: 150px;
-    height: 100px;
+    width: 10rem;
+    height: 7rem;
   }
 }
 .board-message__victory {
@@ -42,7 +42,7 @@
   height: 100%;
   background-color:black; /* semi-transparent black background */
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;

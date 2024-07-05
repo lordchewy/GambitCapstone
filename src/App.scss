@@ -3,21 +3,18 @@
 
 
 .App {
+  
   font-family: 'Nosifier';
     z-index: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction:column;
     box-sizing: border-box;
     overflow: hidden;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-image: url('../../gambit/src/assets/Images/world.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     background-color: black;
 }
 

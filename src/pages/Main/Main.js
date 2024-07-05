@@ -4,9 +4,9 @@ import { Link, useParams } from "react-router-dom";
 
 
 import Header from "../../components/Header/Header"
-import Select from "../../components/Select/Select";
-
 // import Select from "../../components/Select/Select";
+
+
 import './Main.scss'
 import atk from '../../assets/Images/attack.png'
 import def from '../../assets/Images/defense.png'
@@ -17,7 +17,7 @@ import hp from '../../assets/Images/health.png'
 function Main() {
     const [characters, setCharacters] = useState(null);
     const [selector, setSelector] = useState(false)
-    // const [selectedHero, setSelectedHero] = useState(characters[0].id)
+    const [toggle,setToggle ] = useState(false)
     const { characterId } = useParams();
 
     // console.log('here is the character id on main: ', characterId)
@@ -43,9 +43,7 @@ function Main() {
         return <p>Loading...</p>;
     }
 
-    const selectedHero = characters.filter(hero => hero.hero_id == characterId)
-    console.log(selectedHero[0].hero_id)
-
+    const selectedHero = (id) => { setToggle(id)}
 
     return (
         <div className="main">
@@ -60,9 +58,11 @@ function Main() {
                     {characters.map(hero => (
                         <li key={hero.hero_id} >
                             <Link to={`/${hero.hero_id}`} >
-                            <div className={`hero-link ${hero.hero_id === selectedHero[0].hero_id? 'selected' : ''}`}>
+                            
+                            <div 
+                            className={`heroes-selected ${toggle ===hero.hero_id ? 'glow' : ''}`}
 
-                            <div className='heroes-selected'>
+                            onClick={()=> selectedHero(hero.hero_id)}>
                                 <img src={hero.portrait_url} alt='sorry' width='300px' height='400px'/>
                                 <div>
                                     <p>{hero.name}</p>
@@ -72,7 +72,7 @@ function Main() {
                                     <p>{hero.agility}<img src={agl} className='stat' alt="stat"/></p>
                                 </div>     
                             </div>    
-                            </div>
+                            
                             </Link>
                         </li>
                     ))}

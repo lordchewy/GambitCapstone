@@ -1,13 +1,15 @@
 .header{
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgb(38, 36, 36);
+  background: #262424;
   box-sizing: border-box;
+  align-items: center;
   width: 10rem;
-  border: solid 5px rgb(0, 0, 0);
+  height: 44rem;
+  border: solid 0.2rem rgb(0, 0, 0);
   background-image: url('../../assets/Images/tree.png');
   background-size: contain;
   background-position: center;
@@ -20,7 +22,7 @@
         display: flex;
         margin: 0.5rem;
         border: rgb(0, 0, 0) solid 1px;
-        border-radius: 15px;
+        border-radius: 1rem;
         padding: 0.5rem;
         box-shadow: 1px 1px 1px 1px rgb(197, 188, 188);
         background-color: rgb(0, 0, 0);

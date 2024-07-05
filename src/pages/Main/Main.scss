@@ -1,7 +1,11 @@
 .main{
-    height: 100vh;
-    width: 1550px;
+    height: 44rem;
+    width: 93rem;
     display: flex;
+    background-image: url('./../../assets/Images/world.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .heroes-option{
@@ -15,28 +19,26 @@
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    border: solid rgb(0, 0, 0) 3px;
-    border-radius: 25px;
+    border: solid rgb(0, 0, 0) 0.2rem;
+    border-radius: 1.5rem;
     color: rgb(0, 0, 0);
-    width: fit-content;
+    width: 25rem;
     background: linear-gradient(142deg, rgba(0,0,0,1) 36%, rgb(197, 187, 186) 51%);
     margin: 1rem;
     .stat{
-        width: 25px;
-        height: 25px;
+        width: 1.6rem;
+        height: 1.6rem;
     }
 }
-
 
 .heroes-selected:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: 2px solid rgb(59, 59, 101); /* Blue border */
-    box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f; /* Blue glow effect */
+    box-shadow: 0 0 10px rgb(232, 155, 14), 0 0 20px rgb(232, 155, 14), 0 0 30px rgb(232, 155, 14); /* Blue glow effect */
 }
-.hero-link.selected {
-    border: 2px solid #00f; /* Example: blue border for selected hero */
-    /* Add more styles as needed */
+.glow {
+    box-shadow: 0 0 15px 10px rgb(232, 155, 14);
 }
 
 .begin{
