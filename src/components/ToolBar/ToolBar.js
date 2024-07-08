@@ -94,7 +94,7 @@ function ToolBar({
 
 
     const [foe, setFoe] = useState([...Round[round].enemies]);
-    const rewards = []
+    // const rewards = []
 
 
     useEffect(() => {
