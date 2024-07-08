@@ -26,8 +26,18 @@ const Card = ({
 // console.log(deck)
 function handleEffect(effect,cost,animation,id) {
     switch (effect) {
+        // case 'attack':
+        //     attackFunc(count, foe, hero, setFoe, setCount,cost);
+        //     // return animation ? setAnimationMove(animation): false;
+        //     if(animation){
+        //         setAnimationMove(animation)
+        //     }
+        //     setTimeout(() => {
+        //         setAnimationMove(false);
+        //     }, 1000);
+        //     break;
         case 'attack':
-            attackFunc(count, foe, hero, setFoe, setCount,cost);
+            attackFunc(foe[0], hero[0], setFoe);
             // return animation ? setAnimationMove(animation): false;
             if(animation){
                 setAnimationMove(animation)

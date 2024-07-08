@@ -1,27 +1,53 @@
 //basic attack card
-export function attackFunc(count, foe, hero, setFoe, setCount,cost) {
-    if(count > 5){
-        alert('pick another card')
-    } else{
-        const newHp = Number(foe[0].health) - Number(hero.attack -foe[0].defense);
-        setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-        if (newHp <= 0 || foe[0] === undefined) {
-            setFoe(prevFoe => prevFoe.slice(1));
+// export function attackFunc(count, foe, hero, setFoe, setCount,cost) {
+//     if(count > 5){
+//         alert('pick another card')
+//     } else{
+//         const newHp = Number(foe[0].health) - Number(hero.attack -foe[0].defense);
+//         setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
+//         if (newHp <= 0 || foe[0] === undefined) {
+//             setFoe(prevFoe => prevFoe.slice(1));
+//         } else {
+//             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
+//         }
+//         const specificFoeElement = document.getElementById(0);
+//         // if (specificFoeElement) {
+//         //     setImgVisible(true); // Set the state to display the img
+//         //     specificFoeElement.classList.add('flash');
+//         //     setTimeout(() => {
+//         //         specificFoeElement.classList.remove('flash');
+//         //         setImgVisible(false); // Set the state to hide the img
+//         //     }, 400);
+//         // }
+//     setCount(count + cost);
+//     }
+// }
+
+
+// //////////////////////////////card reformat for attack
+// i want both hero and foes to be able to use cards
+//cost is not being accounted for in this card version
+export function attackFunc(target, user, setTarget) {
+        console.log(target)
+        const newHp = Number(target.health) - Number(user.attack -target.defense);
+        console.log('hp after attack',newHp)
+        setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
+        if (newHp <= 0 || target === undefined) {
+            setTarget(prevTarget => prevTarget.slice(1));
         } else {
-            setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
+            setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
         }
-        const specificFoeElement = document.getElementById(0);
-        // if (specificFoeElement) {
-        //     setImgVisible(true); // Set the state to display the img
-        //     specificFoeElement.classList.add('flash');
-        //     setTimeout(() => {
-        //         specificFoeElement.classList.remove('flash');
-        //         setImgVisible(false); // Set the state to hide the img
-        //     }, 400);
-        // }
-    setCount(count + cost);
-    }
 }
+//////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 //ultimate card
 export function ultimateFunc(count, foe, hero, setFoe, setCount,cost) {
     if (count > 3) {

@@ -3,6 +3,7 @@ import { useTransition, animated, useSpring } from 'react-spring';
 import {enemyDefUp,enemyAttack} from '../../utils/cardUtils';
 // import Alert from '../Alert/Alert';
 import Modal from '../Modal/Modal';
+import { attackFunc, ultimateFunc, healFunc,draw, attackAll, attackUp,defenseUp } from '../../utils/cardUtils';
 
 import './Game.scss'
 import './../Header/Header'
@@ -22,7 +23,6 @@ function Game({
 
     useEffect(() => {
         if (enemyTurn === true) {
-            let updatedHero = { ...hero }; // Create a copy of the hero state
             let x = 0;
     
             for (let i = 0; i < foes.length; i++) {
@@ -30,17 +30,14 @@ function Game({
                 const id = foe.id;
     
                 if (foeTurn % 2 === 1) {
-                    enemyAttack(updatedHero,foe)
+                    attackFunc(hero[0],foe, setHero);
                     setEnemyMove(true)
                 } else {
                     enemyDefUp(foe, setFoe, foes, id);
                 }
     
                 x += 1;
-            }
-            // Update the hero's state after both enemies have completed their attacks
-            setHero(updatedHero);
-    
+            }    
             // Reset enemy turn after all foes have completed their actions
             setTimeout(() => {
                 setEnemyTurn(false);
@@ -49,7 +46,7 @@ function Game({
             setFoeTurns(prev => prev + 1);
         }
     }, [enemyTurn]);
-    
+
     
     console.log(foeTurn)
     return(
@@ -64,15 +61,15 @@ function Game({
                     
                     <div className='game-board__player'>
                         <div className='game-board__player__health'>
-                            <p>{hero.name}</p>
-                            <p>{hero.health}</p>
+                            <p>{hero[0].name}</p>
+                            <p>{hero[0].health}</p>
                         </div>
                         <div className='game-board__player__stats'>
-                            <p>{hero.defense}<img src={def} className='stat'/></p>
-                            <p>{hero.attack}<img src={atk} className='stat'/></p>   
+                            <p>{hero[0].defense}<img src={def} className='stat'/></p>
+                            <p>{hero[0].attack}<img src={atk} className='stat'/></p>   
                         </div>
                         <div>
-                            <img src={hero.portrait_url} className='playerImg'/>
+                            <img src={hero[0].portrait_url} className='playerImg'/>
                         </div>
                     </div>
 

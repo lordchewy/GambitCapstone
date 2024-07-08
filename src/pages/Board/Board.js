@@ -12,7 +12,8 @@ function Board(){
     const [round, setRound] = useState(1)
     const [count, setCount] = useState(0);
     const { characterId } = useParams();
-    const [hero, setHero] = useState(null);
+    const [hero, setHero] = useState([{}]);
+    //^ change hero from object to array of objects
     const [enemyTurn, setEnemyTurn] = useState(false)
     const [turn, setTurn] = useState(0)
 
@@ -22,7 +23,7 @@ function Board(){
     const getHero = async (characterId) => {
         try {
             const response = await axios.get(`http://localhost:8080/characters/${characterId}`);
-            setHero(response.data[0]);
+            setHero([response.data[0]]);
         } catch (err) {
             console.log(err);
         }

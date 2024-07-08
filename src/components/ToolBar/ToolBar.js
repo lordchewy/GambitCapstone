@@ -30,6 +30,7 @@ function ToolBar({
     const [baseDef,setBaseDef] = useState(hero.defense)
     console.log('base def: ', baseDef)
 
+
     function endTurn(){
         setCount(6)
     }
@@ -78,7 +79,7 @@ function ToolBar({
     if (!Round[round] === undefined){
         navigate('/')
     }
-    if(hero.health <= 0){
+    if(hero === undefined){
         navigate('/')
     }
     
@@ -115,12 +116,10 @@ function ToolBar({
                 setShowVictoryMessage(false);
             }, 200);
         }
-        setHero(prevHero => ({...prevHero, defense:baseDef}))
+        // setHero(prevHero => ({...prevHero, defense:baseDef}))
+        // setHero(prevHero => prevHero.map(h => ({ ...h, defense: baseDef })));
     }, [foe[0]]);
-    
-    
 
-    
     return(
         <>
         <div>
