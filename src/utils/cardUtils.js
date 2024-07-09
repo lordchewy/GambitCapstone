@@ -1,34 +1,9 @@
-//basic attack card
-// export function attackFunc(count, foe, hero, setFoe, setCount,cost) {
-//     if(count > 5){
-//         alert('pick another card')
-//     } else{
-//         const newHp = Number(foe[0].health) - Number(hero.attack -foe[0].defense);
-//         setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-//         if (newHp <= 0 || foe[0] === undefined) {
-//             setFoe(prevFoe => prevFoe.slice(1));
-//         } else {
-//             setFoe(prevFoe => [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)]);
-//         }
-//         const specificFoeElement = document.getElementById(0);
-//         // if (specificFoeElement) {
-//         //     setImgVisible(true); // Set the state to display the img
-//         //     specificFoeElement.classList.add('flash');
-//         //     setTimeout(() => {
-//         //         specificFoeElement.classList.remove('flash');
-//         //         setImgVisible(false); // Set the state to hide the img
-//         //     }, 400);
-//         // }
-//     setCount(count + cost);
-//     }
-// }
-
 
 // //////////////////////////////card reformat for attack
 // i want both hero and foes to be able to use cards
 //cost is not being accounted for in this card version
 export function attackFunc(target, user, setTarget) {
-        console.log(target)
+        // console.log(target)
         const newHp = Number(target.health) - Number(user.attack -target.defense);
         console.log('hp after attack',newHp)
         setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
@@ -38,43 +13,51 @@ export function attackFunc(target, user, setTarget) {
             setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
         }
 }
-//////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-//ultimate card
-export function ultimateFunc(count, foe, hero, setFoe, setCount,cost) {
-    if (count > 3) {
-        alert('pick another card');
+export function ultimateFunc(target, user, setTarget) {
+    // console.log(target)
+    const newHp = Number(target.health) -4*Number(user.attack);
+    console.log('hp after attack',newHp)
+    setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
+    if (newHp <= 0 || target === undefined) {
+        setTarget(prevTarget => prevTarget.slice(1));
     } else {
-        const newHp = Number(foe[0]?.health) - 4 * Number(hero.attack);
-        setFoe(prevFoe => {
-            const updatedFoe = [{ ...prevFoe[0], health: newHp }, ...prevFoe.slice(1)];
-            if (newHp <= 0 || foe[0] === undefined) {
-                return updatedFoe.slice(1);
-            } 
-            else {
-                return updatedFoe;
-            }
-        });
-        // const specificFoeElement = document.getElementById(0);
-        // if (specificFoeElement) {
-        //     setImgUlt(true); // Set the state to display the img
-        //     specificFoeElement.classList.add('flash');
-        //     setTimeout(() => {
-        //         specificFoeElement.classList.remove('flash');
-        //         setImgUlt(false); // Set the state to hide the img
-        //     }, 1000);
-        // }
-        setCount(count + cost);
+        setTarget(prevTarget => [{ ...prevTarget[0], health: newHp }, ...prevTarget.slice(1)]);
     }
 }
+
+export function attackAll(user, setTarget) {
+    setTarget(prevTarget => {
+        return prevTarget.map(target => {
+            const newHp = target.health - Number(user.attack - target.defense); // Adjust health based on player's attack
+            // Check if health is less than or equal to 0
+            if (newHp <= 0) {
+                return null; // If health is 0 or less, mark for removal
+            } else {
+                return { ...target, health: newHp }; // Otherwise, update health
+            }
+        }).filter(Boolean); // Filter out null elements
+    });
+}
+
+
+export function healFunc(user, setUser) {
+    const healing = Number(user.health) + 2;
+    setUser(prev => [{...prev[0], health:healing}])
+}
+
+export function attackUp(user, setUser) {
+    const atkUp = Number(user.attack) + 1;
+    setUser(prev => [{...prev[0], attack:atkUp}])
+}
+
+
+export function defenseUp(user, setUser) {
+    const defUp = Number(user.defense) + 1;
+    setUser(prev => [{...prev[0], defense:defUp}])
+}
+//////////////////////////////////////////////////////
+
 
 // draw cards from deck
 export function draw(count, deck, setRandomCards, setCount,cost) {
@@ -89,94 +72,5 @@ export function draw(count, deck, setRandomCards, setCount,cost) {
         }));
         setRandomCards(prevCards => [...prevCards, ...selectedCards]);
         setCount(count + cost);
-    }
-}
-// attack all card
-export function attackAll(count, hero, setFoe, setCount,cost) {
-    if (count > 5) {
-        alert('pick another card');
-    } else {
-        setFoe(prevFoe => {
-            return prevFoe.map(fo => {
-                const newHp = fo.health - Number(hero.attack - fo.defense); // Adjust health based on player's attack
-                // console.log('attack all: ', newHp);
-                // Check if health is less than or equal to 0
-                if (newHp <= 0) {
-                    return null; // If health is 0 or less, mark for removal
-                } else {
-                    return { ...fo, health: newHp }; // Otherwise, update health
-                }
-            }).filter(Boolean); // Filter out null elements
-        });
-        setCount(count + cost);
-    }
-}
-//heal card
-export function healFunc(count, hero, setHero, setCount,cost) {
-    if (count > 3) {
-        alert('pick another card');
-    } else {
-        const healing = Number(hero.health) + 2;
-        setHero(prevHero => ({...prevHero, health:healing}))
-        setCount(count + cost);
-    }
-}
-// atk buff card
-export function attackUp(count, hero, setHero, setCount,cost) {
-    if (count > 3) {
-        alert('pick another card');
-    } else {
-        const atkUp = Number(hero.attack) + 1;
-        setHero({ ...hero, attack: atkUp });
-        setCount(count + cost);
-    }
-}
-// buff def card
-export function defenseUp(count, hero, setHero, setCount,cost){
-    if(count > 4){
-        alert('pick another card')
-    } else{
-        const defUp = Number(hero.defense)+1 
-        setHero({ ...hero, defense: defUp })
-        setCount(count + cost);
-    }
-    return
-}
-
-// enemy attacks ////////////////////////
-
-// enemy def buff
-export function enemyDefUp(foe, setFoe, foes,id) {
-    console.log(foes)
-    const defUp = foe.defense + 1;
-    const updatedFoes = foes.map(enemy => {
-        if (id === foe.id) {
-            return { ...enemy, defense: defUp };
-        }
-        return enemy;
-    });
-    setFoe(updatedFoes);
-}
-
-
-// enemy attack
-// export function enemyAttack(hero,foe,setHero){
-//     if(hero.defense){
-//         const leftover = Number(hero.defense) - foe.attack
-//         const newHealth = leftover < 0 ?Number(hero.health)- (-1*Number(leftover)): hero.health;
-//         setHero(prevHero => ({...prevHero, health:newHealth}))
-//     }else{
-//         const newHealth = Number(hero.health)-foe.attack;
-//         setHero(prevHero => ({...prevHero, health:newHealth}))
-//     }
-// }
-
-
-export function enemyAttack(updatedHero,foe){
-    if (updatedHero.defense) {
-        const leftover = Number(updatedHero.defense) - foe.attack;
-        updatedHero.health = leftover < 0 ? Number(updatedHero.health) - (-1 * Number(leftover)) : updatedHero.health;
-    } else {
-        updatedHero.health -= foe.attack;
     }
 }

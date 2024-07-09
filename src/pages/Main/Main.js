@@ -27,7 +27,7 @@ function Main() {
             const response = await axios.get('http://localhost:8080/characters');
             const data = response.data
             const playableHeroes = data.filter(hero => hero.playable === "1");
-            console.log(playableHeroes);
+            // console.log(playableHeroes);
 
             setCharacters(playableHeroes);
         } catch (err) {

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated, useSpring } from 'react-spring';
-import {enemyDefUp,enemyAttack} from '../../utils/cardUtils';
-// import Alert from '../Alert/Alert';
 import Modal from '../Modal/Modal';
 import { attackFunc, ultimateFunc, healFunc,draw, attackAll, attackUp,defenseUp } from '../../utils/cardUtils';
 
@@ -33,7 +31,7 @@ function Game({
                     attackFunc(hero[0],foe, setHero);
                     setEnemyMove(true)
                 } else {
-                    enemyDefUp(foe, setFoe, foes, id);
+                    defenseUp(foe, setFoe);
                 }
     
                 x += 1;
@@ -48,7 +46,7 @@ function Game({
     }, [enemyTurn]);
 
     
-    console.log(foeTurn)
+    // console.log(foeTurn)
     return(
         <div className='game-container'>
             <div>
@@ -60,6 +58,7 @@ function Game({
             <div className='game'>
                     
                     <div className='game-board__player'>
+                        
                         <div className='game-board__player__health'>
                             <p>{hero[0].name}</p>
                             <p>{hero[0].health}</p>

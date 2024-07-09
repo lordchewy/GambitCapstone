@@ -26,16 +26,6 @@ const Card = ({
 // console.log(deck)
 function handleEffect(effect,cost,animation,id) {
     switch (effect) {
-        // case 'attack':
-        //     attackFunc(count, foe, hero, setFoe, setCount,cost);
-        //     // return animation ? setAnimationMove(animation): false;
-        //     if(animation){
-        //         setAnimationMove(animation)
-        //     }
-        //     setTimeout(() => {
-        //         setAnimationMove(false);
-        //     }, 1000);
-        //     break;
         case 'attack':
             attackFunc(foe[0], hero[0], setFoe);
             // return animation ? setAnimationMove(animation): false;
@@ -47,7 +37,7 @@ function handleEffect(effect,cost,animation,id) {
             }, 1000);
             break;
         case 'attackall':
-            attackAll(count, hero, setFoe, setCount,cost);
+            attackAll(hero[0], setFoe);
             if(animation){
                 setAnimationMove(animation)
             }
@@ -56,7 +46,7 @@ function handleEffect(effect,cost,animation,id) {
             }, 1000);
             break;
         case 'ultimate':
-            ultimateFunc(count, foe, hero, setFoe, setCount,cost);
+            ultimateFunc(foe[0], hero[0], setFoe);
             if(animation){
                 setAnimationMove(animation)
             }
@@ -65,7 +55,7 @@ function handleEffect(effect,cost,animation,id) {
             }, 1000);
             break;
         case 'heal':
-            healFunc(count, hero, setHero, setCount,cost); 
+            healFunc(hero[0], setHero); 
             if(animation){
                 setAnimationMove(animation)
             }
@@ -74,7 +64,7 @@ function handleEffect(effect,cost,animation,id) {
             }, 1000);
             break;
         case 'atkbuff':
-            attackUp(count, hero, setHero, setCount,cost);
+            attackUp(hero[0], setHero);
             if(animation){
                 setAnimationMove(animation)
             }
@@ -83,7 +73,7 @@ function handleEffect(effect,cost,animation,id) {
             }, 1000); // Call the defense function
             break;
         case 'defbuff':
-            defenseUp(count,hero,setHero, setCount,cost); 
+            defenseUp(hero[0], setHero); 
             if(animation){
                 setAnimationMove(animation)
             }

@@ -17,7 +17,6 @@ import './ToolBar.scss'
 
 function ToolBar({ 
     count,
-    // player,health,attack,defense, portrait,
     hero,setHero,
     setCount={setCount}, setTurn={setTurn},
     turn, enemyTurn={enemyTurn}, setEnemyTurn={setEnemyTurn}, round, setRound}){
@@ -27,7 +26,8 @@ function ToolBar({
     const [imgHeal, setImgHeal] = useState(false);
     const [imgUlt, setImgUlt] = useState(false);
     const [inv, setInv] = useState([])
-    const [baseDef,setBaseDef] = useState(hero.defense)
+    // const [baseDef,setBaseDef] = useState(hero[0].defense)
+    const baseDef = hero[0].defense
     console.log('base def: ', baseDef)
 
 
@@ -117,7 +117,7 @@ function ToolBar({
             }, 200);
         }
         // setHero(prevHero => ({...prevHero, defense:baseDef}))
-        // setHero(prevHero => prevHero.map(h => ({ ...h, defense: baseDef })));
+        setHero(prevHero => prevHero.map(h => ({ ...h, defense: baseDef })));
     }, [foe[0]]);
 
     return(
