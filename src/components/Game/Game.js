@@ -49,16 +49,14 @@ function Game({
     // console.log(foeTurn)
     return(
         <div className='game-container'>
-            <div>
+            <div className='inventory'>
                 <Modal text={inv.map((item)=> {return <li>{item }</li>})}/>
             </div>
+
             <img src={world} className='map'/>
 
-
             <div className='game'>
-                    
                     <div className='game-board__player'>
-                        
                         <div className='game-board__player__health'>
                             <p>{hero[0].name}</p>
                             <p>{hero[0].health}</p>
@@ -83,7 +81,6 @@ function Game({
                     </div>
                     
                 {Object.entries(foes).map(([key, foe]) => {
-    // Assuming foes is an object with enemy objects as values
                 return (
                     <div className='game-board__enemy' key={key} id={key}>
                         <div className='game-board__player__health'>

@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 36rem
+    height: 36rem;
 }
 .map {
     z-index: 1;
@@ -13,6 +13,9 @@
     height: 100%; /* Adjust as needed */
     box-sizing: border-box;
     border: solid black 0.2rem;
+}
+
+.inventory{
 }
 
 .game{
@@ -31,10 +34,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                // align-items: flex-end;
                 color: white;
                 text-shadow: 5px 2px 2px #0ecdc3;
-                // background-color: red;
                 &__health{
                     display: flex;
                     justify-content: center;

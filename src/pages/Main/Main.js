@@ -46,11 +46,13 @@ function Main() {
     const selectedHero = (id) => { setToggle(id)}
 
     return (
-        <div className="main">
+        <div className="container">
             <div>
                 <Header selector={selector} setSelector={setSelector}/>
             </div>
+            <div className="main">
 
+            </div>
             <div className="heroes">
             {selector && 
             <div className="begin">

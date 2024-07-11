@@ -13,7 +13,8 @@ function Header({selector,setSelector}){
         <div className="header">
             <div className='header-bar'>
                 <div className='header-bar__option'><Link to='/' className='link'> Home</Link></div>
-                <div className='header-bar__option'><Link to='/deck' className='link'> Cards</Link></div>           
+                <div className='header-bar__option'><Link to='/deck' className='link'> Cards</Link></div>  
+                <div className='header-bar__option'><Link to='/test' className='link'>Test</Link></div>         
                 <div></div><button className='header-bar__option'onClick={()=> setSelector(!selector)}>Start</button>
             </div>
         </div>
